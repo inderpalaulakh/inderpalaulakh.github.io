@@ -1,3 +1,3 @@
 User-agent: *
 
-Sitemap: https://bloginderpal.z22.web.core.windows.net/sitemap.xml
+Sitemap: https://inderpalaulakh.com/sitemap.xml
