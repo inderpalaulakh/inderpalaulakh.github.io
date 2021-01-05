@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hello on Learner</title>
+    <link>https://bloginderpal.z22.web.core.windows.net/tags/hello/</link>
+    <description>Recent content in hello on Learner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 13 Dec 2020 21:53:29 -0800</lastBuildDate><atom:link href="https://bloginderpal.z22.web.core.windows.net/tags/hello/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello Post</title>
+      <link>https://bloginderpal.z22.web.core.windows.net/posts/my-hello-post/</link>
+      <pubDate>Sun, 13 Dec 2020 21:53:29 -0800</pubDate>
+      
+      <guid>https://bloginderpal.z22.web.core.windows.net/posts/my-hello-post/</guid>
+      <description>My first post.</description>
+    </item>
+    
+  </channel>
+</rss>

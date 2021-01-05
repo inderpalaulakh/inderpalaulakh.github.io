@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Object-Oriented on Learner</title>
+    <link>https://bloginderpal.z22.web.core.windows.net/tags/object-oriented/</link>
+    <description>Recent content in Object-Oriented on Learner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 28 Dec 2020 00:22:53 -0800</lastBuildDate><atom:link href="https://bloginderpal.z22.web.core.windows.net/tags/object-oriented/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DoubleDispatch</title>
+      <link>https://bloginderpal.z22.web.core.windows.net/posts/doubledispatch/</link>
+      <pubDate>Mon, 28 Dec 2020 00:22:53 -0800</pubDate>
+      
+      <guid>https://bloginderpal.z22.web.core.windows.net/posts/doubledispatch/</guid>
+      <description>To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp;amp; Overriding.
+One level of virtual dispatching derived types override a base types: as shown below
+ class Farms { public virtual void Irrigation() { Console.WriteLine(&amp;quot;Farm Type&amp;quot;); } } class WheatFarm : Farms { public override void Irrigation() { Console.WriteLine(&amp;quot;WheatFarm&amp;quot;); } } class RicaFarm : WheatFarm { public override void Irrigation() { Console.WriteLine(&amp;quot;RicaFarm&amp;quot;); } } static void Main(string[] args) { var a = new Farms(); var b = new WheatFarm(); var c = new RicaFarm(); a.Irrigation(); b.Irrigation(); c.Irrigation(); } //output Farm Type WheatFarm RicaFarm  Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.</description>
+    </item>
+    
+    <item>
+      <title>Overloading &amp; Overriding</title>
+      <link>https://bloginderpal.z22.web.core.windows.net/posts/dispatch/</link>
+      <pubDate>Tue, 15 Dec 2020 20:57:27 -0800</pubDate>
+      
+      <guid>https://bloginderpal.z22.web.core.windows.net/posts/dispatch/</guid>
+      <description>To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
+Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
+As Overloading is compile-time, means during run-time the base type is considered. Example:
+class Crop { public virtual void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;); } } class Wheat : Crop { public override void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public void WaterSupply(Crop crop) { Console.</description>
+    </item>
+    
+  </channel>
+</rss>

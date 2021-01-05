@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learner</title>
+    <link>https://bloginderpal.z22.web.core.windows.net/</link>
+    <description>Recent content on Learner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 31 Dec 2020 13:26:03 -0800</lastBuildDate><atom:link href="https://bloginderpal.z22.web.core.windows.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2020 Review</title>
+      <link>https://bloginderpal.z22.web.core.windows.net/posts/2020review/</link>
+      <pubDate>Thu, 31 Dec 2020 13:26:03 -0800</pubDate>
+      
+      <guid>https://bloginderpal.z22.web.core.windows.net/posts/2020review/</guid>
+      <description>The year 2020 was a year of unpredicted event Covid-19. In January, my wife travelled to Ottawa for her co-op and I planned to spend my evenings studying algorithms and software engineering concepts alongside full time job.
+I planned to complete most of the study-topics in March and completed as planned. In mid-March my office shared guidelines to work from home in a Covid-19. My wife was also back from Ottawa and started a co-op remotely.
+I saved two hours of commute time. My office had layoffs. Some of my teammates were laid off. It was a hard time to see teammates leaving, and I got worried about myself.</description>
+    </item>
+    
+    <item>
+      <title>Accessing Azure Pipeline variables in Webpack Node.js</title>
+      <link>https://bloginderpal.z22.web.core.windows.net/posts/pipelinevar/</link>
+      <pubDate>Wed, 30 Dec 2020 21:22:38 -0800</pubDate>
+      
+      <guid>https://bloginderpal.z22.web.core.windows.net/posts/pipelinevar/</guid>
+      <description>Recently, I struggled a bit to figure out a way to access Azure-Pipeline Variables in Node.js JavaScript/TypeScript project. However, it is easy.
+.yml Pipeline code - task: Npm@1 displayName: &amp;quot;Run project&amp;quot; env: MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital letters inputs: commands: &#39;custom&#39; CustomCommand: &#39;run test&#39;  npm Package install package string-replace-loader
+TypeScript/JavaScript File Create a file with any name &amp;ldquo;test.ts&amp;rdquo;
+test.ts const test = () =&amp;gt; { const myVariable = &amp;quot;My-Variable&amp;quot;; };  Setup webpack.config.js  module: { rules: [ { test: /test\.ts$/, loader: &#39;string-replace-loader&#39;, options: { search: &#39;My-Variable&#39;, replace: process.env[&#39;MyVariableName&#39;] // from .yml env } } ] } }  Finally  &amp;quot;scripts&amp;quot; :{ &amp;quot;test&amp;quot;: &amp;quot;webpack --config webpack.</description>
+    </item>
+    
+    <item>
+      <title>DoubleDispatch</title>
+      <link>https://bloginderpal.z22.web.core.windows.net/posts/doubledispatch/</link>
+      <pubDate>Mon, 28 Dec 2020 00:22:53 -0800</pubDate>
+      
+      <guid>https://bloginderpal.z22.web.core.windows.net/posts/doubledispatch/</guid>
+      <description>To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp;amp; Overriding.
+One level of virtual dispatching derived types override a base types: as shown below
+ class Farms { public virtual void Irrigation() { Console.WriteLine(&amp;quot;Farm Type&amp;quot;); } } class WheatFarm : Farms { public override void Irrigation() { Console.WriteLine(&amp;quot;WheatFarm&amp;quot;); } } class RicaFarm : WheatFarm { public override void Irrigation() { Console.WriteLine(&amp;quot;RicaFarm&amp;quot;); } } static void Main(string[] args) { var a = new Farms(); var b = new WheatFarm(); var c = new RicaFarm(); a.Irrigation(); b.Irrigation(); c.Irrigation(); } //output Farm Type WheatFarm RicaFarm  Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.</description>
+    </item>
+    
+    <item>
+      <title>Overloading &amp; Overriding</title>
+      <link>https://bloginderpal.z22.web.core.windows.net/posts/dispatch/</link>
+      <pubDate>Tue, 15 Dec 2020 20:57:27 -0800</pubDate>
+      
+      <guid>https://bloginderpal.z22.web.core.windows.net/posts/dispatch/</guid>
+      <description>To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
+Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
+As Overloading is compile-time, means during run-time the base type is considered. Example:
+class Crop { public virtual void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;); } } class Wheat : Crop { public override void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public void WaterSupply(Crop crop) { Console.</description>
+    </item>
+    
+    <item>
+      <title>Book Summary: Don’t make me think - Steve Krug </title>
+      <link>https://bloginderpal.z22.web.core.windows.net/posts/my-book-donotmakemethink-post/</link>
+      <pubDate>Mon, 14 Dec 2020 12:14:41 -0800</pubDate>
+      
+      <guid>https://bloginderpal.z22.web.core.windows.net/posts/my-book-donotmakemethink-post/</guid>
+      <description>The book “Don’t make me think” is written by Steve Krug. This is the first book that I read about UX(User Experience Design) design. This book is concise and has four sections.
+The “guiding principles” talks about not puzzling the user to find required content. These principles guide to omit needless content, using conventions, images and explains the web page scanning habit of user (not reading complete content).
+The section “Things you need to get right” has content to design navigation that helps user to find their way. The big bang theory of web design is about designing home page, using tag lines (nothing beats a good tagline), welcome blurb and testing home page usability.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://bloginderpal.z22.web.core.windows.net/about/</link>
+      <pubDate>Sun, 13 Dec 2020 19:15:32 +0800</pubDate>
+      
+      <guid>https://bloginderpal.z22.web.core.windows.net/about/</guid>
+      <description>I am a Software Enginner and creating this blog to share my learnings :).
+To get in touch, Email me at Gmail. Please do not hesitate to share your feedback/corrections on blog posts.</description>
+    </item>
+    
+  </channel>
+</rss>
