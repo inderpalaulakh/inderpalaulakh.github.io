@@ -19,7 +19,7 @@
 
 
 
-<meta name="description" content="A minimal Hugo theme with nice theme color." />
+<meta name="description" content="Learning Software Engineering" />
 
 
 <meta name="keywords" content="Object-Oriented" />
@@ -30,13 +30,10 @@ One level of virtual dispatching derived types override a base types: as shown b
  class Farms { public virtual void Irrigation() { Console.WriteLine(&quot;Farm Type&quot;); } } class WheatFarm : Farms { public override void Irrigation() { Console.WriteLine(&quot;WheatFarm&quot;); } } class RicaFarm : WheatFarm { public override void Irrigation() { Console.WriteLine(&quot;RicaFarm&quot;); } } static void Main(string[] args) { var a = new Farms(); var b = new WheatFarm(); var c = new RicaFarm(); a.Irrigation(); b.Irrigation(); c.Irrigation(); } //output Farm Type WheatFarm RicaFarm  Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://inderpalaulakh.com/posts/doubledispatch/" />
-<meta property="og:image" content="https://inderpalaulakh.com/img/og.png"/>
 <meta property="article:published_time" content="2020-12-28T00:22:53-08:00" />
 <meta property="article:modified_time" content="2020-12-28T00:22:53-08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://inderpalaulakh.com/img/og.png"/>
-
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="DoubleDispatch"/>
 <meta name="twitter:description" content="To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp; Overriding.
 One level of virtual dispatching derived types override a base types: as shown below

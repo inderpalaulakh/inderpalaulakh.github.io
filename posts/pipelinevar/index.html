@@ -19,7 +19,7 @@
 
 
 
-<meta name="description" content="A minimal Hugo theme with nice theme color." />
+<meta name="description" content="Learning Software Engineering" />
 
 
 <meta name="keywords" content="Azure-Pipeline, Node.js, Pipeline-Variables, Webpack" />
@@ -31,13 +31,10 @@ TypeScript/JavaScript File Create a file with any name &ldquo;test.ts&rdquo;
 test.ts const test = () =&gt; { const myVariable = &quot;My-Variable&quot;; };  Setup webpack.config.js  module: { rules: [ { test: /test\.ts$/, loader: &#39;string-replace-loader&#39;, options: { search: &#39;My-Variable&#39;, replace: process.env[&#39;MyVariableName&#39;] // from .yml env } } ] } }  Finally  &quot;scripts&quot; :{ &quot;test&quot;: &quot;webpack --config webpack." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://inderpalaulakh.com/posts/pipelinevar/" />
-<meta property="og:image" content="https://inderpalaulakh.com/img/og.png"/>
 <meta property="article:published_time" content="2020-12-30T21:22:38-08:00" />
 <meta property="article:modified_time" content="2020-12-30T21:22:38-08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://inderpalaulakh.com/img/og.png"/>
-
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Accessing Azure Pipeline variables in Webpack Node.js"/>
 <meta name="twitter:description" content="Recently, I struggled a bit to figure out a way to access Azure-Pipeline Variables in Node.js JavaScript/TypeScript project. However, it is easy.
 .yml Pipeline code - task: Npm@1 displayName: &quot;Run project&quot; env: MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital letters inputs: commands: &#39;custom&#39; CustomCommand: &#39;run test&#39;  npm Package install package string-replace-loader
