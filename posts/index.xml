@@ -6,7 +6,20 @@
     <description>Recent content in Posts on Learner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 31 Dec 2020 13:26:03 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jan 2021 10:46:57 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generation of Sequence Diagram using Mermaid</title>
+      <link>https://inderpalaulakh.com/posts/mermaid/</link>
+      <pubDate>Wed, 06 Jan 2021 10:46:57 -0800</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/mermaid/</guid>
+      <description>I use online tools to generate sequence diagrams. Recently, my colleague at work guided me about Mermaid to generate sequence diagrams. This is an awesome tool.
+Mermaid
+Mermaid has online editor Editor. However, I did not use online editor for confidentiality reasons.
+I created index.html and opened in browser.
+ &amp;lt;html&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; mermaid.initialize({ startOnLoad: true }); &amp;lt;/script&amp;gt; &amp;lt;div class=&amp;quot;mermaid&amp;quot;&amp;gt; sequenceDiagram participant A participant B A-&amp;gt;&amp;gt;B:How are you? B--&amp;gt;&amp;gt; A: I am good loop test loop A-&amp;gt;&amp;gt;B:How are you? B--&amp;gt;&amp;gt; A: I am good end &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  </description>
+    </item>
+    
     <item>
       <title>2020 Review</title>
       <link>https://inderpalaulakh.com/posts/2020review/</link>
