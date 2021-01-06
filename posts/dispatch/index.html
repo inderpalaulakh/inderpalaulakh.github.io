@@ -218,13 +218,28 @@ class Crop { public virtual void CropName() { Console.WriteLine(&quot;Hey, My ty
 </article>
 
 
-<div class="license markdown-body">
-    <blockquote>
-        <p>Unless otherwise noted, the content of this site is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-               target="_blank">CC BY-NC-SA 4.0</a>.</p>
-    </blockquote>
-</div>
 
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = 'https:\/\/inderpalaulakh.com\/posts\/dispatch\/';
+                this.page.identifier = 'Dispatch';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'https-inderpalaulakh-com' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
 
 
             </div>
@@ -236,6 +251,10 @@ class Crop { public virtual void CropName() { Console.WriteLine(&quot;Hey, My ty
             
             <li>
                 <a href="/posts/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
             </li>
             
             <li>
@@ -320,6 +339,10 @@ class Crop { public virtual void CropName() { Console.WriteLine(&quot;Hey, My ty
             
             <li>
                 <a href="/posts/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
             </li>
             
             <li>
