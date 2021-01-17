@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>checkstyle on Learner</title>
+    <link>https://inderpalaulakh.com/tags/checkstyle/</link>
+    <description>Recent content in checkstyle on Learner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 17 Jan 2021 08:23:23 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/checkstyle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Studio Enable Checkstyle (Gradle)</title>
+      <link>https://inderpalaulakh.com/posts/android-checkstyle/</link>
+      <pubDate>Sun, 17 Jan 2021 08:23:23 -0800</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/android-checkstyle/</guid>
+      <description>Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.
+Steps To enable checkstyle for Android Project Create checkstyle.xml Create folder checkstyle inside Android Project app folder. Create file checkstyle.xml Reference
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt; &amp;lt;!DOCTYPE module PUBLIC &amp;quot;-//Puppy Crawl//DTD Check Configuration 1.2//EN&amp;quot; &amp;quot;http://www.puppycrawl.com/dtds/configuration_1_2.dtd&amp;quot;&amp;gt; &amp;lt;!-- Checkstyle configuration that checks the sun coding conventions from: - the Java Language Specification at http://java.sun.com/docs/books/jls/second_edition/html/index.html - the Sun Code Conventions at http://java.sun.com/docs/codeconv/ - the Javadoc guidelines at http://java.sun.com/j2se/javadoc/writingdoccomments/index.html - the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html - some best practices Checkstyle is very configurable. Be sure to read the documentation at http://checkstyle.</description>
+    </item>
+    
+  </channel>
+</rss>
