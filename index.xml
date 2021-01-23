@@ -13,7 +13,7 @@
       <pubDate>Sat, 23 Jan 2021 13:36:35 -0800</pubDate>
       
       <guid>https://inderpalaulakh.com/posts/azureaad/</guid>
-      <description>In this post, I am sharing how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.
+      <description>In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.
 Create an Android Application Open Android Studio and create new Project with Empty Activity.
 Configure project with below settings
 Get SHA1 &amp;amp; package name Open powershell and cd to C:\Users&amp;lt;username&amp;gt;.android Execute below command, if prompted for password enter android or leave blank
