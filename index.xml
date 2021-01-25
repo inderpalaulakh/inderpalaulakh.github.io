@@ -6,7 +6,20 @@
     <description>Recent content on Learner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 23 Jan 2021 13:36:35 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Jan 2021 15:33:39 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Composite Design Pattern</title>
+      <link>https://inderpalaulakh.com/posts/compositedesignpattern/</link>
+      <pubDate>Sun, 24 Jan 2021 15:33:39 -0800</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/compositedesignpattern/</guid>
+      <description>The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.
+Component This is a class that contain all the members that needs to be implemented by all the objects.
+Composite This class is used to add, remove and traverse components.
+Leaf The leaf object in tree structure is defined as leaf element.
+Code Sample I want to print salaries of all employees in my organisation with names and designation. The root of organisation tree is CEO. The CEO has directors as child composite.</description>
+    </item>
+    
     <item>
       <title>Android Application implementing Azure Active Directory Authentication to call protected Azure Function </title>
       <link>https://inderpalaulakh.com/posts/azureaad/</link>

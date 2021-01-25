@@ -15,22 +15,33 @@
 <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
 
 
-<title>Object-Oriented - Learner</title>
+<title>Composite Design Pattern - Learner</title>
 
 
 
 <meta name="description" content="Learning Software Engineering" />
 
 
-<meta property="og:title" content="Object-Oriented" />
-<meta property="og:description" content="Learning Software Engineering" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://inderpalaulakh.com/tags/object-oriented/" />
-<meta property="og:updated_time" content="2021-01-24T15:33:39-08:00" />
+<meta name="keywords" content="Object-Oriented, Design Patterns, Composite" />
+
+<meta property="og:title" content="Composite Design Pattern" />
+<meta property="og:description" content="The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.
+Component This is a class that contain all the members that needs to be implemented by all the objects.
+Composite This class is used to add, remove and traverse components.
+Leaf The leaf object in tree structure is defined as leaf element.
+Code Sample I want to print salaries of all employees in my organisation with names and designation. The root of organisation tree is CEO. The CEO has directors as child composite." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://inderpalaulakh.com/posts/compositedesignpattern/" />
+<meta property="article:published_time" content="2021-01-24T15:33:39-08:00" />
+<meta property="article:modified_time" content="2021-01-24T15:33:39-08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Object-Oriented"/>
-<meta name="twitter:description" content="Learning Software Engineering"/>
+<meta name="twitter:title" content="Composite Design Pattern"/>
+<meta name="twitter:description" content="The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.
+Component This is a class that contain all the members that needs to be implemented by all the objects.
+Composite This class is used to add, remove and traverse components.
+Leaf The leaf object in tree structure is defined as leaf element.
+Code Sample I want to print salaries of all employees in my organisation with names and designation. The root of organisation tree is CEO. The CEO has directors as child composite."/>
 
 
 
@@ -99,14 +110,8 @@
             
             <div class="col-12 col-md-9 float-left content">
                 
-
-<div class="page-info">
-    <span>Posts with the tag Object-Oriented: </span>
-</div>
-
-
-
-<div class="post">
+<article>
+    
     <h2 class="post-item post-title">
         <a href="https://inderpalaulakh.com/posts/compositedesignpattern/">Composite Design Pattern</a>
     </h2>
@@ -114,69 +119,186 @@
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;385 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;<a href="/tags/design-patterns">Design Patterns</a>&nbsp;<a href="/tags/composite">Composite</a>&nbsp;</span>
 
     </div>
-    <div class="post-item post-summary markdown-body">
-        The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.
-Component This is a class that contain all the members that needs to be implemented by all the objects.
-Composite This class is used to add, remove and traverse components.
-Leaf The leaf object in tree structure is defined as leaf element.
-Code Sample I want to print salaries of all employees in my organisation with names and designation. The root of organisation tree is CEO. The CEO has directors as child composite.
+    
+    
+    <div class="post-content markdown-body">
+        <p>The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.</p>
+<h3 id="component">Component</h3>
+<p>This is a class that contain all the members that needs to be implemented by all the objects.</p>
+<h3 id="composite">Composite</h3>
+<p>This class is used to add, remove and traverse components.</p>
+<h3 id="leaf">Leaf</h3>
+<p>The leaf object in tree structure is defined as leaf element.</p>
+<h2 id="code-sample">Code Sample</h2>
+<p>I want to print salaries of all employees in my organisation with names and designation. The root of organisation tree is CEO. The CEO has directors as child composite. The director has managers as child composite. Finally, engineers at level 1 as leaf because no one is reporting them.</p>
+<pre><code>        // ignore this, just to print 
+        static int i = 0;
+
+        interface IComponent
+        {
+            void print();
+        }
+
+
+        class Composite : IComponent
+        {
+            private string name;
+            private string designation;
+            private decimal salary;
+            private List&lt;IComponent&gt; listComponent = new List&lt;IComponent&gt;();
+
+            public Composite(String name, String designation, decimal salary)
+            {
+                this.name = name;
+                this.designation = designation;
+                this.salary = salary;
+            }
+
+            public void addComponent(IComponent component)
+            {
+                listComponent.Add(component);
+            }
+
+            public void printDesignation()
+            {
+                Console.Write(designation);
+                Console.Write(&quot; &quot;);
+            }
+
+            public void printName()
+            {
+                Console.Write(name);
+                Console.Write(&quot; &quot;);
+
+            }
+
+            public void printSalary()
+            {
+                Console.Write(salary);
+                Console.Write(&quot; &quot;);
+
+            }
+
+            public void print()
+            {
+                printName();
+                printDesignation();
+                printSalary();
+                Console.WriteLine(&quot; &quot;);
+                i++;
+
+                foreach (var component in listComponent)
+                {
+                    for(int k =0;k &lt;i; k++)
+                    {
+                        Console.Write(&quot; - &quot;);
+                    }
+                    component.print();
+
+                }
+            }
+        }
+
+        class Leaf : IComponent
+        {
+            private string name;
+            private string designation;
+            private decimal salary;
+
+            public Leaf(String name, String designation, decimal salary)
+            {
+                this.name = name;
+                this.designation = designation;
+                this.salary = salary;
+            }
+
+            public void print()
+            {
+                printName();
+                printDesignation();
+                printSalary();
+                Console.WriteLine(&quot; &quot;);
+            }
+
+            public void printDesignation()
+            {
+                Console.Write(designation);
+                Console.Write(&quot; &quot;);
+
+            }
+
+            public void printName()
+            {
+                Console.Write(name);
+                Console.Write(&quot; &quot;);
+
+            }
+
+            public void printSalary()
+            {
+                Console.Write(salary);
+                Console.Write(&quot; &quot;);
+
+            }
+        }
+
+
+
+
+        static void Main(string[] args)
+        {
+            Leaf ram = new Leaf(&quot;Ram&quot;, &quot;SE1&quot;, 1000000);
+            Leaf sham = new Leaf(&quot;Sham&quot;, &quot;SE1&quot;, 1000000);
+
+            Composite teamLead = new Composite(&quot;Mohan&quot;, &quot;Team Lead&quot;, 1000000);
+            teamLead.addComponent(ram);
+            teamLead.addComponent(sham);
+
+            Composite manager = new Composite(&quot;John&quot;, &quot;Manager&quot;, 1000000);
+            manager.addComponent(teamLead);
+
+            Composite director = new Composite(&quot;kuku&quot;, &quot;Director&quot;, 1000000);
+            director.addComponent(manager);
+
+            //raverse through all
+            director.print();
+        }
+    }
+</code></pre>
+<p>Output:</p>
+<pre><code>    kuku Director 1000000
+    - John Manager 1000000
+    -  - Mohan Team Lead 1000000
+    -  -  - Ram SE1 1000000
+    -  -  - Sham SE1 1000000
+</code></pre>
+
     </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = 'https:\/\/inderpalaulakh.com\/posts\/compositedesignpattern\/';
+                this.page.identifier = 'compositedesignpattern';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'https-inderpalaulakh-com' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
 </div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/doubledispatch/">DoubleDispatch</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-28</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;282 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp; Overriding.
-One level of virtual dispatching derived types override a base types: as shown below
- class Farms { public virtual void Irrigation() { Console.WriteLine(&quot;Farm Type&quot;); } } class WheatFarm : Farms { public override void Irrigation() { Console.WriteLine(&quot;WheatFarm&quot;); } } class RicaFarm : WheatFarm { public override void Irrigation() { Console.WriteLine(&quot;RicaFarm&quot;); } } static void Main(string[] args) { var a = new Farms(); var b = new WheatFarm(); var c = new RicaFarm(); a.Irrigation(); b.Irrigation(); c.Irrigation(); } //output Farm Type WheatFarm RicaFarm  Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/archives/dispatch/">Overloading &amp; Overriding</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-15</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;364 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        To learn about Single &amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
-Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
-As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop { public virtual void CropName() { Console.WriteLine(&quot;Hey, My type is Crop&quot;); } } class Wheat : Crop { public override void CropName() { Console.WriteLine(&quot;Hey, My type is Wheat&quot;); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public void WaterSupply(Crop crop) { Console.
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/dispatch/">Overloading &amp; Overriding</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-15</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;364 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        To learn about Single &amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
-Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
-As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop { public virtual void CropName() { Console.WriteLine(&quot;Hey, My type is Crop&quot;); } } class Wheat : Crop { public override void CropName() { Console.WriteLine(&quot;Hey, My type is Wheat&quot;); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public void WaterSupply(Crop crop) { Console.
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
 
             </div>
@@ -410,6 +532,8 @@ class Crop { public virtual void CropName() { Console.WriteLine(&quot;Hey, My ty
             
         </div>
     </div>
+    
+    
     
     
   </div>

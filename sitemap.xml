@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://inderpalaulakh.com/tags/composite/</loc>
+    <lastmod>2021-01-24T15:33:39-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/posts/compositedesignpattern/</loc>
+    <lastmod>2021-01-24T15:33:39-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/tags/design-patterns/</loc>
+    <lastmod>2021-01-24T15:33:39-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/</loc>
+    <lastmod>2021-01-24T15:33:39-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/tags/object-oriented/</loc>
+    <lastmod>2021-01-24T15:33:39-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/posts/</loc>
+    <lastmod>2021-01-24T15:33:39-08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://inderpalaulakh.com/tags/aad/</loc>
     <lastmod>2021-01-23T13:36:35-08:00</lastmod>
   </url>
@@ -29,16 +59,6 @@
   
   <url>
     <loc>https://inderpalaulakh.com/tags/azure-function/</loc>
-    <lastmod>2021-01-23T13:36:35-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://inderpalaulakh.com/</loc>
-    <lastmod>2021-01-23T13:36:35-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://inderpalaulakh.com/posts/</loc>
     <lastmod>2021-01-23T13:36:35-08:00</lastmod>
   </url>
   
@@ -99,11 +119,6 @@
   
   <url>
     <loc>https://inderpalaulakh.com/posts/doubledispatch/</loc>
-    <lastmod>2020-12-28T00:22:53-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://inderpalaulakh.com/tags/object-oriented/</loc>
     <lastmod>2020-12-28T00:22:53-08:00</lastmod>
   </url>
   
