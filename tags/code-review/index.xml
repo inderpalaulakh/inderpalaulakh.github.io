@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>code review on Learner</title>
+    <link>https://inderpalaulakh.com/tags/code-review/</link>
+    <description>Recent content in code review on Learner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 09 Feb 2021 07:50:50 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/code-review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Code Review</title>
+      <link>https://inderpalaulakh.com/posts/codereview/</link>
+      <pubDate>Tue, 09 Feb 2021 07:50:50 -0800</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/codereview/</guid>
+      <description>Code reviews plays an important role to keep code consistent and readable. Code reviews are conducted to maintain quality and simplicity. The bugs should be taken care by automated tests. Code reviews are the best way to learn coding skills from your team members.
+In this post, I want to share my opinion on how to write code reviews comments. I read a document Google code review. This document is really helpful to write code reviews comments and how to fix, reply on code review comments.
+The variable name or function name or class name style formatting This type of comments should be taken care by compile time code validation.</description>
+    </item>
+    
+  </channel>
+</rss>

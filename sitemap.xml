@@ -3,6 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://inderpalaulakh.com/posts/codereview/</loc>
+    <lastmod>2021-02-09T07:50:50-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/tags/code-review/</loc>
+    <lastmod>2021-02-09T07:50:50-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/</loc>
+    <lastmod>2021-02-09T07:50:50-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/posts/</loc>
+    <lastmod>2021-02-09T07:50:50-08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://inderpalaulakh.com/tags/composite/</loc>
     <lastmod>2021-01-24T15:33:39-08:00</lastmod>
   </url>
@@ -18,17 +38,7 @@
   </url>
   
   <url>
-    <loc>https://inderpalaulakh.com/</loc>
-    <lastmod>2021-01-24T15:33:39-08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://inderpalaulakh.com/tags/object-oriented/</loc>
-    <lastmod>2021-01-24T15:33:39-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://inderpalaulakh.com/posts/</loc>
     <lastmod>2021-01-24T15:33:39-08:00</lastmod>
   </url>
   
