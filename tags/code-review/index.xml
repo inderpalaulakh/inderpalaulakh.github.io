@@ -15,7 +15,7 @@
       <guid>https://inderpalaulakh.com/posts/codereview/</guid>
       <description>Code reviews plays an important role to keep code consistent and readable. Code reviews are conducted to maintain quality and simplicity. The bugs should be taken care by automated tests. Code reviews are the best way to learn coding skills from your team members.
 In this post, I want to share my opinion on how to write code reviews comments. I read a document Google code review. This document is really helpful to write code reviews comments and how to fix, reply on code review comments.
-The variable name or function name or class name style formatting This type of comments should be taken care by compile time code validation.</description>
+The variable name, function name or class name style formatting This type of comments should be taken care by compile time code validation.</description>
     </item>
     
   </channel>
