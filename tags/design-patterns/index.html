@@ -26,7 +26,7 @@
 <meta property="og:description" content="Learning Software Engineering" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://inderpalaulakh.com/tags/design-patterns/" />
-<meta property="og:updated_time" content="2021-01-24T15:33:39-08:00" />
+<meta property="og:updated_time" content="2021-02-13T17:11:06-08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Design Patterns"/>
@@ -108,6 +108,21 @@
 
 <div class="post">
     <h2 class="post-item post-title">
+        <a href="https://inderpalaulakh.com/posts/adapterdesignpattern/">Adapter Design Pattern</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-02-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;333 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;<a href="/tags/design-patterns">Design Patterns</a>&nbsp;<a href="/tags/adapter">Adapter</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        This design patterns guides to create a wrap around existing class to reuse exisitng class for a new requirement.
+Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
+class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&quot;hello.xml&quot;, &quot;login success&quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&quot;https://server.logs/upload&quot;, &quot;login success&quot;, &quot;oAuthToken&quot;); }  Here user is manually ceating objects to write logs separately to local file and server.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
         <a href="https://inderpalaulakh.com/posts/compositedesignpattern/">Composite Design Pattern</a>
     </h2>
     <div class="post-item post-meta">
@@ -175,6 +190,10 @@ Code Sample I want to print salaries of all employees in my organisation with na
             
             <span>
                 <a href="/tags/aad/">AAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/adapter/">Adapter</a>
             </span>
             
             <span>
@@ -303,6 +322,10 @@ Code Sample I want to print salaries of all employees in my organisation with na
             
             <span>
                 <a href="/tags/aad/">AAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/adapter/">Adapter</a>
             </span>
             
             <span>

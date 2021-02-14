@@ -15,21 +15,21 @@
 <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
 
 
-<title>Object-Oriented - Learner</title>
+<title>Learner - Learning Software Engineering</title>
 
 
 
 <meta name="description" content="Learning Software Engineering" />
 
 
-<meta property="og:title" content="Object-Oriented" />
+<meta property="og:title" content="Learner" />
 <meta property="og:description" content="Learning Software Engineering" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://inderpalaulakh.com/tags/object-oriented/" />
+<meta property="og:url" content="https://inderpalaulakh.com/" />
 <meta property="og:updated_time" content="2021-02-13T17:11:06-08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Object-Oriented"/>
+<meta name="twitter:title" content="Learner"/>
 <meta name="twitter:description" content="Learning Software Engineering"/>
 
 
@@ -100,88 +100,20 @@
             <div class="col-12 col-md-9 float-left content">
                 
 
-<div class="page-info">
-    <span>Posts with the tag Object-Oriented: </span>
-</div>
-
 
 
 <div class="post">
     <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/adapterdesignpattern/">Adapter Design Pattern</a>
+        <a href="https://inderpalaulakh.com/posts/my-book-donotmakemethink-post/">Book Summary: Don’t make me think - Steve Krug </a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-02-13</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;333 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;<a href="/tags/design-patterns">Design Patterns</a>&nbsp;<a href="/tags/adapter">Adapter</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-14</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;312 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/book-summary">Book-Summary</a>&nbsp;<a href="/tags/dont-make-me-think">Don’t make me think</a>&nbsp;</span>
 
     </div>
     <div class="post-item post-summary markdown-body">
-        This design patterns guides to create a wrap around existing class to reuse exisitng class for a new requirement.
-Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
-class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&quot;hello.xml&quot;, &quot;login success&quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&quot;https://server.logs/upload&quot;, &quot;login success&quot;, &quot;oAuthToken&quot;); }  Here user is manually ceating objects to write logs separately to local file and server.
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/compositedesignpattern/">Composite Design Pattern</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;385 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;<a href="/tags/design-patterns">Design Patterns</a>&nbsp;<a href="/tags/composite">Composite</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.
-Component This is a class that contain all the members that needs to be implemented by all the objects.
-Composite This class is used to add, remove and traverse components.
-Leaf The leaf object in tree structure is defined as leaf element.
-Code Sample I want to print salaries of all employees in my organisation with names and designation. The root of organisation tree is CEO. The CEO has directors as child composite.
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/doubledispatch/">DoubleDispatch</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-28</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;282 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp; Overriding.
-One level of virtual dispatching derived types override a base types: as shown below
- class Farms { public virtual void Irrigation() { Console.WriteLine(&quot;Farm Type&quot;); } } class WheatFarm : Farms { public override void Irrigation() { Console.WriteLine(&quot;WheatFarm&quot;); } } class RicaFarm : WheatFarm { public override void Irrigation() { Console.WriteLine(&quot;RicaFarm&quot;); } } static void Main(string[] args) { var a = new Farms(); var b = new WheatFarm(); var c = new RicaFarm(); a.Irrigation(); b.Irrigation(); c.Irrigation(); } //output Farm Type WheatFarm RicaFarm  Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/archives/dispatch/">Overloading &amp; Overriding</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-15</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;364 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        To learn about Single &amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
-Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
-As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop { public virtual void CropName() { Console.WriteLine(&quot;Hey, My type is Crop&quot;); } } class Wheat : Crop { public override void CropName() { Console.WriteLine(&quot;Hey, My type is Wheat&quot;); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public void WaterSupply(Crop crop) { Console.
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/dispatch/">Overloading &amp; Overriding</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-15</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;364 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        To learn about Single &amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
-Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
-As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop { public virtual void CropName() { Console.WriteLine(&quot;Hey, My type is Crop&quot;); } } class Wheat : Crop { public override void CropName() { Console.WriteLine(&quot;Hey, My type is Wheat&quot;); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public void WaterSupply(Crop crop) { Console.
+        The book “Don’t make me think” is written by Steve Krug. This is the first book that I read about UX(User Experience Design) design. This book is concise and has four sections.
+The “guiding principles” talks about not puzzling the user to find required content. These principles guide to omit needless content, using conventions, images and explains the web page scanning habit of user (not reading complete content).
+The section “Things you need to get right” has content to design navigation that helps user to find their way. The big bang theory of web design is about designing home page, using tag lines (nothing beats a good tagline), welcome blurb and testing home page usability.
     </div>
 </div>
 
@@ -191,6 +123,42 @@ class Crop { public virtual void CropName() { Console.WriteLine(&quot;Hey, My ty
 
 
 
+
+<div class="pagination">
+    
+    <div class="pag-first">
+        <a href="/"><i class="iconfont icon-caret-back-circle-sharp"></i></a>
+    </div>
+    
+    
+    <div class="pag-previous">
+        <a href="/"><i class="iconfont icon-chevron-back-circle-sharp"></i></a>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item">
+        <a href="/">1</a>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <div class="pag-item pag-current">
+        <a href="/page/2/">2</a>
+    </div>
+    
+    
+    
+    
+</div>
 
 
 
