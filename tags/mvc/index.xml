@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MVC on Learner</title>
+    <link>https://inderpalaulakh.com/tags/mvc/</link>
+    <description>Recent content in MVC on Learner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 24 Mar 2021 18:26:03 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/mvc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MVC &amp; MVVM Android Design Pattern (Android)</title>
+      <link>https://inderpalaulakh.com/posts/mvcmvvm/</link>
+      <pubDate>Wed, 24 Mar 2021 18:26:03 -0800</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/mvcmvvm/</guid>
+      <description>Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
+In past, I was working on backend projects where tons of unit tests exists for API&amp;rsquo;s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.
+For next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.
+The example code for this post is written for Android application.
+MVC (Model-View-Controller) Model: Model is data layer.</description>
+    </item>
+    
+  </channel>
+</rss>

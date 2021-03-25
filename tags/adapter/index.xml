@@ -13,9 +13,9 @@
       <pubDate>Sat, 13 Feb 2021 17:11:06 -0800</pubDate>
       
       <guid>https://inderpalaulakh.com/posts/adapterdesignpattern/</guid>
-      <description>This design patterns guides to create a wrap around existing class to reuse exisitng class for a new requirement.
+      <description>This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.
 Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
-class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&amp;quot;hello.xml&amp;quot;, &amp;quot;login success&amp;quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&amp;quot;https://server.logs/upload&amp;quot;, &amp;quot;login success&amp;quot;, &amp;quot;oAuthToken&amp;quot;); }  Here user is manually ceating objects to write logs separately to local file and server.</description>
+class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&amp;quot;hello.xml&amp;quot;, &amp;quot;login success&amp;quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&amp;quot;https://server.logs/upload&amp;quot;, &amp;quot;login success&amp;quot;, &amp;quot;oAuthToken&amp;quot;); }  Here user is manually creating objects to write logs separately to local file and server.</description>
     </item>
     
   </channel>

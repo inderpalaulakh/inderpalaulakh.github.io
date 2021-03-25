@@ -17,7 +17,7 @@
 Component This is a class that contain all the members that needs to be implemented by all the objects.
 Composite This class is used to add, remove and traverse components.
 Leaf The leaf object in tree structure is defined as leaf element.
-Code Sample I want to print salaries of all employees in my organisation with names and designation. The root of organisation tree is CEO. The CEO has directors as child composite.</description>
+Code Sample I want to print salaries of all employees in my organization with names and designation. The root of organization tree is CEO. The CEO has directors as child composite.</description>
     </item>
     
   </channel>

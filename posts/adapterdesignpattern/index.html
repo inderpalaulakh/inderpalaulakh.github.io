@@ -25,9 +25,9 @@
 <meta name="keywords" content="Object-Oriented, Design Patterns, Adapter" />
 
 <meta property="og:title" content="Adapter Design Pattern" />
-<meta property="og:description" content="This design patterns guides to create a wrap around existing class to reuse exisitng class for a new requirement.
+<meta property="og:description" content="This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.
 Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
-class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&quot;hello.xml&quot;, &quot;login success&quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&quot;https://server.logs/upload&quot;, &quot;login success&quot;, &quot;oAuthToken&quot;); }  Here user is manually ceating objects to write logs separately to local file and server." />
+class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&quot;hello.xml&quot;, &quot;login success&quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&quot;https://server.logs/upload&quot;, &quot;login success&quot;, &quot;oAuthToken&quot;); }  Here user is manually creating objects to write logs separately to local file and server." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://inderpalaulakh.com/posts/adapterdesignpattern/" />
 <meta property="article:published_time" content="2021-02-13T17:11:06-08:00" />
@@ -35,9 +35,9 @@ class WriteLogsToLocalFile { public void Log(string fileName, string message) { 
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Adapter Design Pattern"/>
-<meta name="twitter:description" content="This design patterns guides to create a wrap around existing class to reuse exisitng class for a new requirement.
+<meta name="twitter:description" content="This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.
 Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
-class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&quot;hello.xml&quot;, &quot;login success&quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&quot;https://server.logs/upload&quot;, &quot;login success&quot;, &quot;oAuthToken&quot;); }  Here user is manually ceating objects to write logs separately to local file and server."/>
+class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&quot;hello.xml&quot;, &quot;login success&quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&quot;https://server.logs/upload&quot;, &quot;login success&quot;, &quot;oAuthToken&quot;); }  Here user is manually creating objects to write logs separately to local file and server."/>
 
 
 
@@ -118,7 +118,7 @@ class WriteLogsToLocalFile { public void Log(string fileName, string message) { 
     
     
     <div class="post-content markdown-body">
-        <p>This design patterns guides to create a wrap around existing class to reuse exisitng class for a new requirement.</p>
+        <p>This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.</p>
 <p>Assume, I have two logging classes named <code>WriteLogsToLocalFile</code> and <code>WriteLogsToServer</code>.</p>
 <pre><code>class WriteLogsToLocalFile
         {
@@ -146,14 +146,14 @@ class WriteLogsToLocalFile { public void Log(string fileName, string message) { 
             serverLogs.Log(&quot;https://server.logs/upload&quot;, &quot;login success&quot;, &quot;oAuthToken&quot;);
         }
 </code></pre>
-<p>Here user is manually ceating objects to write logs separately to local file and server.My requirement is to create a common class for logging, so that client can call common class. The common class should blindly recurse through list of loggers to log message.</p>
+<p>Here user is manually creating objects to write logs separately to local file and server.My requirement is to create a common class for logging, so that client can call common class. The common class should blindly recurse through list of loggers to log message.</p>
 <p>In below code, a new interface <code>ILog</code> is not compatible with <code>WriteLogsToLocalFile</code> and <code>WriteLogsToServer</code>. We created <code>WriteLogsToServerAdapter</code> and <code>WriteLogsToServerAdapter</code>. <code>Logging</code> is helper class.</p>
 <pre><code>        interface ILog
         {
             void Log(string message);
         }
 
-        // this class can not implement interface thus created Adarper
+        // this class can not implement interface thus created Adapter
         class WriteLogsToLocalFile
         {
             public void Log(string fileName, string message)
@@ -162,7 +162,7 @@ class WriteLogsToLocalFile { public void Log(string fileName, string message) { 
             }
         }
 
-        // this class can not implement interface thus created Adarper
+        // this class can not implement interface thus created Adapter
         class WriteLogsToServer
         {
             public void Log(string urL, string message, string token)
@@ -350,6 +350,10 @@ class WriteLogsToLocalFile { public void Log(string fileName, string message) { 
             </span>
             
             <span>
+                <a href="/tags/design-pattern/">Design Pattern</a>
+            </span>
+            
+            <span>
                 <a href="/tags/design-patterns/">Design Patterns</a>
             </span>
             
@@ -363,6 +367,14 @@ class WriteLogsToLocalFile { public void Log(string fileName, string message) { 
             
             <span>
                 <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvc/">MVC</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvvm/">MVVM</a>
             </span>
             
             <span>
@@ -498,6 +510,10 @@ class WriteLogsToLocalFile { public void Log(string fileName, string message) { 
             </span>
             
             <span>
+                <a href="/tags/design-pattern/">Design Pattern</a>
+            </span>
+            
+            <span>
                 <a href="/tags/design-patterns/">Design Patterns</a>
             </span>
             
@@ -511,6 +527,14 @@ class WriteLogsToLocalFile { public void Log(string fileName, string message) { 
             
             <span>
                 <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvc/">MVC</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvvm/">MVVM</a>
             </span>
             
             <span>

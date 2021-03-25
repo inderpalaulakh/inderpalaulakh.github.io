@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
+
+
+<title>MVC &amp; MVVM Android Design Pattern (Android) - Learner</title>
+
+
+
+<meta name="description" content="Learning Software Engineering" />
+
+
+<meta name="keywords" content="MVC, MVVM, Android, Design Pattern" />
+
+<meta property="og:title" content="MVC &amp; MVVM Android Design Pattern (Android)" />
+<meta property="og:description" content="Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
+In past, I was working on backend projects where tons of unit tests exists for API&rsquo;s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.
+For next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.
+The example code for this post is written for Android application.
+MVC (Model-View-Controller) Model: Model is data layer." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://inderpalaulakh.com/posts/mvcmvvm/" />
+<meta property="article:published_time" content="2021-03-24T18:26:03-08:00" />
+<meta property="article:modified_time" content="2021-03-24T18:26:03-08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MVC &amp; MVVM Android Design Pattern (Android)"/>
+<meta name="twitter:description" content="Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
+In past, I was working on backend projects where tons of unit tests exists for API&rsquo;s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.
+For next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.
+The example code for this post is written for Android application.
+MVC (Model-View-Controller) Model: Model is data layer."/>
+
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+<link rel="stylesheet" href="https://inderpalaulakh.com/assets/css/fuji.min.css" />
+
+
+
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-187988750-1');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-187988750-1"></script>
+
+
+</head>
+
+<body data-theme="auto">
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://inderpalaulakh.com/">Learner</a>
+            
+            <span class="title-sub">Learning Software Engineering</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://inderpalaulakh.com/posts/mvcmvvm/">MVC &amp; MVVM Android Design Pattern (Android)</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-03-24</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;913 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/mvc">MVC</a>&nbsp;<a href="/tags/mvvm">MVVM</a>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/design-pattern">Design Pattern</a>&nbsp;</span>
+
+    </div>
+    
+    
+    <div class="post-content markdown-body">
+        <p>Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.</p>
+<p>In past, I was working on backend projects where tons of unit tests exists for API&rsquo;s. I am new to application development and spent some time to learn about <code>MVC</code> and <code>MVVM</code> design patterns.</p>
+<p>For next project, the preference is <code>MVVM</code>. At end of this post I will share the reason to choose <code>MVVM</code>.</p>
+<p>The example code for this post is written for Android application.</p>
+<h2 id="mvc-model-view-controller">MVC (Model-View-Controller)</h2>
+<p><img class="img-zoomable" src="../images/mvc.jpg" alt="" />
+</p>
+<p><strong>Model</strong>: Model is data layer. Model call services or database to get data from external systems.<br/>
+<strong>View</strong>: View is user interface layer.<br/>
+<strong>Controller</strong>: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.<br/></p>
+<p>I developed a sample application to demonstrate MVC. This application populates <code>ListView</code> on <code>Button</code> click.<br/></p>
+<p><img class="img-zoomable" src="../images/mvcapp.png" alt="" />
+<br/></p>
+<p><code>Folder Structure</code><br/>
+<img class="img-zoomable" src="../images/foldermvc.png" alt="Folder Structure" />
+
+<br/>
+<code>User.java</code></p>
+<pre><code class="language-java">public class User {
+    private String name;
+
+    public User(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+</code></pre>
+<p><code>UserModel.java</code></p>
+<pre><code class="language-java">public class UserModel{
+    private final ArrayList&lt;User&gt; userList;
+
+    public UserModel(){
+        userList = new ArrayList&lt;User&gt;();
+
+        // get users from database
+        userList.add(new User(&quot;Ram&quot;));
+        userList.add(new User(&quot;Devin&quot;));
+        userList.add(new User(&quot;Sham&quot;));
+        userList.add(new User(&quot;Inder&quot;));
+        userList.add(new User(&quot;David&quot;));
+        userList.add(new User(&quot;Kaur&quot;));
+    }
+
+    public ArrayList&lt;User&gt; getUsers() {
+        return userList;
+    }
+}
+</code></pre>
+<p><code>UserController.java</code><br/>
+Controller has instances of both Model &amp; View. Controller get data from Model &amp; update view.</p>
+<pre><code class="language-java">public class UserController {
+    private final UserModel userModel;
+    private final UserView userView;
+
+    public UserController(UserView userView) {
+        this.userModel = new UserModel();
+        this.userView = userView;
+    }
+
+    public void getUsers() {
+        userView.displayUsers(userModel.getUsers());
+    }
+}
+</code></pre>
+<p><code>UserView.java</code><br/>
+UserView create instance of Controller. This class handles button clicks from UI.</p>
+<pre><code class="language-java">public class UserView {
+    View userView;
+    UserController userController;
+    Button getUsersButton;
+    ListView usersListView;
+
+    public UserView(Context context, ViewGroup container) {
+        userView = LayoutInflater.from(context).inflate(R.layout.activity_main, container, false);
+        userController = new UserController(this);
+    }
+
+    public void initView() {
+        getUsersButton = userView.findViewById(R.id.button);
+        getUsersButton.setOnClickListener(l -&gt; {
+            userController.getUsers();
+        });
+        usersListView = userView.findViewById(R.id.user_list_view);
+    }
+
+    public void displayUsers(ArrayList&lt;User&gt; users) {
+        UsersAdapter adapter = new UsersAdapter(userView.getContext(), users);
+
+        usersListView.setAdapter(adapter);
+    }
+
+    public View getRootView() {
+        return userView;
+    }
+}
+
+class UsersAdapter extends ArrayAdapter&lt;User&gt; {
+    public UsersAdapter(Context context, ArrayList&lt;User&gt; users) {
+        super(context, 0, users);
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        User user = getItem(position);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_view_item, parent, false);
+        }
+        TextView tvName = (TextView) convertView.findViewById(R.id.user_name);
+        tvName.setText(user.getName());
+        return convertView;
+    }
+}
+</code></pre>
+<p><code>MainActivity.java</code><br/>
+MainActivity creates UserView instance.</p>
+<pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+
+    UserView userView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        userView = new UserView(MainActivity.this, null);
+        setContentView(userView.getRootView());
+        userView.initView();
+    }
+}
+</code></pre>
+<p><code>activity_main.xml</code></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+
+    &lt;ListView
+        android:id=&quot;@+id/user_list_view&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_marginTop=&quot;90dp&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; &gt;
+
+    &lt;/ListView&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/button&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_marginStart=&quot;151dp&quot;
+        android:layout_marginTop=&quot;5dp&quot;
+        android:layout_marginEnd=&quot;146dp&quot;
+        android:layout_marginBottom=&quot;24dp&quot;
+        android:text=&quot;Get Users&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/user_list_view&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+<p><code>list_view_item.xml</code></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+    &lt;TextView
+        android:id=&quot;@+id/user_name&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Name&quot; /&gt;
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+<p>In above example, controller is not loosely coupled with view. It has both View &amp; Model. View also has controller reference to send receive.<br/></p>
+<h2 id="mvvm-model-view-viewmodel">MVVM (Model-View-ViewModel)</h2>
+<p><img class="img-zoomable" src="../images/mvvm.jpg" alt="" />
+</p>
+<p><strong>Model</strong>: Model is data layer. Model call services or database to get data from external systems.<br/>
+<strong>View</strong>: View is user interface layer. View is triggered first to request controller to get data from Model.<br/>
+<strong>View Model</strong>: View Model has reference to Model only. ViewModel is loosely coupled with View through <a href="https://developer.android.com/topic/libraries/architecture/livedata" target="_blank">livedata</a> or <a href="https://developer.android.com/topic/libraries/data-binding" target="_blank">databinding</a>.<br/></p>
+<p>I developed a sample application to demonstrate MVVM. This application populates <code>ListView</code> on <code>Button</code> click.<br/>
+<img class="img-zoomable" src="../images/mvvmapp.png" alt="" />
+
+<br/>
+Folder Structure<br/>
+<img class="img-zoomable" src="../images/foldermvvm.png" alt="Folder Structure" />
+</p>
+<p><code>User.java</code></p>
+<pre><code class="language-java">public class User {
+    private String name;
+
+    public User(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+</code></pre>
+<p><code>UserModel.java</code></p>
+<pre><code class="language-java">public class UserModel{
+    private final ArrayList&lt;User&gt; userList;
+
+    public UserModel(){
+        userList = new ArrayList&lt;User&gt;();
+
+        // get users from database
+        userList.add(new User(&quot;Ram&quot;));
+        userList.add(new User(&quot;Devin&quot;));
+        userList.add(new User(&quot;Sham&quot;));
+        userList.add(new User(&quot;Inder&quot;));
+        userList.add(new User(&quot;David&quot;));
+        userList.add(new User(&quot;Kaur&quot;));
+    }
+
+    public ArrayList&lt;User&gt; getUsers() {
+        return userList;
+    }
+}
+</code></pre>
+<p><code>UserViewModel.java</code><br/>
+UserViewModel has instances of Model. Controller get data from Model and notify live data subscribers.</p>
+<pre><code class="language-java">public class UserViewModel extends ViewModel {
+
+    private MutableLiveData&lt;ArrayList&lt;User&gt;&gt; userList;
+
+    public UserViewModel() {
+        userList = new MutableLiveData&lt;&gt;();
+    }
+
+    public MutableLiveData&lt;ArrayList&lt;User&gt;&gt; getObserverUserList() {
+        return userList;
+    }
+
+    public void getUsers() {
+        // notify subscribers
+        userList.postValue((new UserModel()).getUsers());
+    }
+}
+</code></pre>
+<p><code>MainActivity.java</code><br/>
+MainActivity creates UserViewModel. UserViewModel triggers live data.</p>
+<pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+    UserViewModel userViewModel;
+    Button getUsersButton;
+    ListView usersListView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // get view model
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        getUsersButton = findViewById(R.id.button);
+        getUsersButton.setOnClickListener(l -&gt; {
+            userViewModel.getUsers();
+        });
+        usersListView = findViewById(R.id.user_list_view);
+        // subscribe to view model
+        userViewModel.getObserverUserList().observe(this, l -&gt; {
+            UsersAdapter adapter = new UsersAdapter(this, l);
+
+            usersListView.setAdapter(adapter);
+        });
+    }
+}
+
+class UsersAdapter extends ArrayAdapter&lt;User&gt; {
+    public UsersAdapter(Context context, ArrayList&lt;User&gt; users) {
+        super(context, 0, users);
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        User user = getItem(position);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_view_item, parent, false);
+        }
+        TextView tvName = (TextView) convertView.findViewById(R.id.user_name);
+        tvName.setText(user.getName());
+        return convertView;
+    }
+}
+</code></pre>
+<p><code>list_view_item.xml</code></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+    &lt;TextView
+        android:id=&quot;@+id/user_name&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Name&quot; /&gt;
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+<p>In above example, controller is loosely coupled with view. It has only Model. Controller has no information of view.<br/></p>
+<p>Note: The data bindings can be used for loose coupling.</p>
+<h2 id="finally">Finally</h2>
+<p>My purpose to use design patterns is to write <code>unit testable</code> and <code>maintainable</code> code. As <code>MVVM</code> ViewModel is loosely coupled with View. I can write unit tests for <code>Model</code> &amp; <code>ViewModel</code> without referencing View. In future, many new modules will be integrated to project. Considering all these requirement, I will consider <code>MVVM</code>.</p>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = 'https:\/\/inderpalaulakh.com\/posts\/mvcmvvm\/';
+                this.page.identifier = 'mvcmvvm';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'https-inderpalaulakh-com' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/posts/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://twitter.com/inderpal_aulakh" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/.md/">.md</a>
+            </span>
+            
+            <span>
+                <a href="/tags/2020/">2020</a>
+            </span>
+            
+            <span>
+                <a href="/tags/aad/">AAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/adapter/">Adapter</a>
+            </span>
+            
+            <span>
+                <a href="/tags/android/">Android</a>
+            </span>
+            
+            <span>
+                <a href="/tags/authentication/">Authentication</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-active-directory/">Azure Active Directory</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-function/">Azure Function</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-pipeline/">Azure-Pipeline</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book-summary/">Book-Summary</a>
+            </span>
+            
+            <span>
+                <a href="/tags/checkstyle/">checkstyle</a>
+            </span>
+            
+            <span>
+                <a href="/tags/code-review/">code review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/colorcode/">ColorCode</a>
+            </span>
+            
+            <span>
+                <a href="/tags/composite/">Composite</a>
+            </span>
+            
+            <span>
+                <a href="/tags/design-pattern/">Design Pattern</a>
+            </span>
+            
+            <span>
+                <a href="/tags/design-patterns/">Design Patterns</a>
+            </span>
+            
+            <span>
+                <a href="/tags/dont-make-me-think/">Don’t make me think</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gradle/">Gradle</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvc/">MVC</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvvm/">MVVM</a>
+            </span>
+            
+            <span>
+                <a href="/tags/node.js/">Node.js</a>
+            </span>
+            
+            <span>
+                <a href="/tags/object-oriented/">Object-Oriented</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pipeline-variables/">Pipeline-Variables</a>
+            </span>
+            
+            <span>
+                <a href="/tags/theme/">Theme</a>
+            </span>
+            
+            <span>
+                <a href="/tags/webpack/">Webpack</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+</aside>
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/posts/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://twitter.com/inderpal_aulakh" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/.md/">.md</a>
+            </span>
+            
+            <span>
+                <a href="/tags/2020/">2020</a>
+            </span>
+            
+            <span>
+                <a href="/tags/aad/">AAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/adapter/">Adapter</a>
+            </span>
+            
+            <span>
+                <a href="/tags/android/">Android</a>
+            </span>
+            
+            <span>
+                <a href="/tags/authentication/">Authentication</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-active-directory/">Azure Active Directory</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-function/">Azure Function</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-pipeline/">Azure-Pipeline</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book-summary/">Book-Summary</a>
+            </span>
+            
+            <span>
+                <a href="/tags/checkstyle/">checkstyle</a>
+            </span>
+            
+            <span>
+                <a href="/tags/code-review/">code review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/colorcode/">ColorCode</a>
+            </span>
+            
+            <span>
+                <a href="/tags/composite/">Composite</a>
+            </span>
+            
+            <span>
+                <a href="/tags/design-pattern/">Design Pattern</a>
+            </span>
+            
+            <span>
+                <a href="/tags/design-patterns/">Design Patterns</a>
+            </span>
+            
+            <span>
+                <a href="/tags/dont-make-me-think/">Don’t make me think</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gradle/">Gradle</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvc/">MVC</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvvm/">MVVM</a>
+            </span>
+            
+            <span>
+                <a href="/tags/node.js/">Node.js</a>
+            </span>
+            
+            <span>
+                <a href="/tags/object-oriented/">Object-Oriented</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pipeline-variables/">Pipeline-Variables</a>
+            </span>
+            
+            <span>
+                <a href="/tags/theme/">Theme</a>
+            </span>
+            
+            <span>
+                <a href="/tags/webpack/">Webpack</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2021
+                <a href="https://inderpalaulakh.com/"></a>
+                
+                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+</body>
+
+</html>

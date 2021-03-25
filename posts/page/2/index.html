@@ -26,7 +26,7 @@
 <meta property="og:description" content="Learning Software Engineering" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://inderpalaulakh.com/posts/" />
-<meta property="og:updated_time" content="2021-02-25T19:38:55-08:00" />
+<meta property="og:updated_time" content="2021-03-24T18:26:03-08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -101,6 +101,21 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://inderpalaulakh.com/posts/doubledispatch/">DoubleDispatch</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-28</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;282 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/object-oriented">Object-Oriented</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp; Overriding.
+One level of virtual dispatching derived types override a base types: as shown below
+ class Farms { public virtual void Irrigation() { Console.WriteLine(&quot;Farm Type&quot;); } } class WheatFarm : Farms { public override void Irrigation() { Console.WriteLine(&quot;WheatFarm&quot;); } } class RicaFarm : WheatFarm { public override void Irrigation() { Console.WriteLine(&quot;RicaFarm&quot;); } } static void Main(string[] args) { var a = new Farms(); var b = new WheatFarm(); var c = new RicaFarm(); a.Irrigation(); b.Irrigation(); c.Irrigation(); } //output Farm Type WheatFarm RicaFarm  Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -272,6 +287,10 @@ The section “Things you need to get right” has content to design navigation 
             </span>
             
             <span>
+                <a href="/tags/design-pattern/">Design Pattern</a>
+            </span>
+            
+            <span>
                 <a href="/tags/design-patterns/">Design Patterns</a>
             </span>
             
@@ -285,6 +304,14 @@ The section “Things you need to get right” has content to design navigation 
             
             <span>
                 <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvc/">MVC</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvvm/">MVVM</a>
             </span>
             
             <span>
@@ -420,6 +447,10 @@ The section “Things you need to get right” has content to design navigation 
             </span>
             
             <span>
+                <a href="/tags/design-pattern/">Design Pattern</a>
+            </span>
+            
+            <span>
                 <a href="/tags/design-patterns/">Design Patterns</a>
             </span>
             
@@ -433,6 +464,14 @@ The section “Things you need to get right” has content to design navigation 
             
             <span>
                 <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvc/">MVC</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvvm/">MVVM</a>
             </span>
             
             <span>
