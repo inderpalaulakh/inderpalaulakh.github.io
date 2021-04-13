@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guice on Learner</title>
+    <link>https://inderpalaulakh.com/tags/guice/</link>
+    <description>Recent content in Guice on Learner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 12 Apr 2021 10:46:57 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/guice/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</title>
+      <link>https://inderpalaulakh.com/posts/di/</link>
+      <pubDate>Mon, 12 Apr 2021 10:46:57 -0800</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/di/</guid>
+      <description>Below are widely used Dependency Injection frameworks mostly by android &amp;amp; Java application projects.
+For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.
+Guice Guice (pronounced &amp;lsquo;juice&amp;rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)
+With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp;amp; Application development.
+For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch.</description>
+    </item>
+    
+  </channel>
+</rss>

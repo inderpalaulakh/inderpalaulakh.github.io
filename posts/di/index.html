@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
+
+
+<title>Android/Java Dependency Injection Frameworks (Android Library &amp; App Development) - Learner</title>
+
+
+
+<meta name="description" content="Learning Software Engineering" />
+
+
+<meta name="keywords" content="Android, Java, Kotlin, Guice, Hilt, Dagger, Service Locator" />
+
+<meta property="og:title" content="Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)" />
+<meta property="og:description" content="Below are widely used Dependency Injection frameworks mostly by android &amp; Java application projects.
+For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.
+Guice Guice (pronounced &lsquo;juice&rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)
+With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp; Application development.
+For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://inderpalaulakh.com/posts/di/" />
+<meta property="article:published_time" content="2021-04-12T10:46:57-08:00" />
+<meta property="article:modified_time" content="2021-04-12T10:46:57-08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)"/>
+<meta name="twitter:description" content="Below are widely used Dependency Injection frameworks mostly by android &amp; Java application projects.
+For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.
+Guice Guice (pronounced &lsquo;juice&rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)
+With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp; Application development.
+For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch."/>
+
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+<link rel="stylesheet" href="https://inderpalaulakh.com/assets/css/fuji.min.css" />
+
+
+
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-187988750-1');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-187988750-1"></script>
+
+
+</head>
+
+<body data-theme="auto">
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://inderpalaulakh.com/">Learner</a>
+            
+            <span class="title-sub">Learning Software Engineering</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://inderpalaulakh.com/posts/di/">Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-04-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;531 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/java">Java</a>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/guice">Guice</a>&nbsp;<a href="/tags/hilt">Hilt</a>&nbsp;<a href="/tags/dagger">Dagger</a>&nbsp;<a href="/tags/service-locator">Service Locator</a>&nbsp;</span>
+
+    </div>
+    
+    
+    <div class="post-content markdown-body">
+        <p>Below are widely used Dependency Injection frameworks mostly by android &amp; Java application projects.</p>
+<p>For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.</p>
+<h1 id="guice">Guice</h1>
+<p><a href="https://github.com/google/guice" target="_blank">Guice (pronounced &lsquo;juice&rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)</a></p>
+<p>With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp; Application development.</p>
+<p>For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch.</p>
+<p>Reflection on the desktop/server JVM is very efficient, and even very large Guice applications don&rsquo;t have performance problems related to Guice.</p>
+<p><a href="https://developer.android.com/topic/performance/memory#DependencyInjection" target="_blank">Manage your app&rsquo;s memory |  Android Developers</a> : Other dependency injection frameworks that use reflection tend to initialize processes by scanning your code for annotations. This process can require significantly more CPU cycles and RAM and can cause a noticeable lag when the app launches.</p>
+<h1 id="dagger">Dagger</h1>
+<p>Dagger is an open source Guice alternative designed to run efficiently on Android.</p>
+<p>No doubt, Dagger makes life easier, for Android Library development this seems to cause issue if Application include library that use different version of Dagger. (Note: Gradle use latest version of library if library has multiple versions in Application.)</p>
+<h5 id="link-to-see-listed-issue">Link to see listed issue:</h5>
+<p><a href="https://stackoverflow.com/questions/48892153/dagger-2-library-and-app-has-different-version" target="_blank">android - Dagger 2. Library and app has different version</a>
+<a href="https://github.com/google/dagger/issues/2541" target="_blank">Compilation issues after moving to 2.34 from 2.33 - Hilt · Issue #2541 · google/dagger</a></p>
+<h2 id="hilt">Hilt</h2>
+<p>Hilt is built on top of the popular DI library Dagger to benefit from the compile-time correctness, runtime performance, scalability, and Android Studio support that Dagger provides.</p>
+<p>Android app requires you to write a substantial amount of boilerplate. Hilt reduces the boilerplate code that is involved in using Dagger in an Android application. Hilt automatically generates and provides the following:</p>
+<ul>
+<li>Components for integrating Android framework classes with Dagger that you would otherwise need to create by hand.</li>
+<li>Scope annotations to use with the components that Hilt generates automatically.</li>
+<li>Predefined bindings to represent Android classes such as Application or Activity.</li>
+<li>Predefined qualifiers to represent <code>@ApplicationContext</code> and <code>@ActivityContext</code>.</li>
+</ul>
+<p><a href="https://developer.android.com/training/dependency-injection/hilt-android" target="_blank">Dependency injection with Hilt  |  Android Developers</a></p>
+<p>To compare Hilt &amp; Dapper read <a href="https://medium.com/androiddevelopers/dependency-injection-on-android-with-hilt-67b6031e62d" target="_blank">Dependency injection on Android with Hilt</a>.</p>
+<h1 id="servicelocator">ServiceLocator</h1>
+<p>The <a href="https://developer.android.com/training/dependency-injection" target="_blank">service locator</a> design pattern also improves decoupling of classes from concrete dependencies. You create a class known as the service locator that creates and stores dependencies and then provides those dependencies on demand.</p>
+<pre><code class="language-java">class ServiceLocator {
+
+    private static ServiceLocator instance = null;
+
+    private ServiceLocator() {}
+
+    public static ServiceLocator getInstance() {
+        if (instance == null) {
+            synchronized(ServiceLocator.class) {
+                instance = new ServiceLocator();
+            }
+        }
+        return instance;
+    }
+
+    public Engine getEngine() {
+        return new Engine();
+    }
+}
+
+class Car {
+
+    private Engine engine = ServiceLocator.getInstance().getEngine();
+
+    public void start() {
+        engine.start();
+    }
+}
+
+class MyApp {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.start();
+    }
+}
+
+</code></pre>
+<p>This pattern is good choice for Android Library development as we do not want to inject dependencies to library that can cause conflicts with application’s dependencies. Another drawback is maintaince required to test/update library when new version of Hilt or Dagger is released.</p>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = 'https:\/\/inderpalaulakh.com\/posts\/di\/';
+                this.page.identifier = 'di';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'https-inderpalaulakh-com' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/posts/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://twitter.com/inderpal_aulakh" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/.md/">.md</a>
+            </span>
+            
+            <span>
+                <a href="/tags/2020/">2020</a>
+            </span>
+            
+            <span>
+                <a href="/tags/aad/">AAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/adapter/">Adapter</a>
+            </span>
+            
+            <span>
+                <a href="/tags/android/">Android</a>
+            </span>
+            
+            <span>
+                <a href="/tags/authentication/">Authentication</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-active-directory/">Azure Active Directory</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-function/">Azure Function</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-pipeline/">Azure-Pipeline</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book-summary/">Book-Summary</a>
+            </span>
+            
+            <span>
+                <a href="/tags/checkstyle/">checkstyle</a>
+            </span>
+            
+            <span>
+                <a href="/tags/code-review/">code review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/colorcode/">ColorCode</a>
+            </span>
+            
+            <span>
+                <a href="/tags/composite/">Composite</a>
+            </span>
+            
+            <span>
+                <a href="/tags/dagger/">Dagger</a>
+            </span>
+            
+            <span>
+                <a href="/tags/design-pattern/">Design Pattern</a>
+            </span>
+            
+            <span>
+                <a href="/tags/design-patterns/">Design Patterns</a>
+            </span>
+            
+            <span>
+                <a href="/tags/distributed-caching/">Distributed caching</a>
+            </span>
+            
+            <span>
+                <a href="/tags/dont-make-me-think/">Don’t make me think</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gradle/">Gradle</a>
+            </span>
+            
+            <span>
+                <a href="/tags/guice/">Guice</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hilt/">Hilt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/java/">Java</a>
+            </span>
+            
+            <span>
+                <a href="/tags/kotlin/">Kotlin</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvc/">MVC</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvvm/">MVVM</a>
+            </span>
+            
+            <span>
+                <a href="/tags/node.js/">Node.js</a>
+            </span>
+            
+            <span>
+                <a href="/tags/object-oriented/">Object-Oriented</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pipeline-variables/">Pipeline-Variables</a>
+            </span>
+            
+            <span>
+                <a href="/tags/redis/">Redis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/service-locator/">Service Locator</a>
+            </span>
+            
+            <span>
+                <a href="/tags/theme/">Theme</a>
+            </span>
+            
+            <span>
+                <a href="/tags/webpack/">Webpack</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+</aside>
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/posts/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://twitter.com/inderpal_aulakh" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/.md/">.md</a>
+            </span>
+            
+            <span>
+                <a href="/tags/2020/">2020</a>
+            </span>
+            
+            <span>
+                <a href="/tags/aad/">AAD</a>
+            </span>
+            
+            <span>
+                <a href="/tags/adapter/">Adapter</a>
+            </span>
+            
+            <span>
+                <a href="/tags/android/">Android</a>
+            </span>
+            
+            <span>
+                <a href="/tags/authentication/">Authentication</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-active-directory/">Azure Active Directory</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-function/">Azure Function</a>
+            </span>
+            
+            <span>
+                <a href="/tags/azure-pipeline/">Azure-Pipeline</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book-summary/">Book-Summary</a>
+            </span>
+            
+            <span>
+                <a href="/tags/checkstyle/">checkstyle</a>
+            </span>
+            
+            <span>
+                <a href="/tags/code-review/">code review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/colorcode/">ColorCode</a>
+            </span>
+            
+            <span>
+                <a href="/tags/composite/">Composite</a>
+            </span>
+            
+            <span>
+                <a href="/tags/dagger/">Dagger</a>
+            </span>
+            
+            <span>
+                <a href="/tags/design-pattern/">Design Pattern</a>
+            </span>
+            
+            <span>
+                <a href="/tags/design-patterns/">Design Patterns</a>
+            </span>
+            
+            <span>
+                <a href="/tags/distributed-caching/">Distributed caching</a>
+            </span>
+            
+            <span>
+                <a href="/tags/dont-make-me-think/">Don’t make me think</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gradle/">Gradle</a>
+            </span>
+            
+            <span>
+                <a href="/tags/guice/">Guice</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hilt/">Hilt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/java/">Java</a>
+            </span>
+            
+            <span>
+                <a href="/tags/kotlin/">Kotlin</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvc/">MVC</a>
+            </span>
+            
+            <span>
+                <a href="/tags/mvvm/">MVVM</a>
+            </span>
+            
+            <span>
+                <a href="/tags/node.js/">Node.js</a>
+            </span>
+            
+            <span>
+                <a href="/tags/object-oriented/">Object-Oriented</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pipeline-variables/">Pipeline-Variables</a>
+            </span>
+            
+            <span>
+                <a href="/tags/redis/">Redis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/service-locator/">Service Locator</a>
+            </span>
+            
+            <span>
+                <a href="/tags/theme/">Theme</a>
+            </span>
+            
+            <span>
+                <a href="/tags/webpack/">Webpack</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2021
+                <a href="https://inderpalaulakh.com/"></a>
+                
+                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+</body>
+
+</html>

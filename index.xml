@@ -6,7 +6,32 @@
     <description>Recent content on Learner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 24 Mar 2021 18:26:03 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Apr 2021 10:46:57 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</title>
+      <link>https://inderpalaulakh.com/posts/di/</link>
+      <pubDate>Mon, 12 Apr 2021 10:46:57 -0800</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/di/</guid>
+      <description>Below are widely used Dependency Injection frameworks mostly by android &amp;amp; Java application projects.
+For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.
+Guice Guice (pronounced &amp;lsquo;juice&amp;rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)
+With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp;amp; Application development.
+For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch.</description>
+    </item>
+    
+    <item>
+      <title>Distributed caching - Redis</title>
+      <link>https://inderpalaulakh.com/posts/redis/</link>
+      <pubDate>Thu, 25 Mar 2021 18:26:03 -0800</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/redis/</guid>
+      <description>Redis is in-memory data structure store. Redis has a really good documentation to learn and implement framework capabilities. 
+My mentor at Job guided me to learn Redis. My primary focus is to understand how Redis helps for Distributed Caching.
+Distributed Caching Distributed Caching is cache shared by multiple servers. The microservices or services can keep it&amp;rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.
+The caches are used to save time to reduce cost to read database from database. The in memory(RAM cache) data is much more efficient to perform read operations as compared to SQL databases.</description>
+    </item>
+    
     <item>
       <title>MVC &amp; MVVM Android Design Pattern (Android)</title>
       <link>https://inderpalaulakh.com/posts/mvcmvvm/</link>

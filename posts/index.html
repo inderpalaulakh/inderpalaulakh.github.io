@@ -26,7 +26,7 @@
 <meta property="og:description" content="Learning Software Engineering" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://inderpalaulakh.com/posts/" />
-<meta property="og:updated_time" content="2021-03-24T18:26:03-08:00" />
+<meta property="og:updated_time" content="2021-04-12T10:46:57-08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -101,6 +101,39 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://inderpalaulakh.com/posts/di/">Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-04-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;531 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/java">Java</a>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/guice">Guice</a>&nbsp;<a href="/tags/hilt">Hilt</a>&nbsp;<a href="/tags/dagger">Dagger</a>&nbsp;<a href="/tags/service-locator">Service Locator</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Below are widely used Dependency Injection frameworks mostly by android &amp; Java application projects.
+For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.
+Guice Guice (pronounced &lsquo;juice&rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)
+With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp; Application development.
+For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://inderpalaulakh.com/posts/redis/">Distributed caching - Redis</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-03-25</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;158 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/redis">Redis</a>&nbsp;<a href="/tags/distributed-caching">Distributed caching</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Redis is in-memory data structure store. Redis has a really good documentation to learn and implement framework capabilities. 
+My mentor at Job guided me to learn Redis. My primary focus is to understand how Redis helps for Distributed Caching.
+Distributed Caching Distributed Caching is cache shared by multiple servers. The microservices or services can keep it&rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.
+The caches are used to save time to reduce cost to read database from database. The in memory(RAM cache) data is much more efficient to perform read operations as compared to SQL databases.
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -234,37 +267,6 @@ Mermaid
 Mermaid has online editor Editor. However, I did not use online editor for confidentiality reasons.
 I created index.html and opened in browser.
  &lt;html&gt; &lt;body&gt; &lt;script src=&quot;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&quot;&gt;&lt;/script&gt; &lt;script&gt; mermaid.initialize({ startOnLoad: true }); &lt;/script&gt; &lt;div class=&quot;mermaid&quot;&gt; sequenceDiagram participant A participant B A-&gt;&gt;B:How are you? B--&gt;&gt; A: I am good loop test loop A-&gt;&gt;B:How are you? B--&gt;&gt; A: I am good end &lt;/div&gt; &lt;/body&gt; &lt;/html&gt;  
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/2020review/">2020 Review</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-31</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;347 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/2020">2020</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        The year 2020 was a year of unpredicted event Covid-19. In January, my wife travelled to Toronto for her co-op and I planned to spend my evenings studying algorithms and software engineering concepts alongside full time job.
-I planned to complete most of the study-topics in March and completed as planned. In mid-March my office shared guidelines to work from home. My wife was also back from Toronto and started a co-op remotely.
-I saved two hours of commute time. My office had layoffs. Some of my teammates were laid off. It was a hard time to see teammates leaving, and I got worried about myself.
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/pipelinevar/">Accessing Azure Pipeline variables in Webpack Node.js</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-12-30</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;109 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/azure-pipeline">Azure-Pipeline</a>&nbsp;<a href="/tags/node.js">Node.js</a>&nbsp;<a href="/tags/pipeline-variables">Pipeline-Variables</a>&nbsp;<a href="/tags/webpack">Webpack</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Recently, I struggled a bit to figure out a way to access Azure-Pipeline Variables in Node.js JavaScript/TypeScript project. However, it is easy.
-.yml Pipeline code - task: Npm@1 displayName: &quot;Run project&quot; env: MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital letters inputs: commands: 'custom' CustomCommand: 'run test'  npm Package install package string-replace-loader
-TypeScript/JavaScript File Create a file with any name &ldquo;test.ts&rdquo;
-test.ts const test = () =&gt; { const myVariable = &quot;My-Variable&quot;; };  Setup webpack.config.js  module: { rules: [ { test: /test\.ts$/, loader: 'string-replace-loader', options: { search: 'My-Variable', replace: process.env['MyVariableName'] // from .yml env } } ] } }  Finally  &quot;scripts&quot; :{ &quot;test&quot;: &quot;webpack --config webpack.
     </div>
 </div>
 
@@ -407,11 +409,19 @@ test.ts const test = () =&gt; { const myVariable = &quot;My-Variable&quot;; };  
             </span>
             
             <span>
+                <a href="/tags/dagger/">Dagger</a>
+            </span>
+            
+            <span>
                 <a href="/tags/design-pattern/">Design Pattern</a>
             </span>
             
             <span>
                 <a href="/tags/design-patterns/">Design Patterns</a>
+            </span>
+            
+            <span>
+                <a href="/tags/distributed-caching/">Distributed caching</a>
             </span>
             
             <span>
@@ -423,7 +433,23 @@ test.ts const test = () =&gt; { const myVariable = &quot;My-Variable&quot;; };  
             </span>
             
             <span>
+                <a href="/tags/guice/">Guice</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hilt/">Hilt</a>
+            </span>
+            
+            <span>
                 <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/java/">Java</a>
+            </span>
+            
+            <span>
+                <a href="/tags/kotlin/">Kotlin</a>
             </span>
             
             <span>
@@ -444,6 +470,14 @@ test.ts const test = () =&gt; { const myVariable = &quot;My-Variable&quot;; };  
             
             <span>
                 <a href="/tags/pipeline-variables/">Pipeline-Variables</a>
+            </span>
+            
+            <span>
+                <a href="/tags/redis/">Redis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/service-locator/">Service Locator</a>
             </span>
             
             <span>
@@ -567,11 +601,19 @@ test.ts const test = () =&gt; { const myVariable = &quot;My-Variable&quot;; };  
             </span>
             
             <span>
+                <a href="/tags/dagger/">Dagger</a>
+            </span>
+            
+            <span>
                 <a href="/tags/design-pattern/">Design Pattern</a>
             </span>
             
             <span>
                 <a href="/tags/design-patterns/">Design Patterns</a>
+            </span>
+            
+            <span>
+                <a href="/tags/distributed-caching/">Distributed caching</a>
             </span>
             
             <span>
@@ -583,7 +625,23 @@ test.ts const test = () =&gt; { const myVariable = &quot;My-Variable&quot;; };  
             </span>
             
             <span>
+                <a href="/tags/guice/">Guice</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hilt/">Hilt</a>
+            </span>
+            
+            <span>
                 <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/java/">Java</a>
+            </span>
+            
+            <span>
+                <a href="/tags/kotlin/">Kotlin</a>
             </span>
             
             <span>
@@ -604,6 +662,14 @@ test.ts const test = () =&gt; { const myVariable = &quot;My-Variable&quot;; };  
             
             <span>
                 <a href="/tags/pipeline-variables/">Pipeline-Variables</a>
+            </span>
+            
+            <span>
+                <a href="/tags/redis/">Redis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/service-locator/">Service Locator</a>
             </span>
             
             <span>

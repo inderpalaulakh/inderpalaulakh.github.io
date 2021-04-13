@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on Learner</title>
+    <link>https://inderpalaulakh.com/tags/redis/</link>
+    <description>Recent content in Redis on Learner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 25 Mar 2021 18:26:03 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Distributed caching - Redis</title>
+      <link>https://inderpalaulakh.com/posts/redis/</link>
+      <pubDate>Thu, 25 Mar 2021 18:26:03 -0800</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/redis/</guid>
+      <description>Redis is in-memory data structure store. Redis has a really good documentation to learn and implement framework capabilities. 
+My mentor at Job guided me to learn Redis. My primary focus is to understand how Redis helps for Distributed Caching.
+Distributed Caching Distributed Caching is cache shared by multiple servers. The microservices or services can keep it&amp;rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.
+The caches are used to save time to reduce cost to read database from database. The in memory(RAM cache) data is much more efficient to perform read operations as compared to SQL databases.</description>
+    </item>
+    
+  </channel>
+</rss>
