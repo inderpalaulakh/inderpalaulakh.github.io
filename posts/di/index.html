@@ -116,7 +116,7 @@ For Android, this framework is not suggested as this framework use reflections t
         <a href="https://inderpalaulakh.com/posts/di/">Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-04-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;531 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/java">Java</a>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/guice">Guice</a>&nbsp;<a href="/tags/hilt">Hilt</a>&nbsp;<a href="/tags/dagger">Dagger</a>&nbsp;<a href="/tags/service-locator">Service Locator</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-04-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;528 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/java">Java</a>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/guice">Guice</a>&nbsp;<a href="/tags/hilt">Hilt</a>&nbsp;<a href="/tags/dagger">Dagger</a>&nbsp;<a href="/tags/service-locator">Service Locator</a>&nbsp;</span>
 
     </div>
     
@@ -133,7 +133,7 @@ For Android, this framework is not suggested as this framework use reflections t
 <h1 id="dagger">Dagger</h1>
 <p>Dagger is an open source Guice alternative designed to run efficiently on Android.</p>
 <p>No doubt, Dagger makes life easier, for Android Library development this seems to cause issue if Application include library that use different version of Dagger. (Note: Gradle use latest version of library if library has multiple versions in Application.)</p>
-<h5 id="link-to-see-listed-issue">Link to see listed issue:</h5>
+<h5 id="listed-issue">listed issue:</h5>
 <p><a href="https://stackoverflow.com/questions/48892153/dagger-2-library-and-app-has-different-version" target="_blank">android - Dagger 2. Library and app has different version</a>
 <a href="https://github.com/google/dagger/issues/2541" target="_blank">Compilation issues after moving to 2.34 from 2.33 - Hilt · Issue #2541 · google/dagger</a></p>
 <h2 id="hilt">Hilt</h2>
@@ -146,7 +146,7 @@ For Android, this framework is not suggested as this framework use reflections t
 <li>Predefined qualifiers to represent <code>@ApplicationContext</code> and <code>@ActivityContext</code>.</li>
 </ul>
 <p><a href="https://developer.android.com/training/dependency-injection/hilt-android" target="_blank">Dependency injection with Hilt  |  Android Developers</a></p>
-<p>To compare Hilt &amp; Dapper read <a href="https://medium.com/androiddevelopers/dependency-injection-on-android-with-hilt-67b6031e62d" target="_blank">Dependency injection on Android with Hilt</a>.</p>
+<p>To compare Hilt &amp; Dagger read <a href="https://medium.com/androiddevelopers/dependency-injection-on-android-with-hilt-67b6031e62d" target="_blank">Dependency injection on Android with Hilt</a>.</p>
 <h1 id="servicelocator">ServiceLocator</h1>
 <p>The <a href="https://developer.android.com/training/dependency-injection" target="_blank">service locator</a> design pattern also improves decoupling of classes from concrete dependencies. You create a class known as the service locator that creates and stores dependencies and then provides those dependencies on demand.</p>
 <pre><code class="language-java">class ServiceLocator {
