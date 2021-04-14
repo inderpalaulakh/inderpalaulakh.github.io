@@ -28,7 +28,7 @@ For Android, this framework is not suggested as this framework use reflections t
       <guid>https://inderpalaulakh.com/posts/redis/</guid>
       <description>Redis is in-memory data structure store. Redis has a really good documentation to learn and implement framework capabilities. 
 My mentor at Job guided me to learn Redis. My primary focus is to understand how Redis helps for Distributed Caching.
-Distributed Caching Distributed Caching is cache shared by multiple servers. The microservices or services can keep it&amp;rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.
+Distributed Caching Distributed Caching is cache shared by multiple servers. The miclsroservices or services can keep it&amp;rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.
 The caches are used to save time to reduce cost to read database from database. The in memory(RAM cache) data is much more efficient to perform read operations as compared to SQL databases.</description>
     </item>
     
@@ -51,7 +51,7 @@ MVC (Model-View-Controller) Model: Model is data layer.</description>
       <pubDate>Thu, 25 Feb 2021 19:38:55 -0800</pubDate>
       
       <guid>https://inderpalaulakh.com/posts/colorcode/</guid>
-      <description>We can make our code snippets more intersting and readable by sharing code with color formatting.
+      <description>We can make our code snippets more interesting and readable by sharing code with color formatting.
 To turn on colors, just add language short name 😉
 For C# code, add cs after ```.
 ```cs

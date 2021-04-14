@@ -15,7 +15,7 @@
       <guid>https://inderpalaulakh.com/posts/redis/</guid>
       <description>Redis is in-memory data structure store. Redis has a really good documentation to learn and implement framework capabilities. 
 My mentor at Job guided me to learn Redis. My primary focus is to understand how Redis helps for Distributed Caching.
-Distributed Caching Distributed Caching is cache shared by multiple servers. The microservices or services can keep it&amp;rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.
+Distributed Caching Distributed Caching is cache shared by multiple servers. The miclsroservices or services can keep it&amp;rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.
 The caches are used to save time to reduce cost to read database from database. The in memory(RAM cache) data is much more efficient to perform read operations as compared to SQL databases.</description>
     </item>
     
