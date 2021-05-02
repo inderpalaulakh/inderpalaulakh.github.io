@@ -15,22 +15,29 @@
 <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
 
 
-<title>Java - Learner</title>
+<title>Dagger, Injecting custom objects (Interface implementation) - Learner</title>
 
 
 
 <meta name="description" content="Learning Software Engineering" />
 
 
-<meta property="og:title" content="Java" />
-<meta property="og:description" content="Learning Software Engineering" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://inderpalaulakh.com/tags/java/" />
-<meta property="og:updated_time" content="2021-04-12T10:46:57-08:00" />
+<meta name="keywords" content="Android, Kotlin, Dependency Injection" />
+
+<meta property="og:title" content="Dagger, Injecting custom objects (Interface implementation)" />
+<meta property="og:description" content="It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes Logger, Service and class Middleware is dependent on these classes.
+class Logger() class Service() //this class requires Logger &amp; Service object class Middleware(private val logger:Logger. private val service:Service) // middleware object val middleware = Middleware(Logger(),Service())  Dagger can build objects of Logger and Service classes by indicating @Inject annotation to all three classes
+internal class Logger @Inject constructor() internal class Service @Inject constructor() //this class requires Logger &amp; Service object internal class Middleware @Inject constructor(private val logger:Logger." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://inderpalaulakh.com/posts/dicustom/" />
+<meta property="article:published_time" content="2021-05-02T00:00:29-07:00" />
+<meta property="article:modified_time" content="2021-05-02T00:00:29-07:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java"/>
-<meta name="twitter:description" content="Learning Software Engineering"/>
+<meta name="twitter:title" content="Dagger, Injecting custom objects (Interface implementation)"/>
+<meta name="twitter:description" content="It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes Logger, Service and class Middleware is dependent on these classes.
+class Logger() class Service() //this class requires Logger &amp; Service object class Middleware(private val logger:Logger. private val service:Service) // middleware object val middleware = Middleware(Logger(),Service())  Dagger can build objects of Logger and Service classes by indicating @Inject annotation to all three classes
+internal class Logger @Inject constructor() internal class Service @Inject constructor() //this class requires Logger &amp; Service object internal class Middleware @Inject constructor(private val logger:Logger."/>
 
 
 
@@ -99,37 +106,100 @@
             
             <div class="col-12 col-md-9 float-left content">
                 
-
-<div class="page-info">
-    <span>Posts with the tag Java: </span>
-</div>
-
-
-
-<div class="post">
+<article>
+    
     <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/di/">Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</a>
+        <a href="https://inderpalaulakh.com/posts/dicustom/">Dagger, Injecting custom objects (Interface implementation)</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-04-12</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;625 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/java">Java</a>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/guice">Guice</a>&nbsp;<a href="/tags/hilt">Hilt</a>&nbsp;<a href="/tags/dagger">Dagger</a>&nbsp;<a href="/tags/service-locator">Service Locator</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-05-02</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;199 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/dependency-injection">Dependency Injection</a>&nbsp;</span>
 
     </div>
-    <div class="post-item post-summary markdown-body">
-        Below are widely used Dependency Injection frameworks mostly by android &amp; Java application projects.
-For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.
-Guice Guice (pronounced &lsquo;juice&rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)
-With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp; Application development.
-For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch.
+    
+    
+    <div class="post-content markdown-body">
+        <p>It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes <code>Logger</code>, <code>Service</code> and class <code>Middleware</code> is dependent on these classes.</p>
+<pre><code class="language-kotlin">class Logger()
+
+class Service()
+
+//this class requires Logger &amp; Service object
+class Middleware(private val logger:Logger. private val service:Service)
+
+// middleware object
+val middleware = Middleware(Logger(),Service())
+</code></pre>
+<p><code>Dagger</code> can build objects of <code>Logger</code> and <code>Service</code> classes by indicating <code>@Inject</code> annotation to all three classes</p>
+<pre><code class="language-kotlin">internal class Logger @Inject constructor()
+
+internal class Service @Inject constructor()
+
+//this class requires Logger &amp; Service object
+internal class Middleware @Inject constructor(private val logger:Logger. private val service:Service)
+
+@Component
+interface MiddlewareComponent {
+    fun buildComponent():Middleware
+}
+
+// middleware object
+val middleware = DaggerMiddlewareComponent.builder().build().buildComponent()
+</code></pre>
+<p>If the project requirements are modified to get <code>Logger</code> with custom implementation, we can write <code>@Module</code> to support dependency injection.</p>
+<pre><code class="language-kotlin">// now, Logger is interface
+interface Logger 
+
+class Service @Inject constructor()
+
+class Middleware @Inject constructor(val logger: Logger, val service: Service)
+
+@Module
+class LoggerModule constructor(val logger: Logger) {
+
+    @Provides
+    fun providesLogger(): Logger {
+        return logger
+    }
+}
+
+@Component(modules = [LoggerModule::class])
+interface MiddlewareComponent {
+    fun buildComponent(): Middleware
+}
+
+//custom implementation
+class NullLogger : Logger
+
+//injecting logger module with interface implementation
+val middleware = DaggerMiddlewareComponent.builder().loggerModule(LoggerModule(NullLogger())).build().buildComponent()
+</code></pre>
+
     </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = 'https:\/\/inderpalaulakh.com\/posts\/dicustom\/';
+                this.page.identifier = 'dicustom';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'https-inderpalaulakh-com' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
 </div>
-
-
-
-
-
-
-
-
 
 
             </div>
@@ -507,6 +577,8 @@ For Android, this framework is not suggested as this framework use reflections t
             
         </div>
     </div>
+    
+    
     
     
   </div>

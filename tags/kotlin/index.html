@@ -26,7 +26,7 @@
 <meta property="og:description" content="Learning Software Engineering" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://inderpalaulakh.com/tags/kotlin/" />
-<meta property="og:updated_time" content="2021-04-12T10:46:57-08:00" />
+<meta property="og:updated_time" content="2021-05-02T00:00:29-07:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kotlin"/>
@@ -105,6 +105,21 @@
 </div>
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://inderpalaulakh.com/posts/dicustom/">Dagger, Injecting custom objects (Interface implementation)</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-05-02</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;199 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/dependency-injection">Dependency Injection</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes Logger, Service and class Middleware is dependent on these classes.
+class Logger() class Service() //this class requires Logger &amp; Service object class Middleware(private val logger:Logger. private val service:Service) // middleware object val middleware = Middleware(Logger(),Service())  Dagger can build objects of Logger and Service classes by indicating @Inject annotation to all three classes
+internal class Logger @Inject constructor() internal class Service @Inject constructor() //this class requires Logger &amp; Service object internal class Middleware @Inject constructor(private val logger:Logger.
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -227,6 +242,10 @@ For Android, this framework is not suggested as this framework use reflections t
             
             <span>
                 <a href="/tags/dagger/">Dagger</a>
+            </span>
+            
+            <span>
+                <a href="/tags/dependency-injection/">Dependency Injection</a>
             </span>
             
             <span>
@@ -419,6 +438,10 @@ For Android, this framework is not suggested as this framework use reflections t
             
             <span>
                 <a href="/tags/dagger/">Dagger</a>
+            </span>
+            
+            <span>
+                <a href="/tags/dependency-injection/">Dependency Injection</a>
             </span>
             
             <span>
