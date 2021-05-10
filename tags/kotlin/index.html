@@ -26,7 +26,7 @@
 <meta property="og:description" content="Learning Software Engineering" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://inderpalaulakh.com/tags/kotlin/" />
-<meta property="og:updated_time" content="2021-05-02T00:00:29-07:00" />
+<meta property="og:updated_time" content="2021-05-10T14:27:12-07:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kotlin"/>
@@ -105,6 +105,23 @@
 </div>
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://inderpalaulakh.com/posts/middlewarekotlin/">Kotlin map, foldRight &amp; nested functions</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-05-10</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;437 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/redux">Redux</a>&nbsp;<a href="/tags/middleware">Middleware</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp; fold right for execution.
+Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.
+map is collective transform operation.
+var numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6  foldRight accept initial state, apply initial state to all elements and return final state.
+var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -&gt; test(a,b)}) private fun test(a: Int, b: Any): Int { return a + b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */  Let&rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -289,6 +306,10 @@ For Android, this framework is not suggested as this framework use reflections t
             </span>
             
             <span>
+                <a href="/tags/middleware/">Middleware</a>
+            </span>
+            
+            <span>
                 <a href="/tags/mvc/">MVC</a>
             </span>
             
@@ -310,6 +331,10 @@ For Android, this framework is not suggested as this framework use reflections t
             
             <span>
                 <a href="/tags/redis/">Redis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/redux/">Redux</a>
             </span>
             
             <span>
@@ -485,6 +510,10 @@ For Android, this framework is not suggested as this framework use reflections t
             </span>
             
             <span>
+                <a href="/tags/middleware/">Middleware</a>
+            </span>
+            
+            <span>
                 <a href="/tags/mvc/">MVC</a>
             </span>
             
@@ -506,6 +535,10 @@ For Android, this framework is not suggested as this framework use reflections t
             
             <span>
                 <a href="/tags/redis/">Redis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/redux/">Redux</a>
             </span>
             
             <span>

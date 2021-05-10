@@ -26,7 +26,7 @@
 <meta property="og:description" content="Learning Software Engineering" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://inderpalaulakh.com/" />
-<meta property="og:updated_time" content="2021-05-02T00:00:29-07:00" />
+<meta property="og:updated_time" content="2021-05-10T14:27:12-07:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Learner"/>
@@ -101,6 +101,23 @@
                 
 
 
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://inderpalaulakh.com/posts/middlewarekotlin/">Kotlin map, foldRight &amp; nested functions</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-05-10</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;437 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/redux">Redux</a>&nbsp;<a href="/tags/middleware">Middleware</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp; fold right for execution.
+Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.
+map is collective transform operation.
+var numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6  foldRight accept initial state, apply initial state to all elements and return final state.
+var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -&gt; test(a,b)}) private fun test(a: Int, b: Any): Int { return a + b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */  Let&rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.
+    </div>
+</div>
 
 <div class="post">
     <h2 class="post-item post-title">
@@ -250,21 +267,6 @@ Get SHA1 &amp; package name Open powershell and cd to C:\Users&lt;username&gt;.a
 keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android  Copy SHA1 -&gt; Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
 Copy package name from AndroidManifest.xml
 Now you have packagename &amp; Base64 SHA1 hash
-    </div>
-</div>
-
-<div class="post">
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/android-checkstyle/">Android Studio Enable Checkstyle (Gradle)</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-17</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;624 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/gradle">Gradle</a>&nbsp;<a href="/tags/checkstyle">checkstyle</a>&nbsp;</span>
-
-    </div>
-    <div class="post-item post-summary markdown-body">
-        Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.
-Steps to enable checkstyle for Android Project Create checkstyle.xml Create folder checkstyle inside Android Project app folder. Create file checkstyle.xml Reference
-&lt;?xml version=&quot;1.0&quot;?&gt; &lt;!DOCTYPE module PUBLIC &quot;-//Puppy Crawl//DTD Check Configuration 1.2//EN&quot; &quot;http://www.puppycrawl.com/dtds/configuration_1_2.dtd&quot;&gt; &lt;!-- Checkstyle configuration that checks the sun coding conventions from: - the Java Language Specification at http://java.sun.com/docs/books/jls/second_edition/html/index.html - the Sun Code Conventions at http://java.sun.com/docs/codeconv/ - the Javadoc guidelines at http://java.sun.com/j2se/javadoc/writingdoccomments/index.html - the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html - some best practices Checkstyle is very configurable. Be sure to read the documentation at http://checkstyle.
     </div>
 </div>
 
@@ -455,6 +457,10 @@ Steps to enable checkstyle for Android Project Create checkstyle.xml Create fold
             </span>
             
             <span>
+                <a href="/tags/middleware/">Middleware</a>
+            </span>
+            
+            <span>
                 <a href="/tags/mvc/">MVC</a>
             </span>
             
@@ -476,6 +482,10 @@ Steps to enable checkstyle for Android Project Create checkstyle.xml Create fold
             
             <span>
                 <a href="/tags/redis/">Redis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/redux/">Redux</a>
             </span>
             
             <span>
@@ -651,6 +661,10 @@ Steps to enable checkstyle for Android Project Create checkstyle.xml Create fold
             </span>
             
             <span>
+                <a href="/tags/middleware/">Middleware</a>
+            </span>
+            
+            <span>
                 <a href="/tags/mvc/">MVC</a>
             </span>
             
@@ -672,6 +686,10 @@ Steps to enable checkstyle for Android Project Create checkstyle.xml Create fold
             
             <span>
                 <a href="/tags/redis/">Redis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/redux/">Redux</a>
             </span>
             
             <span>

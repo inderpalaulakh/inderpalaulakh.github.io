@@ -6,7 +6,20 @@
     <description>Recent content on Learner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 02 May 2021 00:00:29 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 May 2021 14:27:12 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin map, foldRight &amp; nested functions</title>
+      <link>https://inderpalaulakh.com/posts/middlewarekotlin/</link>
+      <pubDate>Mon, 10 May 2021 14:27:12 -0700</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/middlewarekotlin/</guid>
+      <description>Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp;amp; fold right for execution.
+Before diving into higher order functions, let&amp;rsquo;s go through map &amp;amp; fold right.
+map is collective transform operation.
+var numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6  foldRight accept initial state, apply initial state to all elements and return final state.
+var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -&amp;gt; test(a,b)}) private fun test(a: Int, b: Any): Int { return a + b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */  Let&amp;rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.</description>
+    </item>
+    
     <item>
       <title>Dagger, Injecting custom objects (Interface implementation)</title>
       <link>https://inderpalaulakh.com/posts/dicustom/</link>

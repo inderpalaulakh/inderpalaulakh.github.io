@@ -15,22 +15,33 @@
 <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
 
 
-<title>Distributed caching - Learner</title>
+<title>Kotlin map, foldRight &amp; nested functions - Learner</title>
 
 
 
 <meta name="description" content="Learning Software Engineering" />
 
 
-<meta property="og:title" content="Distributed caching" />
-<meta property="og:description" content="Learning Software Engineering" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://inderpalaulakh.com/tags/distributed-caching/" />
-<meta property="og:updated_time" content="2021-03-25T18:26:03-08:00" />
+<meta name="keywords" content="Kotlin, Redux, Middleware" />
+
+<meta property="og:title" content="Kotlin map, foldRight &amp; nested functions" />
+<meta property="og:description" content="Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp; fold right for execution.
+Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.
+map is collective transform operation.
+var numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6  foldRight accept initial state, apply initial state to all elements and return final state.
+var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -&gt; test(a,b)}) private fun test(a: Int, b: Any): Int { return a &#43; b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */  Let&rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://inderpalaulakh.com/posts/middlewarekotlin/" />
+<meta property="article:published_time" content="2021-05-10T14:27:12-07:00" />
+<meta property="article:modified_time" content="2021-05-10T14:27:12-07:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Distributed caching"/>
-<meta name="twitter:description" content="Learning Software Engineering"/>
+<meta name="twitter:title" content="Kotlin map, foldRight &amp; nested functions"/>
+<meta name="twitter:description" content="Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp; fold right for execution.
+Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.
+map is collective transform operation.
+var numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6  foldRight accept initial state, apply initial state to all elements and return final state.
+var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -&gt; test(a,b)}) private fun test(a: Int, b: Any): Int { return a &#43; b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */  Let&rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type."/>
 
 
 
@@ -99,36 +110,164 @@
             
             <div class="col-12 col-md-9 float-left content">
                 
-
-<div class="page-info">
-    <span>Posts with the tag Distributed caching: </span>
-</div>
-
-
-
-<div class="post">
+<article>
+    
     <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/redis/">Distributed caching - Redis</a>
+        <a href="https://inderpalaulakh.com/posts/middlewarekotlin/">Kotlin map, foldRight &amp; nested functions</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-03-25</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;157 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/redis">Redis</a>&nbsp;<a href="/tags/distributed-caching">Distributed caching</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-05-10</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;437 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/redux">Redux</a>&nbsp;<a href="/tags/middleware">Middleware</a>&nbsp;</span>
 
     </div>
-    <div class="post-item post-summary markdown-body">
-        Redis is in-memory data structure store. Redis has a really good documentation to learn and implement framework capabilities. 
-My mentor at Job guided me to learn Redis. My primary focus is to understand how Redis helps for Distributed Caching.
-Distributed Caching Distributed Caching is cache shared by multiple servers. The miclsroservices or services can keep it&rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.
-The caches are used to save time to reduce cost to read database from database. The in memory(RAM cache) data is much more efficient to perform read operations as compared to SQL databases.
+    
+    
+    <div class="post-content markdown-body">
+        <p>Kotlin supports <a href="https://en.wikipedia.org/wiki/Higher-order_function" target="_blank">Higher order functions</a>. In this blog, I will create a higher order function that will use map &amp; fold right for execution.</p>
+<p>Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.</p>
+<p><code>map</code> is collective transform operation.</p>
+<pre><code class="language-kotlin">var numbers = mutableListOf(1, 2, 3)
+numbers = numbers.map { it*2 }.toMutableList()
+// elements in numbers: 2,4,6
+</code></pre>
+<p><code>foldRight</code> accept initial state, apply initial state to all elements and return final state.</p>
+<pre><code class="language-kotlin">var numbers = mutableListOf(1, 2, 3)
+var result = numbers.foldRight(100, {a,b -&gt; test(a,b)})
+private fun test(a: Int, b: Any): Int {
+        return a + b as Int
+}
+
+/*
+First execution: 
+initial 100
+a = 3
+b = 100
+
+Second Execution
+a = 2
+b = 103
+
+Third Execution
+a = 1
+b = 105
+
+final: result = 106
+*/
+
+</code></pre>
+<p>Let&rsquo;s create a higher order function <code>Middleware</code> that takes an instance <code>StringApp</code>, has inner function <code>next:  Type</code> and return <code>Type</code>.</p>
+<pre><code class="language-kotlin">typealias Type = (value: String) -&gt; Unit
+typealias Middleware = (stringApp: StringApp) -&gt; (next: Type) -&gt; Type
+</code></pre>
+<p>Now, create three classes that implements <code>Middleware</code>.</p>
+<pre><code class="language-kotlin">class MiddlewareA : Middleware {
+    override fun invoke(stringApp: StringApp) = { next: Type -&gt;
+        { value: String -&gt;
+            next(&quot;$value MiddlewareA &quot;)
+        }
+    }
+
+}
+
+class MiddlewareB : Middleware {
+    override fun invoke(stringApp: StringApp) = { next: Type -&gt;
+        { value: String -&gt;
+            next(&quot;$value MiddlewareB &quot;)
+        }
+    }
+}
+
+class MiddlewareC : Middleware {
+    override fun invoke(stringApp: StringApp) = { next: Type -&gt;
+        { value: String -&gt;
+            next(&quot;$value MiddlewareC &quot;)
+        }
+    }
+}
+
+</code></pre>
+<p><code>StringApp</code> class receives list of middlewares and call <code>dispatch</code> to execute higher order function.</p>
+<pre><code class="language-kotlin">class StringApp(private val middlewares: MutableList&lt;Middleware&gt;) {
+
+    private fun reduce(value: String) {
+        val result = value;
+        // result = 
+    }
+
+    fun dispatch(value: String) {
+        var dispatch2 = middlewares[2](this)(::reduce)
+        var dispatch1 = middlewares[1](this)(dispatch2)
+        middlewares[0](this)(dispatch1)(value)
+    }
+}
+</code></pre>
+<p>The higher order function can be written as below:</p>
+<pre><code class="language-kotlin">val app = StringApp(mutableListOf(MiddlewareA(), MiddlewareB(), MiddlewareC()))
+app.dispatch(&quot;init&quot;)
+
+{
+    middlewareC -&gt; set string value to &quot;init middleware A middleware B middleware C&quot;
+
+    {
+        middlewareB -&gt; set string value to &quot;init middleware A middleware B&quot;
+
+        {
+            middlewareA -&gt; set string value to &quot;init middleware A&quot;
+        }
+    }
+}
+
+</code></pre>
+<p>Let&rsquo;s use map &amp; fold right to execute higher order function.</p>
+<pre><code class="language-kotlin">class StringApp(middlewares: MutableList&lt;Middleware&gt;) {
+
+    private val middlewareMap: List&lt;(Type) -&gt; Type&gt; = 
+        middlewares.map { m -&gt; m.invoke(this) }
+    var middlewareDispatch = compose(middlewareMap)(::reduce)
+    private fun compose(functions: List&lt;(Type) -&gt; Type&gt;): (Type) -&gt; Type =
+        { dispatch -&gt;
+            functions.foldRight(
+                dispatch,
+                { nextDispatch, composed -&gt; nextDispatch(composed) })
+        }
+
+    private fun reduce(value: String) {
+        val result = value;
+    }
+
+
+    private fun dispatch(value: String) {
+        middlewareDispatch(value)
+    }
+}
+</code></pre>
+<p>I learned map &amp; fold while implementing redux middleware concepts from library <a href="https://github.com/reduxkotlin/redux-kotlin" target="_blank">kotlin-redux</a>.</p>
+
     </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="disqus">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <div id="disqus_thread" style="display: none;"></div>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var disqus_config = function () {
+                this.page.url = 'https:\/\/inderpalaulakh.com\/posts\/middlewarekotlin\/';
+                this.page.identifier = 'middlewarekotlin';
+            };
+            var s = document.createElement('script');
+            s.src = 'https://' + 'https-inderpalaulakh-com' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            document.querySelector('#disqus_thread').removeAttribute('style');
+            (document.body || document.head).appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
 </div>
-
-
-
-
-
-
-
-
 
 
             </div>
@@ -522,6 +661,8 @@ The caches are used to save time to reduce cost to read database from database. 
             
         </div>
     </div>
+    
+    
     
     
   </div>
