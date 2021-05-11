@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Mon, 10 May 2021 14:27:12 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Kotlin map, foldRight &amp; nested functions</title>
+      <title>Kotlin map, foldRight &amp; nested functions to implement redux middleware</title>
       <link>https://inderpalaulakh.com/posts/middlewarekotlin/</link>
       <pubDate>Mon, 10 May 2021 14:27:12 -0700</pubDate>
       

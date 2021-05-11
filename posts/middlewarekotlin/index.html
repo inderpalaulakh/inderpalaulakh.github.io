@@ -15,7 +15,7 @@
 <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
 
 
-<title>Kotlin map, foldRight &amp; nested functions - Learner</title>
+<title>Kotlin map, foldRight &amp; nested functions to implement redux middleware - Learner</title>
 
 
 
@@ -24,7 +24,7 @@
 
 <meta name="keywords" content="Kotlin, Redux, Middleware" />
 
-<meta property="og:title" content="Kotlin map, foldRight &amp; nested functions" />
+<meta property="og:title" content="Kotlin map, foldRight &amp; nested functions to implement redux middleware" />
 <meta property="og:description" content="Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp; fold right for execution.
 Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.
 map is collective transform operation.
@@ -36,7 +36,7 @@ var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -&
 <meta property="article:modified_time" content="2021-05-10T14:27:12-07:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Kotlin map, foldRight &amp; nested functions"/>
+<meta name="twitter:title" content="Kotlin map, foldRight &amp; nested functions to implement redux middleware"/>
 <meta name="twitter:description" content="Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp; fold right for execution.
 Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.
 map is collective transform operation.
@@ -113,10 +113,10 @@ var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -&
 <article>
     
     <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/middlewarekotlin/">Kotlin map, foldRight &amp; nested functions</a>
+        <a href="https://inderpalaulakh.com/posts/middlewarekotlin/">Kotlin map, foldRight &amp; nested functions to implement redux middleware</a>
     </h2>
     <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-05-10</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;437 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/redux">Redux</a>&nbsp;<a href="/tags/middleware">Middleware</a>&nbsp;</span>
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-05-10</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;517 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/kotlin">Kotlin</a>&nbsp;<a href="/tags/redux">Redux</a>&nbsp;<a href="/tags/middleware">Middleware</a>&nbsp;</span>
 
     </div>
     
@@ -220,9 +220,22 @@ app.dispatch(&quot;init&quot;)
 <p>Let&rsquo;s use map &amp; fold right to execute higher order function.</p>
 <pre><code class="language-kotlin">class StringApp(middlewares: MutableList&lt;Middleware&gt;) {
 
+    // map inject store reference to all middleware functions
     private val middlewareMap: List&lt;(Type) -&gt; Type&gt; = 
         middlewares.map { m -&gt; m.invoke(this) }
+
+    /*
+        // now below code execution required to achieve result
+        var dispatch2 = middlewareMap[2](::reduce)
+        var dispatch1 = middlewareMap[1](dispatch2)
+        middlewareMap[0](dispatch1)(value)
+    */
+
     var middlewareDispatch = compose(middlewareMap)(::reduce)
+
+    // traverse through middlewares
+    // build middleware chain by injecting dispatch from previous middleware
+    // inject ::reduce to last middleware
     private fun compose(functions: List&lt;(Type) -&gt; Type&gt;): (Type) -&gt; Type =
         { dispatch -&gt;
             functions.foldRight(
@@ -241,6 +254,7 @@ app.dispatch(&quot;init&quot;)
 }
 </code></pre>
 <p>I learned map &amp; fold while implementing redux middleware concepts from library <a href="https://github.com/reduxkotlin/redux-kotlin" target="_blank">kotlin-redux</a>.</p>
+<p>Using higher order functions for middleware helps to stop middleware chain execution. If a middleware subscribes to service, on async callback the middleware can finish the work without invoking next middleware.</p>
 
     </div>
 </article>
