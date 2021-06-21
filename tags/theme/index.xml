@@ -20,7 +20,7 @@ For C# code, add cs after ```.
 write your code here
 ```
 Example:
-static void Main(string[] args) { Logging logger = new Logging(); logger.Log(&amp;quot;login success&amp;quot;); }  </description>
+static void Main(string[] args){Logging logger = new Logging();logger.Log(&amp;quot;login success&amp;quot;);} </description>
     </item>
     
   </channel>

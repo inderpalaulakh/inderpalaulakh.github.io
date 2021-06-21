@@ -17,7 +17,7 @@
 Create an Android Application Open Android Studio and create new Project with Empty Activity.
 Configure project with below settings
 Get SHA1 &amp;amp; package name Open powershell and cd to C:\Users&amp;lt;username&amp;gt;.android Execute below command, if prompted for password enter android or leave blank
-keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android  Copy SHA1 -&amp;gt; Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
+keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android Copy SHA1 -&amp;gt; Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
 Copy package name from AndroidManifest.xml
 Now you have packagename &amp;amp; Base64 SHA1 hash</description>
     </item>

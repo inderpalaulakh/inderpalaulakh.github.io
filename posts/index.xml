@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Learner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 10 May 2021 14:27:12 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://inderpalaulakh.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Harnessing the Power of Less</title>
+      <link>https://inderpalaulakh.com/posts/thepowerofless/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/thepowerofless/</guid>
+      <description>Last week, I read an article &amp;ldquo;Harnessing the Power of Less&amp;rdquo; published in Special Times Edition &amp;ldquo;Secrets of Success&amp;rdquo;. The beautiful line &amp;ldquo;Stretching encourages adaptation and working with what you already have, rather than focusing on needing more&amp;rdquo; &amp;hellip;</description>
+    </item>
+    
     <item>
       <title>Kotlin map, foldRight &amp; nested functions to implement redux middleware</title>
       <link>https://inderpalaulakh.com/posts/middlewarekotlin/</link>
@@ -16,8 +25,8 @@
       <description>Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp;amp; fold right for execution.
 Before diving into higher order functions, let&amp;rsquo;s go through map &amp;amp; fold right.
 map is collective transform operation.
-var numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6  foldRight accept initial state, apply initial state to all elements and return final state.
-var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -&amp;gt; test(a,b)}) private fun test(a: Int, b: Any): Int { return a + b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */  Let&amp;rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.</description>
+var numbers = mutableListOf(1, 2, 3)numbers = numbers.map { it*2 }.toMutableList()// elements in numbers: 2,4,6 foldRight accept initial state, apply initial state to all elements and return final state.
+var numbers = mutableListOf(1, 2, 3)var result = numbers.foldRight(100, {a,b -&amp;gt; test(a,b)})private fun test(a: Int, b: Any): Int {return a + b as Int}/*First execution: initial 100a = 3b = 100Second Executiona = 2b = 103Third Executiona = 1b = 105final: result = 106*/ Let&amp;rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.</description>
     </item>
     
     <item>
@@ -27,8 +36,8 @@ var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -&
       
       <guid>https://inderpalaulakh.com/posts/dicustom/</guid>
       <description>It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes Logger, Service and class Middleware is dependent on these classes.
-class Logger() class Service() //this class requires Logger &amp;amp; Service object class Middleware(private val logger:Logger. private val service:Service) // middleware object val middleware = Middleware(Logger(),Service())  Dagger can build objects of Logger and Service classes by indicating @Inject annotation to all three classes
-internal class Logger @Inject constructor() internal class Service @Inject constructor() //this class requires Logger &amp;amp; Service object internal class Middleware @Inject constructor(private val logger:Logger.</description>
+class Logger()class Service()//this class requires Logger &amp;amp; Service objectclass Middleware(private val logger:Logger. private val service:Service)// middleware objectval middleware = Middleware(Logger(),Service()) Dagger can build objects of Logger and Service classes by indicating @Inject annotation to all three classes
+internal class Logger @Inject constructor()internal class Service @Inject constructor()//this class requires Logger &amp;amp; Service objectinternal class Middleware @Inject constructor(private val logger:Logger.</description>
     </item>
     
     <item>
@@ -82,7 +91,7 @@ For C# code, add cs after ```.
 write your code here
 ```
 Example:
-static void Main(string[] args) { Logging logger = new Logging(); logger.Log(&amp;quot;login success&amp;quot;); }  </description>
+static void Main(string[] args){Logging logger = new Logging();logger.Log(&amp;quot;login success&amp;quot;);} </description>
     </item>
     
     <item>
@@ -93,7 +102,7 @@ static void Main(string[] args) { Logging logger = new Logging(); logger.Log(&am
       <guid>https://inderpalaulakh.com/posts/adapterdesignpattern/</guid>
       <description>This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.
 Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
-class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&amp;quot;hello.xml&amp;quot;, &amp;quot;login success&amp;quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&amp;quot;https://server.logs/upload&amp;quot;, &amp;quot;login success&amp;quot;, &amp;quot;oAuthToken&amp;quot;); }  Here user is manually creating objects to write logs separately to local file and server.</description>
+class WriteLogsToLocalFile{public void Log(string fileName, string message){//write logs to file }}class WriteLogsToServer{public void Log(string urL, string message, string token){//call rest API with oAuth // Note: here token is used for oAuth}}static void Main(string[] args){WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile();fileLogs.Log(&amp;quot;hello.xml&amp;quot;, &amp;quot;login success&amp;quot;);WriteLogsToServer serverLogs = new WriteLogsToServer();serverLogs.Log(&amp;quot;https://server.logs/upload&amp;quot;, &amp;quot;login success&amp;quot;, &amp;quot;oAuthToken&amp;quot;);} Here user is manually creating objects to write logs separately to local file and server.</description>
     </item>
     
     <item>
@@ -130,7 +139,7 @@ Code Sample I want to print salaries of all employees in my organization with na
 Create an Android Application Open Android Studio and create new Project with Empty Activity.
 Configure project with below settings
 Get SHA1 &amp;amp; package name Open powershell and cd to C:\Users&amp;lt;username&amp;gt;.android Execute below command, if prompted for password enter android or leave blank
-keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android  Copy SHA1 -&amp;gt; Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
+keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android Copy SHA1 -&amp;gt; Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
 Copy package name from AndroidManifest.xml
 Now you have packagename &amp;amp; Base64 SHA1 hash</description>
     </item>
@@ -143,7 +152,7 @@ Now you have packagename &amp;amp; Base64 SHA1 hash</description>
       <guid>https://inderpalaulakh.com/posts/android-checkstyle/</guid>
       <description>Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.
 Steps to enable checkstyle for Android Project Create checkstyle.xml Create folder checkstyle inside Android Project app folder. Create file checkstyle.xml Reference
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt; &amp;lt;!DOCTYPE module PUBLIC &amp;quot;-//Puppy Crawl//DTD Check Configuration 1.2//EN&amp;quot; &amp;quot;http://www.puppycrawl.com/dtds/configuration_1_2.dtd&amp;quot;&amp;gt; &amp;lt;!-- Checkstyle configuration that checks the sun coding conventions from: - the Java Language Specification at http://java.sun.com/docs/books/jls/second_edition/html/index.html - the Sun Code Conventions at http://java.sun.com/docs/codeconv/ - the Javadoc guidelines at http://java.sun.com/j2se/javadoc/writingdoccomments/index.html - the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html - some best practices Checkstyle is very configurable. Be sure to read the documentation at http://checkstyle.</description>
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE module PUBLIC&amp;quot;-//Puppy Crawl//DTD Check Configuration 1.2//EN&amp;quot;&amp;quot;http://www.puppycrawl.com/dtds/configuration_1_2.dtd&amp;quot;&amp;gt;&amp;lt;!--Checkstyle configuration that checks the sun coding conventions from:- the Java Language Specification athttp://java.sun.com/docs/books/jls/second_edition/html/index.html- the Sun Code Conventions at http://java.sun.com/docs/codeconv/- the Javadoc guidelines athttp://java.sun.com/j2se/javadoc/writingdoccomments/index.html- the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html- some best practicesCheckstyle is very configurable. Be sure to read the documentation athttp://checkstyle.</description>
     </item>
     
     <item>
@@ -156,7 +165,7 @@ Steps to enable checkstyle for Android Project Create checkstyle.xml Create fold
 Mermaid
 Mermaid has online editor Editor. However, I did not use online editor for confidentiality reasons.
 I created index.html and opened in browser.
- &amp;lt;html&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; mermaid.initialize({ startOnLoad: true }); &amp;lt;/script&amp;gt; &amp;lt;div class=&amp;quot;mermaid&amp;quot;&amp;gt; sequenceDiagram participant A participant B A-&amp;gt;&amp;gt;B:How are you? B--&amp;gt;&amp;gt; A: I am good loop test loop A-&amp;gt;&amp;gt;B:How are you? B--&amp;gt;&amp;gt; A: I am good end &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  </description>
+&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;mermaid.initialize({ startOnLoad: true });&amp;lt;/script&amp;gt;&amp;lt;div class=&amp;quot;mermaid&amp;quot;&amp;gt;sequenceDiagramparticipant Aparticipant B A-&amp;gt;&amp;gt;B:How are you?B--&amp;gt;&amp;gt; A: I am goodloop test loopA-&amp;gt;&amp;gt;B:How are you?B--&amp;gt;&amp;gt; A: I am goodend&amp;lt;/div&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt; </description>
     </item>
     
     <item>
@@ -177,9 +186,9 @@ I saved two hours of commute time. My office had layoffs. Some of my teammates w
       
       <guid>https://inderpalaulakh.com/posts/pipelinevar/</guid>
       <description>Recently, I struggled a bit to figure out a way to access Azure-Pipeline Variables in Node.js JavaScript/TypeScript project. However, it is easy.
-.yml Pipeline code - task: Npm@1 displayName: &amp;quot;Run project&amp;quot; env: MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital letters inputs: commands: &#39;custom&#39; CustomCommand: &#39;run test&#39;  npm Package install package string-replace-loader
+.yml Pipeline code - task: Npm@1displayName: &amp;quot;Run project&amp;quot;env:MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital lettersinputs:commands: &#39;custom&#39;CustomCommand: &#39;run test&#39; npm Package install package string-replace-loader
 TypeScript/JavaScript File Create a file with any name &amp;ldquo;test.ts&amp;rdquo;
-test.ts const test = () =&amp;gt; { const myVariable = &amp;quot;My-Variable&amp;quot;; };  Setup webpack.config.js  module: { rules: [ { test: /test\.ts$/, loader: &#39;string-replace-loader&#39;, options: { search: &#39;My-Variable&#39;, replace: process.env[&#39;MyVariableName&#39;] // from .yml env } } ] } }  Finally  &amp;quot;scripts&amp;quot; :{ &amp;quot;test&amp;quot;: &amp;quot;webpack --config webpack.</description>
+test.tsconst test = () =&amp;gt; {const myVariable = &amp;quot;My-Variable&amp;quot;;}; Setup webpack.config.js  module: {rules: [{test: /test\.ts$/,loader: &#39;string-replace-loader&#39;,options: {search: &#39;My-Variable&#39;,replace: process.env[&#39;MyVariableName&#39;] // from .yml env}}]}} Finally &amp;quot;scripts&amp;quot; :{&amp;quot;test&amp;quot;: &amp;quot;webpack --config webpack.</description>
     </item>
     
     <item>
@@ -190,7 +199,7 @@ test.ts const test = () =&amp;gt; { const myVariable = &amp;quot;My-Variable&amp
       <guid>https://inderpalaulakh.com/posts/doubledispatch/</guid>
       <description>To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp;amp; Overriding.
 One level of virtual dispatching derived types override a base types: as shown below
- class Farms { public virtual void Irrigation() { Console.WriteLine(&amp;quot;Farm Type&amp;quot;); } } class WheatFarm : Farms { public override void Irrigation() { Console.WriteLine(&amp;quot;WheatFarm&amp;quot;); } } class RicaFarm : WheatFarm { public override void Irrigation() { Console.WriteLine(&amp;quot;RicaFarm&amp;quot;); } } static void Main(string[] args) { var a = new Farms(); var b = new WheatFarm(); var c = new RicaFarm(); a.Irrigation(); b.Irrigation(); c.Irrigation(); } //output Farm Type WheatFarm RicaFarm  Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.</description>
+ class Farms{public virtual void Irrigation(){Console.WriteLine(&amp;quot;Farm Type&amp;quot;);}}class WheatFarm : Farms{public override void Irrigation(){Console.WriteLine(&amp;quot;WheatFarm&amp;quot;);}}class RicaFarm : WheatFarm{public override void Irrigation(){Console.WriteLine(&amp;quot;RicaFarm&amp;quot;);}}static void Main(string[] args){var a = new Farms();var b = new WheatFarm();var c = new RicaFarm();a.Irrigation();b.Irrigation();c.Irrigation();}//outputFarm TypeWheatFarmRicaFarm Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.</description>
     </item>
     
     <item>
@@ -202,7 +211,7 @@ One level of virtual dispatching derived types override a base types: as shown b
       <description>To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
 Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
 As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop { public virtual void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;); } } class Wheat : Crop { public override void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public void WaterSupply(Crop crop) { Console.</description>
+class Crop{public virtual void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;);}}class Wheat : Crop{public override void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;);}}/* An example of overloading (Method with same name but different parameter type)* */class CropWatering{public void WaterSupply(Crop crop){Console.</description>
     </item>
     
     <item>

@@ -15,7 +15,7 @@
       <guid>https://inderpalaulakh.com/posts/adapterdesignpattern/</guid>
       <description>This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.
 Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
-class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&amp;quot;hello.xml&amp;quot;, &amp;quot;login success&amp;quot;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&amp;quot;https://server.logs/upload&amp;quot;, &amp;quot;login success&amp;quot;, &amp;quot;oAuthToken&amp;quot;); }  Here user is manually creating objects to write logs separately to local file and server.</description>
+class WriteLogsToLocalFile{public void Log(string fileName, string message){//write logs to file }}class WriteLogsToServer{public void Log(string urL, string message, string token){//call rest API with oAuth // Note: here token is used for oAuth}}static void Main(string[] args){WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile();fileLogs.Log(&amp;quot;hello.xml&amp;quot;, &amp;quot;login success&amp;quot;);WriteLogsToServer serverLogs = new WriteLogsToServer();serverLogs.Log(&amp;quot;https://server.logs/upload&amp;quot;, &amp;quot;login success&amp;quot;, &amp;quot;oAuthToken&amp;quot;);} Here user is manually creating objects to write logs separately to local file and server.</description>
     </item>
     
     <item>
@@ -39,7 +39,7 @@ Code Sample I want to print salaries of all employees in my organization with na
       <guid>https://inderpalaulakh.com/posts/doubledispatch/</guid>
       <description>To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp;amp; Overriding.
 One level of virtual dispatching derived types override a base types: as shown below
- class Farms { public virtual void Irrigation() { Console.WriteLine(&amp;quot;Farm Type&amp;quot;); } } class WheatFarm : Farms { public override void Irrigation() { Console.WriteLine(&amp;quot;WheatFarm&amp;quot;); } } class RicaFarm : WheatFarm { public override void Irrigation() { Console.WriteLine(&amp;quot;RicaFarm&amp;quot;); } } static void Main(string[] args) { var a = new Farms(); var b = new WheatFarm(); var c = new RicaFarm(); a.Irrigation(); b.Irrigation(); c.Irrigation(); } //output Farm Type WheatFarm RicaFarm  Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.</description>
+ class Farms{public virtual void Irrigation(){Console.WriteLine(&amp;quot;Farm Type&amp;quot;);}}class WheatFarm : Farms{public override void Irrigation(){Console.WriteLine(&amp;quot;WheatFarm&amp;quot;);}}class RicaFarm : WheatFarm{public override void Irrigation(){Console.WriteLine(&amp;quot;RicaFarm&amp;quot;);}}static void Main(string[] args){var a = new Farms();var b = new WheatFarm();var c = new RicaFarm();a.Irrigation();b.Irrigation();c.Irrigation();}//outputFarm TypeWheatFarmRicaFarm Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.</description>
     </item>
     
     <item>
@@ -51,7 +51,7 @@ One level of virtual dispatching derived types override a base types: as shown b
       <description>To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
 Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
 As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop { public virtual void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;); } } class Wheat : Crop { public override void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public void WaterSupply(Crop crop) { Console.</description>
+class Crop{public virtual void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;);}}class Wheat : Crop{public override void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;);}}/* An example of overloading (Method with same name but different parameter type)* */class CropWatering{public void WaterSupply(Crop crop){Console.</description>
     </item>
     
     <item>
@@ -63,7 +63,7 @@ class Crop { public virtual void CropName() { Console.WriteLine(&amp;quot;Hey, M
       <description>To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
 Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
 As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop { public virtual void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;); } } class Wheat : Crop { public override void CropName() { Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public void WaterSupply(Crop crop) { Console.</description>
+class Crop{public virtual void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;);}}class Wheat : Crop{public override void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;);}}/* An example of overloading (Method with same name but different parameter type)* */class CropWatering{public void WaterSupply(Crop crop){Console.</description>
     </item>
     
   </channel>
