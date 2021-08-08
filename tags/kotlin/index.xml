@@ -6,7 +6,16 @@
     <description>Recent content in Kotlin on Learner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 10 May 2021 14:27:12 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Aug 2021 15:12:01 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Sample Chat Application using Azure Communication Services and ChatKit</title>
+      <link>https://inderpalaulakh.com/posts/azurechat/</link>
+      <pubDate>Sun, 08 Aug 2021 15:12:01 -0700</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/azurechat/</guid>
+      <description>This post demonstrates the Android chat application leveraging Azure Communication Services and ChatKit.</description>
+    </item>
+    
     <item>
       <title>Kotlin map, foldRight &amp; nested functions to implement redux middleware</title>
       <link>https://inderpalaulakh.com/posts/middlewarekotlin/</link>
