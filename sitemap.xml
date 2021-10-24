@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://inderpalaulakh.com/</loc>
+    <lastmod>2021-10-23T18:08:19-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/posts/</loc>
+    <lastmod>2021-10-23T18:08:19-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/posts/systemdesign1/</loc>
+    <lastmod>2021-10-23T18:08:19-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/tags/softwarearchitecture/</loc>
+    <lastmod>2021-10-23T18:08:19-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/tags/startup/</loc>
+    <lastmod>2021-10-23T18:08:19-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inderpalaulakh.com/tags/systemdesign/</loc>
+    <lastmod>2021-10-23T18:08:19-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://inderpalaulakh.com/posts/azurechat/</loc>
     <lastmod>2021-08-08T15:12:01-07:00</lastmod>
   </url>
@@ -19,16 +49,6 @@
   
   <url>
     <loc>https://inderpalaulakh.com/tags/kotlin/</loc>
-    <lastmod>2021-08-08T15:12:01-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://inderpalaulakh.com/</loc>
-    <lastmod>2021-08-08T15:12:01-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://inderpalaulakh.com/posts/</loc>
     <lastmod>2021-08-08T15:12:01-07:00</lastmod>
   </url>
   

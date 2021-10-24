@@ -6,7 +6,16 @@
     <description>Recent content on Learner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Aug 2021 15:12:01 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Oct 2021 18:08:19 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software System Design</title>
+      <link>https://inderpalaulakh.com/posts/systemdesign1/</link>
+      <pubDate>Sat, 23 Oct 2021 18:08:19 -0700</pubDate>
+      
+      <guid>https://inderpalaulakh.com/posts/systemdesign1/</guid>
+      <description>&amp;hellip;</description>
+    </item>
+    
     <item>
       <title>Android Sample Chat Application using Azure Communication Services and ChatKit</title>
       <link>https://inderpalaulakh.com/posts/azurechat/</link>
