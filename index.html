@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="HandheldFriendly" content="True" />
@@ -10,7 +9,6 @@
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <meta name="generator" content="Hugo 0.79.0" />
-
 
 <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
 
@@ -166,8 +164,28 @@
         Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp; fold right for execution.
 Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.
 map is collective transform operation.
-var numbers = mutableListOf(1, 2, 3)numbers = numbers.map { it*2 }.toMutableList()// elements in numbers: 2,4,6 foldRight accept initial state, apply initial state to all elements and return final state.
-var numbers = mutableListOf(1, 2, 3)var result = numbers.foldRight(100, {a,b -&gt; test(a,b)})private fun test(a: Int, b: Any): Int {return a + b as Int}/*First execution: initial 100a = 3b = 100Second Executiona = 2b = 103Third Executiona = 1b = 105final: result = 106*/ Let&rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.
+var numbers = mutableListOf(1, 2, 3)
+numbers = numbers.map { it*2 }.toMutableList()
+// elements in numbers: 2,4,6
+ foldRight accept initial state, apply initial state to all elements and return final state.
+var numbers = mutableListOf(1, 2, 3)
+var result = numbers.foldRight(100, {a,b -&gt; test(a,b)})
+private fun test(a: Int, b: Any): Int {
+return a + b as Int
+}
+/*
+First execution: initial 100
+a = 3
+b = 100
+Second Execution
+a = 2
+b = 103
+Third Execution
+a = 1
+b = 105
+final: result = 106
+*/
+ Let&rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.
     </div>
 </div>
 
@@ -181,8 +199,17 @@ var numbers = mutableListOf(1, 2, 3)var result = numbers.foldRight(100, {a,b -&
     </div>
     <div class="post-item post-summary markdown-body">
         It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes Logger, Service and class Middleware is dependent on these classes.
-class Logger()class Service()//this class requires Logger &amp; Service objectclass Middleware(private val logger:Logger. private val service:Service)// middleware objectval middleware = Middleware(Logger(),Service()) Dagger can build objects of Logger and Service classes by indicating @Inject annotation to all three classes
-internal class Logger @Inject constructor()internal class Service @Inject constructor()//this class requires Logger &amp; Service objectinternal class Middleware @Inject constructor(private val logger:Logger.
+class Logger()
+class Service()
+//this class requires Logger &amp; Service object
+class Middleware(private val logger:Logger. private val service:Service)
+// middleware object
+val middleware = Middleware(Logger(),Service())
+ Dagger can build objects of Logger and Service classes by indicating @Inject annotation to all three classes
+internal class Logger @Inject constructor()
+internal class Service @Inject constructor()
+//this class requires Logger &amp; Service object
+internal class Middleware @Inject constructor(private val logger:Logger.
     </div>
 </div>
 
@@ -252,7 +279,12 @@ For C# code, add cs after ```.
 write your code here
 ```
 Example:
-static void Main(string[] args){Logging logger = new Logging();logger.Log(&quot;login success&quot;);} 
+static void Main(string[] args)
+{
+Logging logger = new Logging();
+logger.Log(&quot;login success&quot;);
+}
+ 
     </div>
 </div>
 
