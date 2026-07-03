@@ -1,958 +1,279 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="HandheldFriendly" content="True" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.79.0" />
-
-
-<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
-
-
-<title>MVC &amp; MVVM Android Design Pattern (Android) - Learner</title>
-
-
-
-<meta name="description" content="Learning Software Engineering" />
-
-
-<meta name="keywords" content="MVC, MVVM, Android, Design Pattern" />
-
-<meta property="og:title" content="MVC &amp; MVVM Android Design Pattern (Android)" />
-<meta property="og:description" content="Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>MVC & MVVM Android Design Pattern (Android) | Inderpal Aulakh</title><meta name=keywords content="Android,Design"><meta name=description content="Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
 In past, I was working on backend projects where tons of unit tests exists for API&rsquo;s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.
 For next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.
 The example code for this post is written for Android application.
-MVC (Model-View-Controller) Model: Model is data layer." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://inderpalaulakh.com/posts/mvcmvvm/" />
-<meta property="article:published_time" content="2021-03-24T18:26:03-08:00" />
-<meta property="article:modified_time" content="2021-03-24T18:26:03-08:00" />
+MVC (Model-View-Controller)
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="MVC &amp; MVVM Android Design Pattern (Android)"/>
-<meta name="twitter:description" content="Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
-In past, I was working on backend projects where tons of unit tests exists for API&rsquo;s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.
+Model: Model is data layer. Model call services or database to get data from external systems.
+View: View is user interface layer.
+Controller: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View."><meta name=author content><link rel=canonical href=https://inderpalaulakh.com/posts/mvcmvvm/><link crossorigin=anonymous href=/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as=style><link rel=icon href=https://inderpalaulakh.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://inderpalaulakh.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://inderpalaulakh.com/favicon-32x32.png><link rel=apple-touch-icon href=https://inderpalaulakh.com/apple-touch-icon.png><link rel=mask-icon href=https://inderpalaulakh.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://inderpalaulakh.com/posts/mvcmvvm/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://inderpalaulakh.com/posts/mvcmvvm/"><meta property="og:site_name" content="Inderpal Aulakh"><meta property="og:title" content="MVC & MVVM Android Design Pattern (Android)"><meta property="og:description" content="Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
+In past, I was working on backend projects where tons of unit tests exists for API’s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.
 For next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.
 The example code for this post is written for Android application.
-MVC (Model-View-Controller) Model: Model is data layer."/>
-
-
-
-<style>
-    @media (prefers-color-scheme: dark) {
-        body[data-theme='auto'] img {
-            filter: brightness(60%);
-        }
-    }
-
-    body[data-theme='dark'] img {
-        filter: brightness(60%);
-    }
-</style>
-
-
-
-<link rel="stylesheet" href="https://inderpalaulakh.com/assets/css/fuji.min.css" />
-
-
-
-
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-187988750-1');
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-187988750-1"></script>
-
-
-</head>
-
-<body data-theme="auto">
-    <script data-cfasync="false">
-  
-  var fujiThemeData = localStorage.getItem('fuji_data-theme');
-  
-  if (!fujiThemeData) {
-    localStorage.setItem('fuji_data-theme', 'auto');
-  } else {
-    
-    if (fujiThemeData !== 'auto') {
-      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
-    }
-  }
-</script>
-
-    <header>
-    <div class="container-lg clearfix">
-        <div class="col-12 header">
-            <a class="title-main" href="https://inderpalaulakh.com/">Learner</a>
-            
-            <span class="title-sub">Learning Software Engineering</span>
-            
-        </div>
-    </div>
-</header>
-
-    <main>
-        <div class="container-lg clearfix">
-            
-            <div class="col-12 col-md-9 float-left content">
-                
-<article>
-    
-    <h2 class="post-item post-title">
-        <a href="https://inderpalaulakh.com/posts/mvcmvvm/">MVC &amp; MVVM Android Design Pattern (Android)</a>
-    </h2>
-    <div class="post-item post-meta">
-        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-03-24</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/mvc">MVC</a>&nbsp;<a href="/tags/mvvm">MVVM</a>&nbsp;<a href="/tags/android">Android</a>&nbsp;<a href="/tags/design-pattern">Design Pattern</a>&nbsp;</span>
-
-    </div>
-    
-    
-    <div class="post-content markdown-body">
-        <p>Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.</p>
-<p>In past, I was working on backend projects where tons of unit tests exists for API&rsquo;s. I am new to application development and spent some time to learn about <code>MVC</code> and <code>MVVM</code> design patterns.</p>
-<p>For next project, the preference is <code>MVVM</code>. At end of this post I will share the reason to choose <code>MVVM</code>.</p>
-<p>The example code for this post is written for Android application.</p>
-<h2 id="mvc-model-view-controller">MVC (Model-View-Controller)</h2>
-<p><img class="img-zoomable" src="../images/mvc.jpg" alt="" />
-</p>
-<p><strong>Model</strong>: Model is data layer. Model call services or database to get data from external systems.<br/>
-<strong>View</strong>: View is user interface layer.<br/>
-<strong>Controller</strong>: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.<br/></p>
-<p>I developed a sample application to demonstrate MVC. This application populates <code>ListView</code> on <code>Button</code> click.<br/></p>
-<p><img class="img-zoomable" src="../images/mvcapp.png" alt="" />
-<br/></p>
-<p><code>Folder Structure</code><br/>
-<img class="img-zoomable" src="../images/foldermvc.png" alt="Folder Structure" />
-
-<br/>
-<code>User.java</code></p>
-<pre><code class="language-java">public class User {
-    private String name;
-
-    public User(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
-</code></pre>
-<p><code>UserModel.java</code></p>
-<pre><code class="language-java">public class UserModel{
-    private final ArrayList&lt;User&gt; userList;
-
-    public UserModel(){
-        userList = new ArrayList&lt;User&gt;();
-
-        // get users from database
-        userList.add(new User(&quot;Ram&quot;));
-        userList.add(new User(&quot;Devin&quot;));
-        userList.add(new User(&quot;Sham&quot;));
-        userList.add(new User(&quot;Inder&quot;));
-        userList.add(new User(&quot;David&quot;));
-        userList.add(new User(&quot;Kaur&quot;));
-    }
-
-    public ArrayList&lt;User&gt; getUsers() {
-        return userList;
-    }
-}
-</code></pre>
-<p><code>UserController.java</code><br/>
-Controller has instances of both Model &amp; View. Controller get data from Model &amp; update view.</p>
-<pre><code class="language-java">public class UserController {
-    private final UserModel userModel;
-    private final UserView userView;
-
-    public UserController(UserView userView) {
-        this.userModel = new UserModel();
-        this.userView = userView;
-    }
-
-    public void getUsers() {
-        userView.displayUsers(userModel.getUsers());
-    }
-}
-</code></pre>
-<p><code>UserView.java</code><br/>
-UserView create instance of Controller. This class handles button clicks from UI.</p>
-<pre><code class="language-java">public class UserView {
-    View userView;
-    UserController userController;
-    Button getUsersButton;
-    ListView usersListView;
-
-    public UserView(Context context, ViewGroup container) {
-        userView = LayoutInflater.from(context).inflate(R.layout.activity_main, container, false);
-        userController = new UserController(this);
-    }
-
-    public void initView() {
-        getUsersButton = userView.findViewById(R.id.button);
-        getUsersButton.setOnClickListener(l -&gt; {
-            userController.getUsers();
-        });
-        usersListView = userView.findViewById(R.id.user_list_view);
-    }
-
-    public void displayUsers(ArrayList&lt;User&gt; users) {
-        UsersAdapter adapter = new UsersAdapter(userView.getContext(), users);
-
-        usersListView.setAdapter(adapter);
-    }
-
-    public View getRootView() {
-        return userView;
-    }
-}
-
-class UsersAdapter extends ArrayAdapter&lt;User&gt; {
-    public UsersAdapter(Context context, ArrayList&lt;User&gt; users) {
-        super(context, 0, users);
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        User user = getItem(position);
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_view_item, parent, false);
-        }
-        TextView tvName = (TextView) convertView.findViewById(R.id.user_name);
-        tvName.setText(user.getName());
-        return convertView;
-    }
-}
-</code></pre>
-<p><code>MainActivity.java</code><br/>
-MainActivity creates UserView instance.</p>
-<pre><code class="language-java">public class MainActivity extends AppCompatActivity {
-
-    UserView userView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        userView = new UserView(MainActivity.this, null);
-        setContentView(userView.getRootView());
-        userView.initView();
-    }
-}
-</code></pre>
-<p><code>activity_main.xml</code></p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    tools:context=&quot;.MainActivity&quot;&gt;
-
-    &lt;ListView
-        android:id=&quot;@+id/user_list_view&quot;
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;match_parent&quot;
-        android:layout_marginTop=&quot;90dp&quot;
-        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
-        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
-        app:layout_constraintStart_toStartOf=&quot;parent&quot;
-        app:layout_constraintTop_toTopOf=&quot;parent&quot; &gt;
-
-    &lt;/ListView&gt;
-
-    &lt;Button
-        android:id=&quot;@+id/button&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:layout_marginStart=&quot;151dp&quot;
-        android:layout_marginTop=&quot;5dp&quot;
-        android:layout_marginEnd=&quot;146dp&quot;
-        android:layout_marginBottom=&quot;24dp&quot;
-        android:text=&quot;Get Users&quot;
-        app:layout_constraintBottom_toTopOf=&quot;@+id/user_list_view&quot;
-        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
-        app:layout_constraintStart_toStartOf=&quot;parent&quot;
-        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
-</code></pre>
-<p><code>list_view_item.xml</code></p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    tools:context=&quot;.MainActivity&quot;&gt;
-    &lt;TextView
-        android:id=&quot;@+id/user_name&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;Name&quot; /&gt;
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
-</code></pre>
-<p>In above example, controller is not loosely coupled with view. It has both View &amp; Model. View also has controller reference to send receive.<br/></p>
-<h2 id="mvvm-model-view-viewmodel">MVVM (Model-View-ViewModel)</h2>
-<p><img class="img-zoomable" src="../images/mvvm.jpg" alt="" />
-</p>
-<p><strong>Model</strong>: Model is data layer. Model call services or database to get data from external systems.<br/>
-<strong>View</strong>: View is user interface layer. View is triggered first to request controller to get data from Model.<br/>
-<strong>View Model</strong>: View Model has reference to Model only. ViewModel is loosely coupled with View through <a href="https://developer.android.com/topic/libraries/architecture/livedata" target="_blank">livedata</a> or <a href="https://developer.android.com/topic/libraries/data-binding" target="_blank">databinding</a>.<br/></p>
-<p>I developed a sample application to demonstrate MVVM. This application populates <code>ListView</code> on <code>Button</code> click.<br/>
-<img class="img-zoomable" src="../images/mvvmapp.png" alt="" />
-
-<br/>
-Folder Structure<br/>
-<img class="img-zoomable" src="../images/foldermvvm.png" alt="Folder Structure" />
-</p>
-<p><code>User.java</code></p>
-<pre><code class="language-java">public class User {
-    private String name;
-
-    public User(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
-</code></pre>
-<p><code>UserModel.java</code></p>
-<pre><code class="language-java">public class UserModel{
-    private final ArrayList&lt;User&gt; userList;
-
-    public UserModel(){
-        userList = new ArrayList&lt;User&gt;();
-
-        // get users from database
-        userList.add(new User(&quot;Ram&quot;));
-        userList.add(new User(&quot;Devin&quot;));
-        userList.add(new User(&quot;Sham&quot;));
-        userList.add(new User(&quot;Inder&quot;));
-        userList.add(new User(&quot;David&quot;));
-        userList.add(new User(&quot;Kaur&quot;));
-    }
-
-    public ArrayList&lt;User&gt; getUsers() {
-        return userList;
-    }
-}
-</code></pre>
-<p><code>UserViewModel.java</code><br/>
-UserViewModel has instances of Model. Controller get data from Model and notify live data subscribers.</p>
-<pre><code class="language-java">public class UserViewModel extends ViewModel {
-
-    private MutableLiveData&lt;ArrayList&lt;User&gt;&gt; userList;
-
-    public UserViewModel() {
-        userList = new MutableLiveData&lt;&gt;();
-    }
-
-    public MutableLiveData&lt;ArrayList&lt;User&gt;&gt; getObserverUserList() {
-        return userList;
-    }
-
-    public void getUsers() {
-        // notify subscribers
-        userList.postValue((new UserModel()).getUsers());
-    }
-}
-</code></pre>
-<p><code>MainActivity.java</code><br/>
-MainActivity creates UserViewModel. UserViewModel triggers live data.</p>
-<pre><code class="language-java">public class MainActivity extends AppCompatActivity {
-    UserViewModel userViewModel;
-    Button getUsersButton;
-    ListView usersListView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        // get view model
-        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-        getUsersButton = findViewById(R.id.button);
-        getUsersButton.setOnClickListener(l -&gt; {
-            userViewModel.getUsers();
-        });
-        usersListView = findViewById(R.id.user_list_view);
-        // subscribe to view model
-        userViewModel.getObserverUserList().observe(this, l -&gt; {
-            UsersAdapter adapter = new UsersAdapter(this, l);
-
-            usersListView.setAdapter(adapter);
-        });
-    }
-}
-
-class UsersAdapter extends ArrayAdapter&lt;User&gt; {
-    public UsersAdapter(Context context, ArrayList&lt;User&gt; users) {
-        super(context, 0, users);
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        User user = getItem(position);
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_view_item, parent, false);
-        }
-        TextView tvName = (TextView) convertView.findViewById(R.id.user_name);
-        tvName.setText(user.getName());
-        return convertView;
-    }
-}
-</code></pre>
-<p><code>list_view_item.xml</code></p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    tools:context=&quot;.MainActivity&quot;&gt;
-    &lt;TextView
-        android:id=&quot;@+id/user_name&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;Name&quot; /&gt;
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
-</code></pre>
-<p>In above example, controller is loosely coupled with view. It has only Model. Controller has no information of view.<br/></p>
-<p>Note: The data bindings can be used for loose coupling.</p>
-<h2 id="finally">Finally</h2>
-<p>My purpose to use design patterns is to write <code>unit testable</code> and <code>maintainable</code> code. As <code>MVVM</code> ViewModel is loosely coupled with View. I can write unit tests for <code>Model</code> &amp; <code>ViewModel</code> without referencing View. In future, many new modules will be integrated to project. Considering all these requirement, I will consider <code>MVVM</code>.</p>
-
-    </div>
-</article>
-
-
-
-<div class="post-comment" data-comment="disqus">
-    <span class="post-comment-notloaded">
-        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
-    </span>
-    <div id="disqus_thread" style="display: none;"></div>
-    <script>
-        function loadComment() {
-            var commentArea = document.querySelector('.post-comment');
-            var disqus_config = function () {
-                this.page.url = 'https:\/\/inderpalaulakh.com\/posts\/mvcmvvm\/';
-                this.page.identifier = 'mvcmvvm';
-            };
-            var s = document.createElement('script');
-            s.src = 'https://' + 'https-inderpalaulakh-com' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            document.querySelector('#disqus_thread').removeAttribute('style');
-            (document.body || document.head).appendChild(s);
-            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
-        }
-    </script>
-</div>
-
-
-            </div>
-            <aside class="col-12 col-md-3 float-left sidebar">
-    
-    <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
-        <ul>
-            
-            <li>
-                <a href="/posts/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives/">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about/">About</a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
-        <ul>
-            
-            <li>
-                <a href="https://twitter.com/inderpal_aulakh" target="_blank"><span>Twitter</span></a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
-        <div>
-            
-            <span>
-                <a href="/tags/.md/">.md</a>
-            </span>
-            
-            <span>
-                <a href="/tags/2020/">2020</a>
-            </span>
-            
-            <span>
-                <a href="/tags/2021/">2021</a>
-            </span>
-            
-            <span>
-                <a href="/tags/aad/">AAD</a>
-            </span>
-            
-            <span>
-                <a href="/tags/adapter/">Adapter</a>
-            </span>
-            
-            <span>
-                <a href="/tags/android/">Android</a>
-            </span>
-            
-            <span>
-                <a href="/tags/authentication/">Authentication</a>
-            </span>
-            
-            <span>
-                <a href="/tags/azure-active-directory/">Azure Active Directory</a>
-            </span>
-            
-            <span>
-                <a href="/tags/azure-communication-service/">Azure Communication Service</a>
-            </span>
-            
-            <span>
-                <a href="/tags/azure-function/">Azure Function</a>
-            </span>
-            
-            <span>
-                <a href="/tags/azure-pipeline/">Azure-Pipeline</a>
-            </span>
-            
-            <span>
-                <a href="/tags/book-summary/">Book-Summary</a>
-            </span>
-            
-            <span>
-                <a href="/tags/chat-kit/">Chat Kit</a>
-            </span>
-            
-            <span>
-                <a href="/tags/checkstyle/">checkstyle</a>
-            </span>
-            
-            <span>
-                <a href="/tags/code-review/">code review</a>
-            </span>
-            
-            <span>
-                <a href="/tags/colorcode/">ColorCode</a>
-            </span>
-            
-            <span>
-                <a href="/tags/composite/">Composite</a>
-            </span>
-            
-            <span>
-                <a href="/tags/dagger/">Dagger</a>
-            </span>
-            
-            <span>
-                <a href="/tags/dependency-injection/">Dependency Injection</a>
-            </span>
-            
-            <span>
-                <a href="/tags/design-pattern/">Design Pattern</a>
-            </span>
-            
-            <span>
-                <a href="/tags/design-patterns/">Design Patterns</a>
-            </span>
-            
-            <span>
-                <a href="/tags/distributed-caching/">Distributed caching</a>
-            </span>
-            
-            <span>
-                <a href="/tags/dont-make-me-think/">Don’t make me think</a>
-            </span>
-            
-            <span>
-                <a href="/tags/gradle/">Gradle</a>
-            </span>
-            
-            <span>
-                <a href="/tags/guice/">Guice</a>
-            </span>
-            
-            <span>
-                <a href="/tags/hilt/">Hilt</a>
-            </span>
-            
-            <span>
-                <a href="/tags/hugo/">Hugo</a>
-            </span>
-            
-            <span>
-                <a href="/tags/java/">Java</a>
-            </span>
-            
-            <span>
-                <a href="/tags/kotlin/">Kotlin</a>
-            </span>
-            
-            <span>
-                <a href="/tags/middleware/">Middleware</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mvc/">MVC</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mvvm/">MVVM</a>
-            </span>
-            
-            <span>
-                <a href="/tags/node.js/">Node.js</a>
-            </span>
-            
-            <span>
-                <a href="/tags/nwhack2022/">nwHack2022</a>
-            </span>
-            
-            <span>
-                <a href="/tags/object-oriented/">Object-Oriented</a>
-            </span>
-            
-            <span>
-                <a href="/tags/pipeline-variables/">Pipeline-Variables</a>
-            </span>
-            
-            <span>
-                <a href="/tags/redis/">Redis</a>
-            </span>
-            
-            <span>
-                <a href="/tags/redux/">Redux</a>
-            </span>
-            
-            <span>
-                <a href="/tags/service-locator/">Service Locator</a>
-            </span>
-            
-            <span>
-                <a href="/tags/softwarearchitecture/">SoftwareArchitecture</a>
-            </span>
-            
-            <span>
-                <a href="/tags/startup/">Startup</a>
-            </span>
-            
-            <span>
-                <a href="/tags/systemdesign/">SystemDesign</a>
-            </span>
-            
-            <span>
-                <a href="/tags/theme/">Theme</a>
-            </span>
-            
-            <span>
-                <a href="/tags/webpack/">Webpack</a>
-            </span>
-            
-            <span>
-                <a href="/tags/workshop/">Workshop</a>
-            </span>
-            
-        </div>
-    </div>
-    
-    
-    
-    
-</aside>
-        </div>
-        <div class="btn">
-    <div class="btn-menu" id="btn-menu">
-        <i class="iconfont icon-grid-sharp"></i>
-    </div>
-    <div class="btn-toggle-mode">
-        <i class="iconfont icon-contrast-sharp"></i>
-    </div>
-    <div class="btn-scroll-top">
-        <i class="iconfont icon-chevron-up-circle-sharp"></i>
-    </div>
-</div>
-<aside class="sidebar-mobile" style="display: none;">
-  <div class="sidebar-wrapper">
-    
-    <div class="sidebar-item sidebar-pages">
-        <h3>Pages</h3>
-        <ul>
-            
-            <li>
-                <a href="/posts/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives/">Archives</a>
-            </li>
-            
-            <li>
-                <a href="/about/">About</a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-links">
-        <h3>Links</h3>
-        <ul>
-            
-            <li>
-                <a href="https://twitter.com/inderpal_aulakh" target="_blank"><span>Twitter</span></a>
-            </li>
-            
-        </ul>
-    </div>
-    
-    <div class="sidebar-item sidebar-tags">
-        <h3>Tags</h3>
-        <div>
-            
-            <span>
-                <a href="/tags/.md/">.md</a>
-            </span>
-            
-            <span>
-                <a href="/tags/2020/">2020</a>
-            </span>
-            
-            <span>
-                <a href="/tags/2021/">2021</a>
-            </span>
-            
-            <span>
-                <a href="/tags/aad/">AAD</a>
-            </span>
-            
-            <span>
-                <a href="/tags/adapter/">Adapter</a>
-            </span>
-            
-            <span>
-                <a href="/tags/android/">Android</a>
-            </span>
-            
-            <span>
-                <a href="/tags/authentication/">Authentication</a>
-            </span>
-            
-            <span>
-                <a href="/tags/azure-active-directory/">Azure Active Directory</a>
-            </span>
-            
-            <span>
-                <a href="/tags/azure-communication-service/">Azure Communication Service</a>
-            </span>
-            
-            <span>
-                <a href="/tags/azure-function/">Azure Function</a>
-            </span>
-            
-            <span>
-                <a href="/tags/azure-pipeline/">Azure-Pipeline</a>
-            </span>
-            
-            <span>
-                <a href="/tags/book-summary/">Book-Summary</a>
-            </span>
-            
-            <span>
-                <a href="/tags/chat-kit/">Chat Kit</a>
-            </span>
-            
-            <span>
-                <a href="/tags/checkstyle/">checkstyle</a>
-            </span>
-            
-            <span>
-                <a href="/tags/code-review/">code review</a>
-            </span>
-            
-            <span>
-                <a href="/tags/colorcode/">ColorCode</a>
-            </span>
-            
-            <span>
-                <a href="/tags/composite/">Composite</a>
-            </span>
-            
-            <span>
-                <a href="/tags/dagger/">Dagger</a>
-            </span>
-            
-            <span>
-                <a href="/tags/dependency-injection/">Dependency Injection</a>
-            </span>
-            
-            <span>
-                <a href="/tags/design-pattern/">Design Pattern</a>
-            </span>
-            
-            <span>
-                <a href="/tags/design-patterns/">Design Patterns</a>
-            </span>
-            
-            <span>
-                <a href="/tags/distributed-caching/">Distributed caching</a>
-            </span>
-            
-            <span>
-                <a href="/tags/dont-make-me-think/">Don’t make me think</a>
-            </span>
-            
-            <span>
-                <a href="/tags/gradle/">Gradle</a>
-            </span>
-            
-            <span>
-                <a href="/tags/guice/">Guice</a>
-            </span>
-            
-            <span>
-                <a href="/tags/hilt/">Hilt</a>
-            </span>
-            
-            <span>
-                <a href="/tags/hugo/">Hugo</a>
-            </span>
-            
-            <span>
-                <a href="/tags/java/">Java</a>
-            </span>
-            
-            <span>
-                <a href="/tags/kotlin/">Kotlin</a>
-            </span>
-            
-            <span>
-                <a href="/tags/middleware/">Middleware</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mvc/">MVC</a>
-            </span>
-            
-            <span>
-                <a href="/tags/mvvm/">MVVM</a>
-            </span>
-            
-            <span>
-                <a href="/tags/node.js/">Node.js</a>
-            </span>
-            
-            <span>
-                <a href="/tags/nwhack2022/">nwHack2022</a>
-            </span>
-            
-            <span>
-                <a href="/tags/object-oriented/">Object-Oriented</a>
-            </span>
-            
-            <span>
-                <a href="/tags/pipeline-variables/">Pipeline-Variables</a>
-            </span>
-            
-            <span>
-                <a href="/tags/redis/">Redis</a>
-            </span>
-            
-            <span>
-                <a href="/tags/redux/">Redux</a>
-            </span>
-            
-            <span>
-                <a href="/tags/service-locator/">Service Locator</a>
-            </span>
-            
-            <span>
-                <a href="/tags/softwarearchitecture/">SoftwareArchitecture</a>
-            </span>
-            
-            <span>
-                <a href="/tags/startup/">Startup</a>
-            </span>
-            
-            <span>
-                <a href="/tags/systemdesign/">SystemDesign</a>
-            </span>
-            
-            <span>
-                <a href="/tags/theme/">Theme</a>
-            </span>
-            
-            <span>
-                <a href="/tags/webpack/">Webpack</a>
-            </span>
-            
-            <span>
-                <a href="/tags/workshop/">Workshop</a>
-            </span>
-            
-        </div>
-    </div>
-    
-    
-    
-    
-  </div>
-</aside>
-    </main>
-
-    <footer>
-    <div class="container-lg clearfix">
-        <div class="col-12 footer">
-            
-            <span>&copy; 2020-2022
-                <a href="https://inderpalaulakh.com/"></a>
-                
-                | Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
-                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
-                                                    target="_blank">Hugo</a> 
-            </span>
-        </div>
-    </div>
-</footer>
-
-    
-<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
-
-
-<script defer src="/assets/js/fuji.min.js"></script>
-
-
-</body>
-
-</html>
+MVC (Model-View-Controller) Model: Model is data layer. Model call services or database to get data from external systems. View: View is user interface layer. Controller: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-03-24T18:26:03-08:00"><meta property="article:modified_time" content="2021-03-24T18:26:03-08:00"><meta property="article:tag" content="Android"><meta property="article:tag" content="Design"><meta name=twitter:card content="summary"><meta name=twitter:title content="MVC & MVVM Android Design Pattern (Android)"><meta name=twitter:description content="Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
+In past, I was working on backend projects where tons of unit tests exists for API’s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.
+For next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.
+The example code for this post is written for Android application.
+MVC (Model-View-Controller) Model: Model is data layer. Model call services or database to get data from external systems. View: View is user interface layer. Controller: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://inderpalaulakh.com/posts/"},{"@type":"ListItem","position":2,"name":"MVC \u0026 MVVM Android Design Pattern (Android)","item":"https://inderpalaulakh.com/posts/mvcmvvm/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"MVC \u0026 MVVM Android Design Pattern (Android)","name":"MVC \u0026 MVVM Android Design Pattern (Android)","description":"Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.\nIn past, I was working on backend projects where tons of unit tests exists for API\u0026rsquo;s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.\nFor next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.\nThe example code for this post is written for Android application.\nMVC (Model-View-Controller) Model: Model is data layer. Model call services or database to get data from external systems. View: View is user interface layer. Controller: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.\n","keywords":["Android","Design"],"articleBody":"Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.\nIn past, I was working on backend projects where tons of unit tests exists for API’s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.\nFor next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.\nThe example code for this post is written for Android application.\nMVC (Model-View-Controller) Model: Model is data layer. Model call services or database to get data from external systems. View: View is user interface layer. Controller: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.\nI developed a sample application to demonstrate MVC. This application populates ListView on Button click.\nFolder Structure User.java\npublic class User { private String name; public User(String name) { this.name = name; } public String getName() { return name; } } UserModel.java\npublic class UserModel{ private final ArrayList\u003cUser\u003e userList; public UserModel(){ userList = new ArrayList\u003cUser\u003e(); // get users from database userList.add(new User(\"Ram\")); userList.add(new User(\"Devin\")); userList.add(new User(\"Sham\")); userList.add(new User(\"Inder\")); userList.add(new User(\"David\")); userList.add(new User(\"Kaur\")); } public ArrayList\u003cUser\u003e getUsers() { return userList; } } UserController.java Controller has instances of both Model \u0026 View. Controller get data from Model \u0026 update view.\npublic class UserController { private final UserModel userModel; private final UserView userView; public UserController(UserView userView) { this.userModel = new UserModel(); this.userView = userView; } public void getUsers() { userView.displayUsers(userModel.getUsers()); } } UserView.java UserView create instance of Controller. This class handles button clicks from UI.\npublic class UserView { View userView; UserController userController; Button getUsersButton; ListView usersListView; public UserView(Context context, ViewGroup container) { userView = LayoutInflater.from(context).inflate(R.layout.activity_main, container, false); userController = new UserController(this); } public void initView() { getUsersButton = userView.findViewById(R.id.button); getUsersButton.setOnClickListener(l -\u003e { userController.getUsers(); }); usersListView = userView.findViewById(R.id.user_list_view); } public void displayUsers(ArrayList\u003cUser\u003e users) { UsersAdapter adapter = new UsersAdapter(userView.getContext(), users); usersListView.setAdapter(adapter); } public View getRootView() { return userView; } } class UsersAdapter extends ArrayAdapter\u003cUser\u003e { public UsersAdapter(Context context, ArrayList\u003cUser\u003e users) { super(context, 0, users); } @Override public View getView(int position, View convertView, ViewGroup parent) { User user = getItem(position); if (convertView == null) { convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_view_item, parent, false); } TextView tvName = (TextView) convertView.findViewById(R.id.user_name); tvName.setText(user.getName()); return convertView; } } MainActivity.java MainActivity creates UserView instance.\npublic class MainActivity extends AppCompatActivity { UserView userView; @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); userView = new UserView(MainActivity.this, null); setContentView(userView.getRootView()); userView.initView(); } } activity_main.xml\n\u003c?xml version=\"1.0\" encoding=\"utf-8\"?\u003e ","wordCount":"913","inLanguage":"en","datePublished":"2021-03-24T18:26:03-08:00","dateModified":"2021-03-24T18:26:03-08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://inderpalaulakh.com/posts/mvcmvvm/"},"publisher":{"@type":"Organization","name":"Inderpal Aulakh","logo":{"@type":"ImageObject","url":"https://inderpalaulakh.com/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://inderpalaulakh.com/ accesskey=h title="Inderpal Aulakh (Alt + H)">Inderpal Aulakh</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://inderpalaulakh.com/posts/ title=Posts><span>Posts</span></a></li><li><a href=https://inderpalaulakh.com/archives/ title=Archives><span>Archives</span></a></li><li><a href=https://inderpalaulakh.com/about/ title=About><span>About</span></a></li><li><a href=https://inderpalaulakh.com/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+<a href=/posts/>Posts</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">MVC & MVVM Android Design Pattern (Android)</h1><div class=post-meta><span title='2021-03-24 18:26:03 -0800 -0800'>March 24, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>913 words</span></div></header><div class="post-content md-content"><p>Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.</p><p>In past, I was working on backend projects where tons of unit tests exists for API&rsquo;s. I am new to application development and spent some time to learn about <code>MVC</code> and <code>MVVM</code> design patterns.</p><p>For next project, the preference is <code>MVVM</code>. At end of this post I will share the reason to choose <code>MVVM</code>.</p><p>The example code for this post is written for Android application.</p><h2 id=mvc-model-view-controller>MVC (Model-View-Controller)<a hidden class=anchor aria-hidden=true href=#mvc-model-view-controller>#</a></h2><p><img loading=lazy src=../images/mvc.jpg></p><p><strong>Model</strong>: Model is data layer. Model call services or database to get data from external systems.<br><strong>View</strong>: View is user interface layer.<br><strong>Controller</strong>: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.<br></p><p>I developed a sample application to demonstrate MVC. This application populates <code>ListView</code> on <code>Button</code> click.<br></p><p><img loading=lazy src=../images/mvcapp.png><br></p><p><code>Folder Structure</code><br><img alt="Folder Structure" loading=lazy src=../images/foldermvc.png><br><code>User.java</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>User</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> String name;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>User</span>(String name) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> name;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>getName</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> name;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>UserModel.java</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UserModel</span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>final</span> ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> userList;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>UserModel</span>(){
+</span></span><span style=display:flex><span>        userList <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// get users from database</span>
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Ram&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Devin&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Sham&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Inder&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;David&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Kaur&#34;</span>));
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>getUsers</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> userList;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>UserController.java</code><br>Controller has instances of both Model & View. Controller get data from Model & update view.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UserController</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>final</span> UserModel userModel;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>final</span> UserView userView;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>UserController</span>(UserView userView) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>userModel</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserModel();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>userView</span> <span style=color:#f92672>=</span> userView;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getUsers</span>() {
+</span></span><span style=display:flex><span>        userView.<span style=color:#a6e22e>displayUsers</span>(userModel.<span style=color:#a6e22e>getUsers</span>());
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>UserView.java</code><br>UserView create instance of Controller. This class handles button clicks from UI.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UserView</span> {
+</span></span><span style=display:flex><span>    View userView;
+</span></span><span style=display:flex><span>    UserController userController;
+</span></span><span style=display:flex><span>    Button getUsersButton;
+</span></span><span style=display:flex><span>    ListView usersListView;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>UserView</span>(Context context, ViewGroup container) {
+</span></span><span style=display:flex><span>        userView <span style=color:#f92672>=</span> LayoutInflater.<span style=color:#a6e22e>from</span>(context).<span style=color:#a6e22e>inflate</span>(R.<span style=color:#a6e22e>layout</span>.<span style=color:#a6e22e>activity_main</span>, container, <span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>        userController <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserController(<span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>initView</span>() {
+</span></span><span style=display:flex><span>        getUsersButton <span style=color:#f92672>=</span> userView.<span style=color:#a6e22e>findViewById</span>(R.<span style=color:#a6e22e>id</span>.<span style=color:#a6e22e>button</span>);
+</span></span><span style=display:flex><span>        getUsersButton.<span style=color:#a6e22e>setOnClickListener</span>(l <span style=color:#f92672>-&gt;</span> {
+</span></span><span style=display:flex><span>            userController.<span style=color:#a6e22e>getUsers</span>();
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>        usersListView <span style=color:#f92672>=</span> userView.<span style=color:#a6e22e>findViewById</span>(R.<span style=color:#a6e22e>id</span>.<span style=color:#a6e22e>user_list_view</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>displayUsers</span>(ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> users) {
+</span></span><span style=display:flex><span>        UsersAdapter adapter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UsersAdapter(userView.<span style=color:#a6e22e>getContext</span>(), users);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        usersListView.<span style=color:#a6e22e>setAdapter</span>(adapter);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> View <span style=color:#a6e22e>getRootView</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> userView;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UsersAdapter</span> <span style=color:#66d9ef>extends</span> ArrayAdapter<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>UsersAdapter</span>(Context context, ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> users) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>super</span>(context, 0, users);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> View <span style=color:#a6e22e>getView</span>(<span style=color:#66d9ef>int</span> position, View convertView, ViewGroup parent) {
+</span></span><span style=display:flex><span>        User user <span style=color:#f92672>=</span> getItem(position);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (convertView <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span>) {
+</span></span><span style=display:flex><span>            convertView <span style=color:#f92672>=</span> LayoutInflater.<span style=color:#a6e22e>from</span>(getContext()).<span style=color:#a6e22e>inflate</span>(R.<span style=color:#a6e22e>layout</span>.<span style=color:#a6e22e>list_view_item</span>, parent, <span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        TextView tvName <span style=color:#f92672>=</span> (TextView) convertView.<span style=color:#a6e22e>findViewById</span>(R.<span style=color:#a6e22e>id</span>.<span style=color:#a6e22e>user_name</span>);
+</span></span><span style=display:flex><span>        tvName.<span style=color:#a6e22e>setText</span>(user.<span style=color:#a6e22e>getName</span>());
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> convertView;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>MainActivity.java</code><br>MainActivity creates UserView instance.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MainActivity</span> <span style=color:#66d9ef>extends</span> AppCompatActivity {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    UserView userView;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>protected</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>onCreate</span>(Bundle savedInstanceState) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>super</span>.<span style=color:#a6e22e>onCreate</span>(savedInstanceState);
+</span></span><span style=display:flex><span>        userView <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserView(MainActivity.<span style=color:#a6e22e>this</span>, <span style=color:#66d9ef>null</span>);
+</span></span><span style=display:flex><span>        setContentView(userView.<span style=color:#a6e22e>getRootView</span>());
+</span></span><span style=display:flex><span>        userView.<span style=color:#a6e22e>initView</span>();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>activity_main.xml</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;androidx.constraintlayout.widget.ConstraintLayout</span> <span style=color:#a6e22e>xmlns:android=</span><span style=color:#e6db74>&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>xmlns:app=</span><span style=color:#e6db74>&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>xmlns:tools=</span><span style=color:#e6db74>&#34;http://schemas.android.com/tools&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>android:layout_width=</span><span style=color:#e6db74>&#34;match_parent&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>android:layout_height=</span><span style=color:#e6db74>&#34;match_parent&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>tools:context=</span><span style=color:#e6db74>&#34;.MainActivity&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;ListView</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:id=</span><span style=color:#e6db74>&#34;@+id/user_list_view&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_width=</span><span style=color:#e6db74>&#34;match_parent&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_height=</span><span style=color:#e6db74>&#34;match_parent&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_marginTop=</span><span style=color:#e6db74>&#34;90dp&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>app:layout_constraintBottom_toBottomOf=</span><span style=color:#e6db74>&#34;parent&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>app:layout_constraintEnd_toEndOf=</span><span style=color:#e6db74>&#34;parent&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>app:layout_constraintStart_toStartOf=</span><span style=color:#e6db74>&#34;parent&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>app:layout_constraintTop_toTopOf=</span><span style=color:#e6db74>&#34;parent&#34;</span> <span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/ListView&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;Button</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:id=</span><span style=color:#e6db74>&#34;@+id/button&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_width=</span><span style=color:#e6db74>&#34;wrap_content&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_height=</span><span style=color:#e6db74>&#34;wrap_content&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_marginStart=</span><span style=color:#e6db74>&#34;151dp&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_marginTop=</span><span style=color:#e6db74>&#34;5dp&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_marginEnd=</span><span style=color:#e6db74>&#34;146dp&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_marginBottom=</span><span style=color:#e6db74>&#34;24dp&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:text=</span><span style=color:#e6db74>&#34;Get Users&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>app:layout_constraintBottom_toTopOf=</span><span style=color:#e6db74>&#34;@+id/user_list_view&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>app:layout_constraintEnd_toEndOf=</span><span style=color:#e6db74>&#34;parent&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>app:layout_constraintStart_toStartOf=</span><span style=color:#e6db74>&#34;parent&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>app:layout_constraintTop_toTopOf=</span><span style=color:#e6db74>&#34;parent&#34;</span> <span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+</span></span></code></pre></div><p><code>list_view_item.xml</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;androidx.constraintlayout.widget.ConstraintLayout</span> <span style=color:#a6e22e>xmlns:android=</span><span style=color:#e6db74>&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>xmlns:app=</span><span style=color:#e6db74>&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>xmlns:tools=</span><span style=color:#e6db74>&#34;http://schemas.android.com/tools&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>android:layout_width=</span><span style=color:#e6db74>&#34;match_parent&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>android:layout_height=</span><span style=color:#e6db74>&#34;match_parent&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>tools:context=</span><span style=color:#e6db74>&#34;.MainActivity&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;TextView</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:id=</span><span style=color:#e6db74>&#34;@+id/user_name&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_width=</span><span style=color:#e6db74>&#34;wrap_content&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_height=</span><span style=color:#e6db74>&#34;wrap_content&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:text=</span><span style=color:#e6db74>&#34;Name&#34;</span> <span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+</span></span></code></pre></div><p>In above example, controller is not loosely coupled with view. It has both View & Model. View also has controller reference to send receive.<br></p><h2 id=mvvm-model-view-viewmodel>MVVM (Model-View-ViewModel)<a hidden class=anchor aria-hidden=true href=#mvvm-model-view-viewmodel>#</a></h2><p><img loading=lazy src=../images/mvvm.jpg></p><p><strong>Model</strong>: Model is data layer. Model call services or database to get data from external systems.<br><strong>View</strong>: View is user interface layer. View is triggered first to request controller to get data from Model.<br><strong>View Model</strong>: View Model has reference to Model only. ViewModel is loosely coupled with View through <a href=https://developer.android.com/topic/libraries/architecture/livedata>livedata</a> or <a href=https://developer.android.com/topic/libraries/data-binding>databinding</a>.<br></p><p>I developed a sample application to demonstrate MVVM. This application populates <code>ListView</code> on <code>Button</code> click.<br><img loading=lazy src=../images/mvvmapp.png><br>Folder Structure<br><img alt="Folder Structure" loading=lazy src=../images/foldermvvm.png></p><p><code>User.java</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>User</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> String name;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>User</span>(String name) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> name;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>getName</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> name;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>UserModel.java</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UserModel</span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>final</span> ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> userList;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>UserModel</span>(){
+</span></span><span style=display:flex><span>        userList <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// get users from database</span>
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Ram&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Devin&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Sham&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Inder&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;David&#34;</span>));
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>add</span>(<span style=color:#66d9ef>new</span> User(<span style=color:#e6db74>&#34;Kaur&#34;</span>));
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>getUsers</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> userList;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>UserViewModel.java</code><br>UserViewModel has instances of Model. Controller get data from Model and notify live data subscribers.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UserViewModel</span> <span style=color:#66d9ef>extends</span> ViewModel {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> MutableLiveData<span style=color:#f92672>&lt;</span>ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;&gt;</span> userList;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>UserViewModel</span>() {
+</span></span><span style=display:flex><span>        userList <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> MutableLiveData<span style=color:#f92672>&lt;&gt;</span>();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> MutableLiveData<span style=color:#f92672>&lt;</span>ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>getObserverUserList</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> userList;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getUsers</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// notify subscribers</span>
+</span></span><span style=display:flex><span>        userList.<span style=color:#a6e22e>postValue</span>((<span style=color:#66d9ef>new</span> UserModel()).<span style=color:#a6e22e>getUsers</span>());
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>MainActivity.java</code><br>MainActivity creates UserViewModel. UserViewModel triggers live data.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MainActivity</span> <span style=color:#66d9ef>extends</span> AppCompatActivity {
+</span></span><span style=display:flex><span>    UserViewModel userViewModel;
+</span></span><span style=display:flex><span>    Button getUsersButton;
+</span></span><span style=display:flex><span>    ListView usersListView;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>protected</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>onCreate</span>(Bundle savedInstanceState) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>super</span>.<span style=color:#a6e22e>onCreate</span>(savedInstanceState);
+</span></span><span style=display:flex><span>        setContentView(R.<span style=color:#a6e22e>layout</span>.<span style=color:#a6e22e>activity_main</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// get view model</span>
+</span></span><span style=display:flex><span>        userViewModel <span style=color:#f92672>=</span> ViewModelProviders.<span style=color:#a6e22e>of</span>(<span style=color:#66d9ef>this</span>).<span style=color:#a6e22e>get</span>(UserViewModel.<span style=color:#a6e22e>class</span>);
+</span></span><span style=display:flex><span>        getUsersButton <span style=color:#f92672>=</span> findViewById(R.<span style=color:#a6e22e>id</span>.<span style=color:#a6e22e>button</span>);
+</span></span><span style=display:flex><span>        getUsersButton.<span style=color:#a6e22e>setOnClickListener</span>(l <span style=color:#f92672>-&gt;</span> {
+</span></span><span style=display:flex><span>            userViewModel.<span style=color:#a6e22e>getUsers</span>();
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>        usersListView <span style=color:#f92672>=</span> findViewById(R.<span style=color:#a6e22e>id</span>.<span style=color:#a6e22e>user_list_view</span>);
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// subscribe to view model</span>
+</span></span><span style=display:flex><span>        userViewModel.<span style=color:#a6e22e>getObserverUserList</span>().<span style=color:#a6e22e>observe</span>(<span style=color:#66d9ef>this</span>, l <span style=color:#f92672>-&gt;</span> {
+</span></span><span style=display:flex><span>            UsersAdapter adapter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UsersAdapter(<span style=color:#66d9ef>this</span>, l);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            usersListView.<span style=color:#a6e22e>setAdapter</span>(adapter);
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UsersAdapter</span> <span style=color:#66d9ef>extends</span> ArrayAdapter<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>UsersAdapter</span>(Context context, ArrayList<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> users) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>super</span>(context, 0, users);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> View <span style=color:#a6e22e>getView</span>(<span style=color:#66d9ef>int</span> position, View convertView, ViewGroup parent) {
+</span></span><span style=display:flex><span>        User user <span style=color:#f92672>=</span> getItem(position);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (convertView <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span>) {
+</span></span><span style=display:flex><span>            convertView <span style=color:#f92672>=</span> LayoutInflater.<span style=color:#a6e22e>from</span>(getContext()).<span style=color:#a6e22e>inflate</span>(R.<span style=color:#a6e22e>layout</span>.<span style=color:#a6e22e>list_view_item</span>, parent, <span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        TextView tvName <span style=color:#f92672>=</span> (TextView) convertView.<span style=color:#a6e22e>findViewById</span>(R.<span style=color:#a6e22e>id</span>.<span style=color:#a6e22e>user_name</span>);
+</span></span><span style=display:flex><span>        tvName.<span style=color:#a6e22e>setText</span>(user.<span style=color:#a6e22e>getName</span>());
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> convertView;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>list_view_item.xml</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;androidx.constraintlayout.widget.ConstraintLayout</span> <span style=color:#a6e22e>xmlns:android=</span><span style=color:#e6db74>&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>xmlns:app=</span><span style=color:#e6db74>&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>xmlns:tools=</span><span style=color:#e6db74>&#34;http://schemas.android.com/tools&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>android:layout_width=</span><span style=color:#e6db74>&#34;match_parent&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>android:layout_height=</span><span style=color:#e6db74>&#34;match_parent&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>tools:context=</span><span style=color:#e6db74>&#34;.MainActivity&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;TextView</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:id=</span><span style=color:#e6db74>&#34;@+id/user_name&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_width=</span><span style=color:#e6db74>&#34;wrap_content&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:layout_height=</span><span style=color:#e6db74>&#34;wrap_content&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>android:text=</span><span style=color:#e6db74>&#34;Name&#34;</span> <span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+</span></span></code></pre></div><p>In above example, controller is loosely coupled with view. It has only Model. Controller has no information of view.<br></p><p>Note: The data bindings can be used for loose coupling.</p><h2 id=finally>Finally<a hidden class=anchor aria-hidden=true href=#finally>#</a></h2><p>My purpose to use design patterns is to write <code>unit testable</code> and <code>maintainable</code> code. As <code>MVVM</code> ViewModel is loosely coupled with View. I can write unit tests for <code>Model</code> & <code>ViewModel</code> without referencing View. In future, many new modules will be integrated to project. Considering all these requirement, I will consider <code>MVVM</code>.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://inderpalaulakh.com/tags/android/>Android</a></li><li><a href=https://inderpalaulakh.com/tags/design/>Design</a></li></ul><nav class=paginav><a class=prev href=https://inderpalaulakh.com/posts/redis/><span class=title>« Prev</span>
+<span>Distributed caching - Redis</span>
+</a><a class=next href=https://inderpalaulakh.com/posts/colorcode/><span class=title>Next »</span>
+<span>Coding blog with colored code snippets(.md posts)</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://inderpalaulakh.com/>Inderpal Aulakh</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

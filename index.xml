@@ -1,287 +1,639 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Learner</title>
-    <link>https://inderpalaulakh.com/</link>
-    <description>Recent content on Learner</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 15 Feb 2022 17:33:17 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>NwHack 2022</title>
-      <link>https://inderpalaulakh.com/posts/nwhack2022/</link>
-      <pubDate>Tue, 15 Feb 2022 17:33:17 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/nwhack2022/</guid>
-      <description>Azure Communication Services (ACS) sponsored nwHack 2022 at The University of British Columbia. It was great to see the engagement from students to leverage open source API&amp;rsquo;s to solve daily problems. &amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Past (2021 (365 - 8)) - Present (Today 😊) - Future (*) </title>
-      <link>https://inderpalaulakh.com/posts/year-2021/</link>
-      <pubDate>Fri, 24 Dec 2021 13:45:39 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/year-2021/</guid>
-      <description>At the beginning of year 2021, my professional goal was to write bogs as well as to work on designing a software system. &amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Software System Design</title>
-      <link>https://inderpalaulakh.com/posts/systemdesign1/</link>
-      <pubDate>Sat, 23 Oct 2021 18:08:19 -0700</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/systemdesign1/</guid>
-      <description>I do not know how the perfect software architectures are build. It is possible that perfect software designs are myth. &amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Android Sample Chat Application using Azure Communication Services and ChatKit</title>
-      <link>https://inderpalaulakh.com/posts/azurechat/</link>
-      <pubDate>Sun, 08 Aug 2021 15:12:01 -0700</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/azurechat/</guid>
-      <description>This post demonstrates the Android chat application leveraging Azure Communication Services and ChatKit.</description>
-    </item>
-    
-    <item>
-      <title>Harnessing the Power of Less</title>
-      <link>https://inderpalaulakh.com/posts/thepowerofless/</link>
-      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/thepowerofless/</guid>
-      <description>Last week, I read an article &amp;ldquo;Harnessing the Power of Less&amp;rdquo; published in Special Times Edition &amp;ldquo;Secrets of Success&amp;rdquo;. The beautiful line &amp;ldquo;Stretching encourages adaptation and working with what you already have, rather than focusing on needing more&amp;rdquo; &amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Kotlin map, foldRight &amp; nested functions to implement redux middleware</title>
-      <link>https://inderpalaulakh.com/posts/middlewarekotlin/</link>
-      <pubDate>Mon, 10 May 2021 14:27:12 -0700</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/middlewarekotlin/</guid>
-      <description>Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp;amp; fold right for execution.
-Before diving into higher order functions, let&amp;rsquo;s go through map &amp;amp; fold right.
-map is collective transform operation.
-var numbers = mutableListOf(1, 2, 3)numbers = numbers.map { it*2 }.toMutableList()// elements in numbers: 2,4,6 foldRight accept initial state, apply initial state to all elements and return final state.
-var numbers = mutableListOf(1, 2, 3)var result = numbers.foldRight(100, {a,b -&amp;gt; test(a,b)})private fun test(a: Int, b: Any): Int {return a + b as Int}/*First execution: initial 100a = 3b = 100Second Executiona = 2b = 103Third Executiona = 1b = 105final: result = 106*/ Let&amp;rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.</description>
-    </item>
-    
-    <item>
-      <title>Dagger, Injecting custom objects (Interface implementation)</title>
-      <link>https://inderpalaulakh.com/posts/dicustom/</link>
-      <pubDate>Sun, 02 May 2021 00:00:29 -0700</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/dicustom/</guid>
-      <description>It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes Logger, Service and class Middleware is dependent on these classes.
-class Logger()class Service()//this class requires Logger &amp;amp; Service objectclass Middleware(private val logger:Logger. private val service:Service)// middleware objectval middleware = Middleware(Logger(),Service()) Dagger can build objects of Logger and Service classes by indicating @Inject annotation to all three classes
-internal class Logger @Inject constructor()internal class Service @Inject constructor()//this class requires Logger &amp;amp; Service objectinternal class Middleware @Inject constructor(private val logger:Logger.</description>
-    </item>
-    
-    <item>
-      <title>Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</title>
-      <link>https://inderpalaulakh.com/posts/di/</link>
-      <pubDate>Mon, 12 Apr 2021 10:46:57 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/di/</guid>
-      <description>Below are widely used Dependency Injection frameworks mostly by android &amp;amp; Java application projects.
-For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.
-Guice Guice (pronounced &amp;lsquo;juice&amp;rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)
-With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp;amp; Application development.
-For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch.</description>
-    </item>
-    
-    <item>
-      <title>Distributed caching - Redis</title>
-      <link>https://inderpalaulakh.com/posts/redis/</link>
-      <pubDate>Thu, 25 Mar 2021 18:26:03 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/redis/</guid>
-      <description>Redis is in-memory data structure store. Redis has a really good documentation to learn and implement framework capabilities. 
-My mentor at Job guided me to learn Redis. My primary focus is to understand how Redis helps for Distributed Caching.
-Distributed Caching Distributed Caching is cache shared by multiple servers. The miclsroservices or services can keep it&amp;rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.
-The caches are used to save time to reduce cost to read database from database. The in memory(RAM cache) data is much more efficient to perform read operations as compared to SQL databases.</description>
-    </item>
-    
-    <item>
-      <title>MVC &amp; MVVM Android Design Pattern (Android)</title>
-      <link>https://inderpalaulakh.com/posts/mvcmvvm/</link>
-      <pubDate>Wed, 24 Mar 2021 18:26:03 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/mvcmvvm/</guid>
-      <description>Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
-In past, I was working on backend projects where tons of unit tests exists for API&amp;rsquo;s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.
-For next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.
-The example code for this post is written for Android application.
-MVC (Model-View-Controller) Model: Model is data layer.</description>
-    </item>
-    
-    <item>
-      <title>Coding blog with colored code snippets(.md posts)</title>
-      <link>https://inderpalaulakh.com/posts/colorcode/</link>
-      <pubDate>Thu, 25 Feb 2021 19:38:55 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/colorcode/</guid>
-      <description>We can make our code snippets more interesting and readable by sharing code with color formatting.
-To turn on colors, just add language short name 😉
-For C# code, add cs after ```.
-```cs
-write your code here
-```
-Example:
-static void Main(string[] args){Logging logger = new Logging();logger.Log(&amp;quot;login success&amp;quot;);} </description>
-    </item>
-    
-    <item>
-      <title>Adapter Design Pattern</title>
-      <link>https://inderpalaulakh.com/posts/adapterdesignpattern/</link>
-      <pubDate>Sat, 13 Feb 2021 17:11:06 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/adapterdesignpattern/</guid>
-      <description>This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.
-Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
-class WriteLogsToLocalFile{public void Log(string fileName, string message){//write logs to file }}class WriteLogsToServer{public void Log(string urL, string message, string token){//call rest API with oAuth // Note: here token is used for oAuth}}static void Main(string[] args){WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile();fileLogs.Log(&amp;quot;hello.xml&amp;quot;, &amp;quot;login success&amp;quot;);WriteLogsToServer serverLogs = new WriteLogsToServer();serverLogs.Log(&amp;quot;https://server.logs/upload&amp;quot;, &amp;quot;login success&amp;quot;, &amp;quot;oAuthToken&amp;quot;);} Here user is manually creating objects to write logs separately to local file and server.</description>
-    </item>
-    
-    <item>
-      <title>Code Review</title>
-      <link>https://inderpalaulakh.com/posts/codereview/</link>
-      <pubDate>Tue, 09 Feb 2021 07:50:50 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/codereview/</guid>
-      <description>Code reviews plays an important role to keep code consistent and readable. Code reviews are conducted to maintain quality and simplicity. The bugs should be taken care by automated tests. Code reviews are the best way to learn coding skills from your team members.
-In this post, I want to share my opinion on how to write code reviews comments. I read a document Google code review. This document is really helpful to write code reviews comments and how to fix, reply on code review comments.
-The variable name, function name or class name style formatting This type of comments should be taken care by compile time code validation.</description>
-    </item>
-    
-    <item>
-      <title>Composite Design Pattern</title>
-      <link>https://inderpalaulakh.com/posts/compositedesignpattern/</link>
-      <pubDate>Sun, 24 Jan 2021 15:33:39 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/compositedesignpattern/</guid>
-      <description>The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.
-Component This is a class that contain all the members that needs to be implemented by all the objects.
-Composite This class is used to add, remove and traverse components.
-Leaf The leaf object in tree structure is defined as leaf element.
-Code Sample I want to print salaries of all employees in my organization with names and designation. The root of organization tree is CEO. The CEO has directors as child composite.</description>
-    </item>
-    
-    <item>
-      <title>Android Application implementing Azure Active Directory Authentication to call protected Azure Function </title>
-      <link>https://inderpalaulakh.com/posts/azureaad/</link>
-      <pubDate>Sat, 23 Jan 2021 13:36:35 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/azureaad/</guid>
-      <description>In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.
-Create an Android Application Open Android Studio and create new Project with Empty Activity.
-Configure project with below settings
-Get SHA1 &amp;amp; package name Open powershell and cd to C:\Users&amp;lt;username&amp;gt;.android Execute below command, if prompted for password enter android or leave blank
-keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android Copy SHA1 -&amp;gt; Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
-Copy package name from AndroidManifest.xml
-Now you have packagename &amp;amp; Base64 SHA1 hash</description>
-    </item>
-    
-    <item>
-      <title>Android Studio Enable Checkstyle (Gradle)</title>
-      <link>https://inderpalaulakh.com/posts/android-checkstyle/</link>
-      <pubDate>Sun, 17 Jan 2021 08:23:23 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/android-checkstyle/</guid>
-      <description>Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.
-Steps to enable checkstyle for Android Project Create checkstyle.xml Create folder checkstyle inside Android Project app folder. Create file checkstyle.xml Reference
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE module PUBLIC&amp;quot;-//Puppy Crawl//DTD Check Configuration 1.2//EN&amp;quot;&amp;quot;http://www.puppycrawl.com/dtds/configuration_1_2.dtd&amp;quot;&amp;gt;&amp;lt;!--Checkstyle configuration that checks the sun coding conventions from:- the Java Language Specification athttp://java.sun.com/docs/books/jls/second_edition/html/index.html- the Sun Code Conventions at http://java.sun.com/docs/codeconv/- the Javadoc guidelines athttp://java.sun.com/j2se/javadoc/writingdoccomments/index.html- the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html- some best practicesCheckstyle is very configurable. Be sure to read the documentation athttp://checkstyle.</description>
-    </item>
-    
-    <item>
-      <title>Generation of Sequence Diagram using Mermaid</title>
-      <link>https://inderpalaulakh.com/posts/mermaid/</link>
-      <pubDate>Wed, 06 Jan 2021 10:46:57 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/mermaid/</guid>
-      <description>I use online tools to generate sequence diagrams. Recently, my colleague at work guided me about Mermaid to generate sequence diagrams. This is an awesome tool.
-Mermaid
-Mermaid has online editor Editor. However, I did not use online editor for confidentiality reasons.
-I created index.html and opened in browser.
-&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;mermaid.initialize({ startOnLoad: true });&amp;lt;/script&amp;gt;&amp;lt;div class=&amp;quot;mermaid&amp;quot;&amp;gt;sequenceDiagramparticipant Aparticipant B A-&amp;gt;&amp;gt;B:How are you?B--&amp;gt;&amp;gt; A: I am goodloop test loopA-&amp;gt;&amp;gt;B:How are you?B--&amp;gt;&amp;gt; A: I am goodend&amp;lt;/div&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt; </description>
-    </item>
-    
-    <item>
-      <title>2020 Review</title>
-      <link>https://inderpalaulakh.com/posts/2020review/</link>
-      <pubDate>Thu, 31 Dec 2020 13:26:03 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/2020review/</guid>
-      <description>The year 2020 was a year of unpredicted event Covid-19. In January, my wife travelled to Toronto for her co-op and I planned to spend my evenings studying algorithms and software engineering concepts alongside full time job.
-I planned to complete most of the study-topics in March and completed as planned. In mid-March my office shared guidelines to work from home. My wife was also back from Toronto and started a co-op remotely.
-I saved two hours of commute time. My office had layoffs. Some of my teammates were laid off. It was a hard time to see teammates leaving, and I got worried about myself.</description>
-    </item>
-    
-    <item>
-      <title>Accessing Azure Pipeline variables in Webpack Node.js</title>
-      <link>https://inderpalaulakh.com/posts/pipelinevar/</link>
-      <pubDate>Wed, 30 Dec 2020 21:22:38 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/pipelinevar/</guid>
-      <description>Recently, I struggled a bit to figure out a way to access Azure-Pipeline Variables in Node.js JavaScript/TypeScript project. However, it is easy.
-.yml Pipeline code - task: Npm@1displayName: &amp;quot;Run project&amp;quot;env:MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital lettersinputs:commands: &#39;custom&#39;CustomCommand: &#39;run test&#39; npm Package install package string-replace-loader
-TypeScript/JavaScript File Create a file with any name &amp;ldquo;test.ts&amp;rdquo;
-test.tsconst test = () =&amp;gt; {const myVariable = &amp;quot;My-Variable&amp;quot;;}; Setup webpack.config.js  module: {rules: [{test: /test\.ts$/,loader: &#39;string-replace-loader&#39;,options: {search: &#39;My-Variable&#39;,replace: process.env[&#39;MyVariableName&#39;] // from .yml env}}]}} Finally &amp;quot;scripts&amp;quot; :{&amp;quot;test&amp;quot;: &amp;quot;webpack --config webpack.</description>
-    </item>
-    
-    <item>
-      <title>DoubleDispatch</title>
-      <link>https://inderpalaulakh.com/posts/doubledispatch/</link>
-      <pubDate>Mon, 28 Dec 2020 00:22:53 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/doubledispatch/</guid>
-      <description>To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp;amp; Overriding.
-One level of virtual dispatching derived types override a base types: as shown below
- class Farms{public virtual void Irrigation(){Console.WriteLine(&amp;quot;Farm Type&amp;quot;);}}class WheatFarm : Farms{public override void Irrigation(){Console.WriteLine(&amp;quot;WheatFarm&amp;quot;);}}class RicaFarm : WheatFarm{public override void Irrigation(){Console.WriteLine(&amp;quot;RicaFarm&amp;quot;);}}static void Main(string[] args){var a = new Farms();var b = new WheatFarm();var c = new RicaFarm();a.Irrigation();b.Irrigation();c.Irrigation();}//outputFarm TypeWheatFarmRicaFarm Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.</description>
-    </item>
-    
-    <item>
-      <title>Overloading &amp; Overriding</title>
-      <link>https://inderpalaulakh.com/archives/dispatch/</link>
-      <pubDate>Tue, 15 Dec 2020 20:57:27 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/archives/dispatch/</guid>
-      <description>To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
-Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
-As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop{public virtual void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;);}}class Wheat : Crop{public override void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;);}}/* An example of overloading (Method with same name but different parameter type)* */class CropWatering{public void WaterSupply(Crop crop){Console.</description>
-    </item>
-    
-    <item>
-      <title>Overloading &amp; Overriding</title>
-      <link>https://inderpalaulakh.com/posts/dispatch/</link>
-      <pubDate>Tue, 15 Dec 2020 20:57:27 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/dispatch/</guid>
-      <description>To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
-Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
-As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop{public virtual void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;);}}class Wheat : Crop{public override void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;);}}/* An example of overloading (Method with same name but different parameter type)* */class CropWatering{public void WaterSupply(Crop crop){Console.</description>
-    </item>
-    
-    <item>
-      <title>Book Summary: Don’t make me think - Steve Krug </title>
-      <link>https://inderpalaulakh.com/posts/my-book-donotmakemethink-post/</link>
-      <pubDate>Mon, 14 Dec 2020 12:14:41 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/my-book-donotmakemethink-post/</guid>
-      <description>The book “Don’t make me think” is written by Steve Krug. This is the first book that I read about UX(User Experience Design) design. This book is concise and has four sections.
-The “guiding principles” talks about not puzzling the user to find required content. These principles guide to omit needless content, using conventions, images and explains the web page scanning habit of user (not reading complete content).
-The section “Things you need to get right” has content to design navigation that helps user to find their way. The big bang theory of web design is about designing home page, using tag lines (nothing beats a good tagline), welcome blurb and testing home page usability.</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>https://inderpalaulakh.com/about/</link>
-      <pubDate>Sun, 13 Dec 2020 19:15:32 +0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/about/</guid>
-      <description>I am a Software Engineer and creating this blog to share my learnings :).
-To get in touch, Email me at Gmail. Please do not hesitate to share your feedback/corrections on blog posts.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Inderpal Aulakh</title><link>https://inderpalaulakh.com/</link><description>Recent content on Inderpal Aulakh</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 15 Feb 2022 17:33:17 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/index.xml" rel="self" type="application/rss+xml"/><item><title>NwHack 2022</title><link>https://inderpalaulakh.com/posts/nwhack2022/</link><pubDate>Tue, 15 Feb 2022 17:33:17 -0800</pubDate><guid>https://inderpalaulakh.com/posts/nwhack2022/</guid><description>Azure Communication Services (ACS) sponsored nwHack 2022 at The University of British Columbia. It was great to see the engagement from students to leverage open source API&amp;rsquo;s to solve daily problems. &amp;hellip;</description></item><item><title>Past (2021 (365 - 8)) - Present (Today 😊) - Future (*)</title><link>https://inderpalaulakh.com/posts/year-2021/</link><pubDate>Fri, 24 Dec 2021 13:45:39 -0800</pubDate><guid>https://inderpalaulakh.com/posts/year-2021/</guid><description>At the beginning of year 2021, my professional goal was to write bogs as well as to work on designing a software system. &amp;hellip;</description></item><item><title>Software System Design</title><link>https://inderpalaulakh.com/posts/systemdesign1/</link><pubDate>Sat, 23 Oct 2021 18:08:19 -0700</pubDate><guid>https://inderpalaulakh.com/posts/systemdesign1/</guid><description>I do not know how the perfect software architectures are build. It is possible that perfect software designs are myth. &amp;hellip;</description></item><item><title>Android Sample Chat Application using Azure Communication Services and ChatKit</title><link>https://inderpalaulakh.com/posts/azurechat/</link><pubDate>Sun, 08 Aug 2021 15:12:01 -0700</pubDate><guid>https://inderpalaulakh.com/posts/azurechat/</guid><description>This post demonstrates the Android chat application leveraging Azure Communication Services and ChatKit.</description></item><item><title>Harnessing the Power of Less</title><link>https://inderpalaulakh.com/posts/thepowerofless/</link><pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate><guid>https://inderpalaulakh.com/posts/thepowerofless/</guid><description>Last week, I read an article &amp;ldquo;Harnessing the Power of Less&amp;rdquo; published in Special Times Edition &amp;ldquo;Secrets of Success&amp;rdquo;. The beautiful line &amp;ldquo;Stretching encourages adaptation and working with what you already have, rather than focusing on needing more&amp;rdquo; &amp;hellip;</description></item><item><title>Kotlin map, foldRight &amp; nested functions to implement redux middleware</title><link>https://inderpalaulakh.com/posts/middlewarekotlin/</link><pubDate>Mon, 10 May 2021 14:27:12 -0700</pubDate><guid>https://inderpalaulakh.com/posts/middlewarekotlin/</guid><description>&lt;p&gt;Kotlin supports &lt;a href="https://en.wikipedia.org/wiki/Higher-order_function"&gt;Higher order functions&lt;/a&gt;. In this blog, I will create a higher order function that will use map &amp;amp; fold right for execution.&lt;/p&gt;
+&lt;p&gt;Before diving into higher order functions, let&amp;rsquo;s go through map &amp;amp; fold right.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt; is collective transform operation.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; numbers = mutableListOf(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;numbers = numbers.map { &lt;span style="color:#66d9ef"&gt;it&lt;/span&gt;*&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; }.toMutableList()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// elements in numbers: 2,4,6
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;foldRight&lt;/code&gt; accept initial state, apply initial state to all elements and return final state.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; numbers = mutableListOf(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; result = numbers.foldRight(&lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;, {a,b &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; test(a,b)})
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;fun&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;test&lt;/span&gt;(a: Int, b: Any): Int {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; a + b &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; Int
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;First execution:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;initial 100
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;a = 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;b = 100
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;Second Execution
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;a = 2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;b = 103
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;Third Execution
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;a = 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;b = 105
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;final: result = 106
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s create a higher order function &lt;code&gt;Middleware&lt;/code&gt; that takes an instance &lt;code&gt;StringApp&lt;/code&gt;, has inner function &lt;code&gt;next: Type&lt;/code&gt; and return &lt;code&gt;Type&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Dagger, Injecting custom objects (Interface implementation)</title><link>https://inderpalaulakh.com/posts/dicustom/</link><pubDate>Sun, 02 May 2021 00:00:29 -0700</pubDate><guid>https://inderpalaulakh.com/posts/dicustom/</guid><description>&lt;p&gt;It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes &lt;code&gt;Logger&lt;/code&gt;, &lt;code&gt;Service&lt;/code&gt; and class &lt;code&gt;Middleware&lt;/code&gt; is dependent on these classes.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Service&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//this class requires Logger &amp;amp; Service object
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Middleware&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; logger:&lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt;. &lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; service:Service)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// middleware object
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; middleware = Middleware(Logger(),Service())
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Dagger&lt;/code&gt; can build objects of &lt;code&gt;Logger&lt;/code&gt; and &lt;code&gt;Service&lt;/code&gt; classes by indicating &lt;code&gt;@Inject&lt;/code&gt; annotation to all three classes&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;internal&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;internal&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Service&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//this class requires Logger &amp;amp; Service object
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;internal&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Middleware&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; logger:&lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt;. &lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; service:Service)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@Component&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;MiddlewareComponent&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;fun&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;buildComponent&lt;/span&gt;():Middleware
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// middleware object
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; middleware = &lt;span style="color:#a6e22e"&gt;DaggerMiddlewareComponent&lt;/span&gt;.builder().build().buildComponent()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the project requirements are modified to get &lt;code&gt;Logger&lt;/code&gt; with custom implementation, we can write &lt;code&gt;@Module&lt;/code&gt; to support dependency injection.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// now, Logger is interface
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Service&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Middleware&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; logger: Logger, &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; service: Service)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@Module&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;LoggerModule&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; logger: Logger) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;@Provides&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;fun&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;providesLogger&lt;/span&gt;(): Logger {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; logger
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@Component&lt;/span&gt;(modules = [LoggerModule&lt;span style="color:#f92672"&gt;::&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;MiddlewareComponent&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;fun&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;buildComponent&lt;/span&gt;(): Middleware
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//custom implementation
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;NullLogger&lt;/span&gt; : Logger
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//injecting logger module with interface implementation
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; middleware = &lt;span style="color:#a6e22e"&gt;DaggerMiddlewareComponent&lt;/span&gt;.builder().loggerModule(LoggerModule(NullLogger())).build().buildComponent()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</title><link>https://inderpalaulakh.com/posts/di/</link><pubDate>Mon, 12 Apr 2021 10:46:57 -0800</pubDate><guid>https://inderpalaulakh.com/posts/di/</guid><description>&lt;p&gt;Below are widely used Dependency Injection frameworks mostly by android &amp;amp; Java application projects.&lt;/p&gt;
+&lt;p&gt;For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.&lt;/p&gt;
+&lt;h1 id="guice"&gt;Guice&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://github.com/google/guice"&gt;Guice (pronounced &amp;lsquo;juice&amp;rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp;amp; Application development.&lt;/p&gt;
+&lt;p&gt;For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch.&lt;/p&gt;
+&lt;p&gt;Reflection on the desktop/server JVM is very efficient, and even very large Guice applications don&amp;rsquo;t have performance problems related to Guice.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://developer.android.com/topic/performance/memory#DependencyInjection"&gt;Manage your app&amp;rsquo;s memory | Android Developers&lt;/a&gt; : Other dependency injection frameworks that use reflection tend to initialize processes by scanning your code for annotations. This process can require significantly more CPU cycles and RAM and can cause a noticeable lag when the app launches.&lt;/p&gt;</description></item><item><title>Distributed caching - Redis</title><link>https://inderpalaulakh.com/posts/redis/</link><pubDate>Thu, 25 Mar 2021 18:26:03 -0800</pubDate><guid>https://inderpalaulakh.com/posts/redis/</guid><description>&lt;p&gt;&lt;a href="https://redis.io/"&gt;Redis&lt;/a&gt; is in-memory data structure store. Redis has a really good documentation to learn and implement framework capabilities. &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;My mentor at Job guided me to learn Redis. My primary focus is to understand how Redis helps for &lt;code&gt;Distributed Caching&lt;/code&gt;.&lt;br/&gt;&lt;/p&gt;
+&lt;h2 id="distributed-caching"&gt;Distributed Caching&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Distributed_cache"&gt;Distributed Caching&lt;/a&gt; is cache shared by multiple servers. The miclsroservices or services can keep it&amp;rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;The caches are used to save time to reduce cost to read database from database. The in memory(RAM cache) data is much more efficient to perform read operations as compared to SQL databases. &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;Redis supports distributed caching by clusters. Twitter has redis instance for every user across data centers. When a tweet comes, the tweet is inserted into redis cache instance of every user who follows the tweet owner &lt;a href="https://www.infoq.com/presentations/Real-Time-Delivery-Twitter/"&gt;Real Time Delivery Twitter&lt;/a&gt;. Distributing caching helps twitter to deliver 300k tweets/sec.&lt;br/&gt;&lt;/p&gt;</description></item><item><title>MVC &amp; MVVM Android Design Pattern (Android)</title><link>https://inderpalaulakh.com/posts/mvcmvvm/</link><pubDate>Wed, 24 Mar 2021 18:26:03 -0800</pubDate><guid>https://inderpalaulakh.com/posts/mvcmvvm/</guid><description>&lt;p&gt;Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.&lt;/p&gt;
+&lt;p&gt;In past, I was working on backend projects where tons of unit tests exists for API&amp;rsquo;s. I am new to application development and spent some time to learn about &lt;code&gt;MVC&lt;/code&gt; and &lt;code&gt;MVVM&lt;/code&gt; design patterns.&lt;/p&gt;
+&lt;p&gt;For next project, the preference is &lt;code&gt;MVVM&lt;/code&gt;. At end of this post I will share the reason to choose &lt;code&gt;MVVM&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The example code for this post is written for Android application.&lt;/p&gt;
+&lt;h2 id="mvc-model-view-controller"&gt;MVC (Model-View-Controller)&lt;/h2&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/mvc.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Model&lt;/strong&gt;: Model is data layer. Model call services or database to get data from external systems.&lt;br/&gt;
+&lt;strong&gt;View&lt;/strong&gt;: View is user interface layer.&lt;br/&gt;
+&lt;strong&gt;Controller&lt;/strong&gt;: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.&lt;br/&gt;&lt;/p&gt;</description></item><item><title>Coding blog with colored code snippets(.md posts)</title><link>https://inderpalaulakh.com/posts/colorcode/</link><pubDate>Thu, 25 Feb 2021 19:38:55 -0800</pubDate><guid>https://inderpalaulakh.com/posts/colorcode/</guid><description>&lt;p&gt;We can make our code snippets more interesting and readable by sharing code with color formatting.&lt;/p&gt;
+&lt;p&gt;To turn on colors, just add language short name 😉&lt;/p&gt;
+&lt;p&gt;For &lt;code&gt;C#&lt;/code&gt; code, add &lt;code&gt;cs&lt;/code&gt; after ```.&lt;/p&gt;
+&lt;p&gt;```cs&lt;/p&gt;
+&lt;p&gt;write your code here&lt;/p&gt;
+&lt;p&gt;```&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cs" data-lang="cs"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;static&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; Main(&lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;[] args)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Logging logger = &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; Logging();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; logger.Log(&lt;span style="color:#e6db74"&gt;&amp;#34;login success&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Adapter Design Pattern</title><link>https://inderpalaulakh.com/posts/adapterdesignpattern/</link><pubDate>Sat, 13 Feb 2021 17:11:06 -0800</pubDate><guid>https://inderpalaulakh.com/posts/adapterdesignpattern/</guid><description>&lt;p&gt;This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.&lt;/p&gt;
+&lt;p&gt;Assume, I have two logging classes named &lt;code&gt;WriteLogsToLocalFile&lt;/code&gt; and &lt;code&gt;WriteLogsToServer&lt;/code&gt;.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;class WriteLogsToLocalFile
+{
+public void Log(string fileName, string message)
+{
+//write logs to file
+}
+}
+class WriteLogsToServer
+{
+public void Log(string urL, string message, string token)
+{
+//call rest API with oAuth
+// Note: here token is used for oAuth
+}
+}
+static void Main(string[] args)
+{
+WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile();
+fileLogs.Log(&amp;#34;hello.xml&amp;#34;, &amp;#34;login success&amp;#34;);
+WriteLogsToServer serverLogs = new WriteLogsToServer();
+serverLogs.Log(&amp;#34;https://server.logs/upload&amp;#34;, &amp;#34;login success&amp;#34;, &amp;#34;oAuthToken&amp;#34;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Here user is manually creating objects to write logs separately to local file and server.My requirement is to create a common class for logging, so that client can call common class. The common class should blindly recurse through list of loggers to log message.&lt;/p&gt;
+&lt;p&gt;In below code, a new interface &lt;code&gt;ILog&lt;/code&gt; is not compatible with &lt;code&gt;WriteLogsToLocalFile&lt;/code&gt; and &lt;code&gt;WriteLogsToServer&lt;/code&gt;. We created &lt;code&gt;WriteLogsToServerAdapter&lt;/code&gt; and &lt;code&gt;WriteLogsToServerAdapter&lt;/code&gt;. &lt;code&gt;Logging&lt;/code&gt; is helper class.&lt;/p&gt;</description></item><item><title>Code Review</title><link>https://inderpalaulakh.com/posts/codereview/</link><pubDate>Tue, 09 Feb 2021 07:50:50 -0800</pubDate><guid>https://inderpalaulakh.com/posts/codereview/</guid><description>&lt;p&gt;Code reviews plays an important role to keep code consistent and readable. Code reviews are conducted to maintain quality and simplicity. The bugs should be taken care by automated tests. Code reviews are the best way to learn coding skills from your team members.&lt;/p&gt;
+&lt;p&gt;In this post, I want to share my opinion on how to write code reviews comments. I read a document &lt;a href="https://google.github.io/eng-practices/review/reviewer/comments.html"&gt;Google code review&lt;/a&gt;. This document is really helpful to write code reviews comments and how to fix, reply on code review comments.&lt;/p&gt;
+&lt;h2 id="the-variable-name-function-name-or-class-name-style-formatting"&gt;The variable name, function name or class name style formatting&lt;/h2&gt;
+&lt;p&gt;This type of comments should be taken care by compile time code validation. For example, &lt;code&gt;Android&lt;/code&gt; has &lt;code&gt;checkstyle&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="rename-class-or-variable-names"&gt;Rename class or variable names&lt;/h2&gt;
+&lt;p&gt;When we are suggesting someone to rename something in our code, maybe we can express or thoughts by:
+why to change name?
+what are the suggested names?&lt;/p&gt;</description></item><item><title>Composite Design Pattern</title><link>https://inderpalaulakh.com/posts/compositedesignpattern/</link><pubDate>Sun, 24 Jan 2021 15:33:39 -0800</pubDate><guid>https://inderpalaulakh.com/posts/compositedesignpattern/</guid><description>&lt;p&gt;The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.&lt;/p&gt;
+&lt;h3 id="component"&gt;Component&lt;/h3&gt;
+&lt;p&gt;This is a class that contain all the members that needs to be implemented by all the objects.&lt;/p&gt;
+&lt;h3 id="composite"&gt;Composite&lt;/h3&gt;
+&lt;p&gt;This class is used to add, remove and traverse components.&lt;/p&gt;
+&lt;h3 id="leaf"&gt;Leaf&lt;/h3&gt;
+&lt;p&gt;The leaf object in tree structure is defined as leaf element.&lt;/p&gt;
+&lt;h2 id="code-sample"&gt;Code Sample&lt;/h2&gt;
+&lt;p&gt;I want to print salaries of all employees in my organization with names and designation. The root of organization tree is CEO. The CEO has directors as child composite. The director has managers as child composite. Finally, engineers at level 1 as leaf because no one is reporting them.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; // ignore this, just to print
+static int i = 0;
+interface IComponent
+{
+void print();
+}
+class Composite : IComponent
+{
+private string name;
+private string designation;
+private decimal salary;
+private List&amp;lt;IComponent&amp;gt; listComponent = new List&amp;lt;IComponent&amp;gt;();
+public Composite(String name, String designation, decimal salary)
+{
+this.name = name;
+this.designation = designation;
+this.salary = salary;
+}
+public void addComponent(IComponent component)
+{
+listComponent.Add(component);
+}
+public void printDesignation()
+{
+Console.Write(designation);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void printName()
+{
+Console.Write(name);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void printSalary()
+{
+Console.Write(salary);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void print()
+{
+printName();
+printDesignation();
+printSalary();
+Console.WriteLine(&amp;#34; &amp;#34;);
+i++;
+foreach (var component in listComponent)
+{
+for(int k =0;k &amp;lt;i; k++)
+{
+Console.Write(&amp;#34; - &amp;#34;);
+}
+component.print();
+}
+}
+}
+class Leaf : IComponent
+{
+private string name;
+private string designation;
+private decimal salary;
+public Leaf(String name, String designation, decimal salary)
+{
+this.name = name;
+this.designation = designation;
+this.salary = salary;
+}
+public void print()
+{
+printName();
+printDesignation();
+printSalary();
+Console.WriteLine(&amp;#34; &amp;#34;);
+}
+public void printDesignation()
+{
+Console.Write(designation);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void printName()
+{
+Console.Write(name);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void printSalary()
+{
+Console.Write(salary);
+Console.Write(&amp;#34; &amp;#34;);
+}
+}
+static void Main(string[] args)
+{
+Leaf ram = new Leaf(&amp;#34;Ram&amp;#34;, &amp;#34;SE1&amp;#34;, 1000000);
+Leaf sham = new Leaf(&amp;#34;Sham&amp;#34;, &amp;#34;SE1&amp;#34;, 1000000);
+Composite teamLead = new Composite(&amp;#34;Mohan&amp;#34;, &amp;#34;Team Lead&amp;#34;, 1000000);
+teamLead.addComponent(ram);
+teamLead.addComponent(sham);
+Composite manager = new Composite(&amp;#34;John&amp;#34;, &amp;#34;Manager&amp;#34;, 1000000);
+manager.addComponent(teamLead);
+Composite director = new Composite(&amp;#34;kuku&amp;#34;, &amp;#34;Director&amp;#34;, 1000000);
+director.addComponent(manager);
+//traverse through all
+director.print();
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Output:&lt;/p&gt;</description></item><item><title>Android Application implementing Azure Active Directory Authentication to call protected Azure Function</title><link>https://inderpalaulakh.com/posts/azureaad/</link><pubDate>Sat, 23 Jan 2021 13:36:35 -0800</pubDate><guid>https://inderpalaulakh.com/posts/azureaad/</guid><description>&lt;p&gt;In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.&lt;/p&gt;
+&lt;h2 id="create-an-android-application"&gt;Create an Android Application&lt;/h2&gt;
+&lt;p&gt;Open Android Studio and create new Project with Empty Activity.&lt;/p&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/androidappcreation.png"&gt;&lt;/p&gt;
+&lt;p&gt;Configure project with below settings&lt;/p&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/configuringproject.png"&gt;&lt;/p&gt;
+&lt;h2 id="get-sha1--package-name"&gt;Get SHA1 &amp;amp; package name&lt;/h2&gt;
+&lt;p&gt;Open powershell and cd to C:\Users&amp;lt;username&amp;gt;.android
+Execute below command, if prompted for password enter &lt;code&gt;android&lt;/code&gt; or leave blank&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img loading="lazy" src="../images/gettingSHA.PNG"&gt;&lt;/p&gt;
+&lt;p&gt;Copy SHA1 -&amp;gt; Navigate to &lt;a href="https://base64.guru/converter/encode/hex"&gt;https://base64.guru/converter/encode/hex&lt;/a&gt; and convert SHA1 to Base64&lt;/p&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/sha.PNG"&gt;&lt;/p&gt;
+&lt;p&gt;Copy package name from &lt;code&gt;AndroidManifest.xml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now you have packagename &amp;amp; Base64 SHA1 hash&lt;/p&gt;
+&lt;h2 id="setup-azure-active-directory"&gt;Setup Azure Active Directory&lt;/h2&gt;
+&lt;p&gt;I followed steps from &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-android"&gt;Register your app under Azure Active Directory (using Android platform settings)&lt;/a&gt; to setup AAD.&lt;/p&gt;
+&lt;p&gt;Login to Azure&lt;br&gt;
+Open &lt;code&gt;AAD&lt;/code&gt;&lt;br&gt;
+Click &lt;code&gt;App Registration&lt;/code&gt; -&amp;gt; &lt;code&gt;New Registration&lt;/code&gt;&lt;br&gt;
+&lt;img loading="lazy" src="../images/newreg.PNG"&gt;&lt;br&gt;
+Select &lt;code&gt;Authentication&lt;/code&gt;&lt;br&gt;
+Select &lt;code&gt;Add a platform&lt;/code&gt;&lt;br&gt;
+&lt;img loading="lazy" src="../images/authsetup.PNG"&gt;&lt;br&gt;
+Enter &lt;code&gt;SHA1 Hash&lt;/code&gt; &amp;amp; &lt;code&gt;package name&lt;/code&gt;&lt;br&gt;
+&lt;img loading="lazy" src="../images/configure.PNG"&gt;&lt;br/&gt;
+Copy &lt;code&gt;Android Configuration&lt;/code&gt;&lt;br/&gt;
+&lt;img loading="lazy" src="../images/copyconfig.PNG"&gt;&lt;br&gt;&lt;/p&gt;</description></item><item><title>Android Studio Enable Checkstyle (Gradle)</title><link>https://inderpalaulakh.com/posts/android-checkstyle/</link><pubDate>Sun, 17 Jan 2021 08:23:23 -0800</pubDate><guid>https://inderpalaulakh.com/posts/android-checkstyle/</guid><description>&lt;p&gt;&lt;a href="https://github.com/checkstyle/checkstyle"&gt;Checkstyle&lt;/a&gt; is a development tool to help programmers write Java code that adheres to a coding standard.&lt;/p&gt;
+&lt;h1 id="steps-to-enable-checkstyle-for-android-project"&gt;Steps to enable checkstyle for Android Project&lt;/h1&gt;
+&lt;h2 id="create-checkstylexml"&gt;Create checkstyle.xml&lt;/h2&gt;
+&lt;p&gt;Create folder &lt;code&gt;checkstyle&lt;/code&gt; inside Android Project &lt;code&gt;app&lt;/code&gt; folder.
+Create file checkstyle.xml &lt;a href="https://github.com/skeeto/sample-java-project/blob/master/checkstyle.xml"&gt;Reference&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34;?&amp;gt;
+&amp;lt;!DOCTYPE module PUBLIC
+&amp;#34;-//Puppy Crawl//DTD Check Configuration 1.2//EN&amp;#34;
+&amp;#34;http://www.puppycrawl.com/dtds/configuration_1_2.dtd&amp;#34;&amp;gt;
+&amp;lt;!--
+Checkstyle configuration that checks the sun coding conventions from:
+- the Java Language Specification at
+http://java.sun.com/docs/books/jls/second_edition/html/index.html
+- the Sun Code Conventions at http://java.sun.com/docs/codeconv/
+- the Javadoc guidelines at
+http://java.sun.com/j2se/javadoc/writingdoccomments/index.html
+- the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html
+- some best practices
+Checkstyle is very configurable. Be sure to read the documentation at
+http://checkstyle.sf.net (or in your downloaded distribution).
+Most Checks are configurable, be sure to consult the documentation.
+To completely disable a check, just comment it out or delete it from the file.
+Finally, it is worth reading the documentation.
+--&amp;gt;
+&amp;lt;module name=&amp;#34;Checker&amp;#34;&amp;gt;
+&amp;lt;!--
+If you set the basedir property below, then all reported file
+names will be relative to the specified directory. See
+http://checkstyle.sourceforge.net/5.x/config.html#Checker
+&amp;lt;property name=&amp;#34;basedir&amp;#34; value=&amp;#34;${basedir}&amp;#34;/&amp;gt;
+--&amp;gt;
+&amp;lt;!-- Checks that a package-info.java file exists for each package. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage --&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocPackage&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks whether files end with a new line. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile --&amp;gt;
+&amp;lt;module name=&amp;#34;NewlineAtEndOfFile&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks that property files contain the same keys. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_misc.html#Translation --&amp;gt;
+&amp;lt;module name=&amp;#34;Translation&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for Size Violations. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_sizes.html --&amp;gt;
+&amp;lt;module name=&amp;#34;FileLength&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for whitespace --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_whitespace.html --&amp;gt;
+&amp;lt;module name=&amp;#34;FileTabCharacter&amp;#34;/&amp;gt;
+&amp;lt;!-- Miscellaneous other checks. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_misc.html --&amp;gt;
+&amp;lt;module name=&amp;#34;RegexpSingleline&amp;#34;&amp;gt;
+&amp;lt;property name=&amp;#34;format&amp;#34; value=&amp;#34;\s+$&amp;#34;/&amp;gt;
+&amp;lt;property name=&amp;#34;minimum&amp;#34; value=&amp;#34;0&amp;#34;/&amp;gt;
+&amp;lt;property name=&amp;#34;maximum&amp;#34; value=&amp;#34;0&amp;#34;/&amp;gt;
+&amp;lt;property name=&amp;#34;message&amp;#34; value=&amp;#34;Line has trailing spaces.&amp;#34;/&amp;gt;
+&amp;lt;/module&amp;gt;
+&amp;lt;module name=&amp;#34;TreeWalker&amp;#34;&amp;gt;
+&amp;lt;!-- Checks for Javadoc comments. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_javadoc.html --&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocMethod&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocType&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocVariable&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocStyle&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for Naming Conventions. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_naming.html --&amp;gt;
+&amp;lt;module name=&amp;#34;ConstantName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;LocalFinalVariableName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;LocalVariableName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MemberName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MethodName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;PackageName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;ParameterName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;StaticVariableName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;TypeName&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for Headers --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_header.html --&amp;gt;
+&amp;lt;!-- &amp;lt;module name=&amp;#34;Header&amp;#34;&amp;gt; --&amp;gt;
+&amp;lt;!-- The follow property value demonstrates the ability --&amp;gt;
+&amp;lt;!-- to have access to ANT properties. In this case it uses --&amp;gt;
+&amp;lt;!-- the ${basedir} property to allow Checkstyle to be run --&amp;gt;
+&amp;lt;!-- from any directory within a project. See property --&amp;gt;
+&amp;lt;!-- expansion, --&amp;gt;
+&amp;lt;!-- http://checkstyle.sf.net/config.html#properties --&amp;gt;
+&amp;lt;!-- &amp;lt;property --&amp;gt;
+&amp;lt;!-- name=&amp;#34;headerFile&amp;#34; --&amp;gt;
+&amp;lt;!-- value=&amp;#34;${basedir}/java.header&amp;#34;/&amp;gt; --&amp;gt;
+&amp;lt;!-- &amp;lt;/module&amp;gt; --&amp;gt;
+&amp;lt;!-- Following interprets the header file as regular expressions. --&amp;gt;
+&amp;lt;!-- &amp;lt;module name=&amp;#34;RegexpHeader&amp;#34;/&amp;gt; --&amp;gt;
+&amp;lt;!-- Checks for imports --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_import.html --&amp;gt;
+&amp;lt;module name=&amp;#34;AvoidStarImport&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;IllegalImport&amp;#34;/&amp;gt; &amp;lt;!-- defaults to sun.* packages --&amp;gt;
+&amp;lt;module name=&amp;#34;RedundantImport&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;UnusedImports&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for Size Violations. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_sizes.html --&amp;gt;
+&amp;lt;module name=&amp;#34;LineLength&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MethodLength&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;ParameterNumber&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for whitespace --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_whitespace.html --&amp;gt;
+&amp;lt;module name=&amp;#34;EmptyForIteratorPad&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;GenericWhitespace&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MethodParamPad&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;NoWhitespaceAfter&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;NoWhitespaceBefore&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;OperatorWrap&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;ParenPad&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;TypecastParenPad&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;WhitespaceAfter&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;WhitespaceAround&amp;#34;/&amp;gt;
+&amp;lt;!-- Modifier Checks --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_modifiers.html --&amp;gt;
+&amp;lt;module name=&amp;#34;ModifierOrder&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;RedundantModifier&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;AvoidNestedBlocks&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;EmptyBlock&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;LeftCurly&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;NeedBraces&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;RightCurly&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;AvoidInlineConditionals&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;DoubleCheckedLocking&amp;#34;/&amp;gt; &amp;lt;!-- MY FAVOURITE --&amp;gt;
+&amp;lt;module name=&amp;#34;EmptyStatement&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;EqualsHashCode&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;HiddenField&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;IllegalInstantiation&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;InnerAssignment&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MagicNumber&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MissingSwitchDefault&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;RedundantThrows&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;SimplifyBooleanExpression&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;SimplifyBooleanReturn&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;DesignForExtension&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;FinalClass&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;HideUtilityClassConstructor&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;InterfaceIsType&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;VisibilityModifier&amp;#34;/&amp;gt;
+&amp;lt;/module&amp;gt;
+&amp;lt;/module&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="create-checkstylegradle"&gt;Create checkstyle.gradle&lt;/h2&gt;
+&lt;p&gt;Create checkstyle.gradle inside app folder (at same level where build.gradle exists)&lt;/p&gt;</description></item><item><title>Generation of Sequence Diagram using Mermaid</title><link>https://inderpalaulakh.com/posts/mermaid/</link><pubDate>Wed, 06 Jan 2021 10:46:57 -0800</pubDate><guid>https://inderpalaulakh.com/posts/mermaid/</guid><description>&lt;p&gt;I use online tools to generate sequence diagrams. Recently, my colleague at work guided me about Mermaid to generate sequence diagrams. This is an awesome tool.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mermaid-js.github.io/mermaid/#/"&gt;Mermaid&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mermaid has online editor &lt;a href="https://mermaid-js.github.io/mermaid-live-editor/#/edit/dW5kZWZpbmVk"&gt;Editor&lt;/a&gt;. However, I did not use online editor for confidentiality reasons.&lt;/p&gt;
+&lt;p&gt;I created index.html and opened in browser.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;
+&amp;lt;html&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;script src=&amp;#34;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;
+mermaid.initialize({ startOnLoad: true });
+&amp;lt;/script&amp;gt;
+&amp;lt;div class=&amp;#34;mermaid&amp;#34;&amp;gt;
+sequenceDiagram
+participant A
+participant B
+A-&amp;gt;&amp;gt;B:How are you?
+B--&amp;gt;&amp;gt; A: I am good
+loop test loop
+A-&amp;gt;&amp;gt;B:How are you?
+B--&amp;gt;&amp;gt; A: I am good
+end
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>2020 Review</title><link>https://inderpalaulakh.com/posts/2020review/</link><pubDate>Thu, 31 Dec 2020 13:26:03 -0800</pubDate><guid>https://inderpalaulakh.com/posts/2020review/</guid><description>&lt;p&gt;The year 2020 was a year of unpredicted event Covid-19. In January, my wife travelled to Toronto for her co-op and I planned to spend my evenings studying algorithms and software engineering concepts alongside full time job.&lt;/p&gt;
+&lt;p&gt;I planned to complete most of the study-topics in March and completed as planned. In mid-March my office shared guidelines to work from home. My wife was also back from Toronto and started a co-op remotely.&lt;/p&gt;
+&lt;p&gt;I saved two hours of commute time. My office had layoffs. Some of my teammates were laid off. It was a hard time to see teammates leaving, and I got worried about myself.&lt;/p&gt;
+&lt;p&gt;I started to spend more time studying software engineering topics. Usually, I develop hobby projects using technologies I do not use as a part of my job. Because of Covid-19, I got much time to work on hobby projects to explore AWS and Azure infrastructures.&lt;/p&gt;</description></item><item><title>Accessing Azure Pipeline variables in Webpack Node.js</title><link>https://inderpalaulakh.com/posts/pipelinevar/</link><pubDate>Wed, 30 Dec 2020 21:22:38 -0800</pubDate><guid>https://inderpalaulakh.com/posts/pipelinevar/</guid><description>&lt;p&gt;Recently, I struggled a bit to figure out a way to access Azure-Pipeline Variables in Node.js JavaScript/TypeScript project. However, it is easy.&lt;/p&gt;
+&lt;h2 id="yml-pipeline-code"&gt;.yml Pipeline code&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;- task: Npm@1
+displayName: &amp;#34;Run project&amp;#34;
+env:
+MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital letters
+inputs:
+commands: &amp;#39;custom&amp;#39;
+CustomCommand: &amp;#39;run test&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="npm-package"&gt;npm Package&lt;/h2&gt;
+&lt;p&gt;install package &lt;a href="https://www.npmjs.com/package/string-replace-loader"&gt;string-replace-loader&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="typescriptjavascript-file"&gt;TypeScript/JavaScript File&lt;/h2&gt;
+&lt;p&gt;Create a file with any name &amp;ldquo;test.ts&amp;rdquo;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;test.ts
+const test = () =&amp;gt; {
+const myVariable = &amp;#34;My-Variable&amp;#34;;
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="setup-webpackconfigjs"&gt;Setup webpack.config.js&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; module: {
+rules: [
+{
+test: /test\.ts$/,
+loader: &amp;#39;string-replace-loader&amp;#39;,
+options: {
+search: &amp;#39;My-Variable&amp;#39;,
+replace: process.env[&amp;#39;MyVariableName&amp;#39;] // from .yml env
+}
+}
+]
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="finally"&gt;Finally&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;
+&amp;#34;scripts&amp;#34; :{
+&amp;#34;test&amp;#34;: &amp;#34;webpack --config webpack.config.js&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>DoubleDispatch</title><link>https://inderpalaulakh.com/posts/doubledispatch/</link><pubDate>Mon, 28 Dec 2020 00:22:53 -0800</pubDate><guid>https://inderpalaulakh.com/posts/doubledispatch/</guid><description>&lt;p&gt;To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post &lt;a href="https://inderpalaulakh.com/posts/dispatch/"&gt;Overloading &amp;amp; Overriding&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="one-level-of-virtual-dispatching"&gt;One level of virtual dispatching&lt;/h2&gt;
+&lt;p&gt;derived types override a base types: as shown below&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; class Farms
+{
+public virtual void Irrigation()
+{
+Console.WriteLine(&amp;#34;Farm Type&amp;#34;);
+}
+}
+class WheatFarm : Farms
+{
+public override void Irrigation()
+{
+Console.WriteLine(&amp;#34;WheatFarm&amp;#34;);
+}
+}
+class RicaFarm : WheatFarm
+{
+public override void Irrigation()
+{
+Console.WriteLine(&amp;#34;RicaFarm&amp;#34;);
+}
+}
+static void Main(string[] args)
+{
+var a = new Farms();
+var b = new WheatFarm();
+var c = new RicaFarm();
+a.Irrigation();
+b.Irrigation();
+c.Irrigation();
+}
+//output
+Farm Type
+WheatFarm
+RicaFarm
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="two-level-of-virtual-dispatching-double-dispatch"&gt;Two level of virtual dispatching (Double Dispatch)&lt;/h2&gt;
+&lt;p&gt;This concept is used in Visitor Design Pattern.&lt;/p&gt;
+&lt;p&gt;use polymorphic static binding technique to ensure that proper overload is called&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; class Crop
+{
+public virtual void CropName(CropWatering obj)
+{
+obj.WaterSupply(this);
+}
+}
+class Wheat : Crop
+{
+public override void CropName(CropWatering obj)
+{
+obj.WaterSupply(this);
+}
+}
+/* An example of overloading (Method with same name but different parameter type)
+* */
+class CropWatering
+{
+public virtual void WaterSupply(Crop crop)
+{
+Console.WriteLine(&amp;#34;CropWatering working on type Crop&amp;#34;);
+}
+public virtual void WaterSupply(Wheat wheat)
+{
+Console.WriteLine(&amp;#34;CropWatering working on type Wheat&amp;#34;);
+}
+}
+class CropWatringSpring : CropWatering
+{
+public override void WaterSupply(Crop crop)
+{
+Console.WriteLine(&amp;#34;CropWatringSpring working on type Crop&amp;#34;);
+}
+public override void WaterSupply(Wheat wheat)
+{
+Console.WriteLine(&amp;#34;CropWatringSpring working on type Wheat&amp;#34;);
+}
+}
+static void Main(string[] args)
+{
+Crop crop = new Crop();
+Wheat wheat = new Wheat();
+CropWatering cropWatering = new CropWatering();
+crop.CropName(cropWatering);
+wheat.CropName(cropWatering);
+CropWatringSpring cropWatringSpring = new CropWatringSpring();
+crop.CropName(cropWatringSpring);
+wheat.CropName(cropWatringSpring);
+}
+//output
+CropWatering working on type Crop
+CropWatering working on type Wheat
+CropWatringSpring working on type Crop
+CropWatringSpring working on type Wheat
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href="https://lostechies.com/derekgreer/2010/04/19/double-dispatch-is-a-code-smell/"&gt;Reference&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Overloading &amp; Overriding</title><link>https://inderpalaulakh.com/posts/dispatch/</link><pubDate>Tue, 15 Dec 2020 20:57:27 -0800</pubDate><guid>https://inderpalaulakh.com/posts/dispatch/</guid><description>&lt;p&gt;To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.&lt;/p&gt;
+&lt;h2 id="overloading"&gt;Overloading&lt;/h2&gt;
+&lt;p&gt;Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.&lt;/p&gt;
+&lt;p&gt;As Overloading is compile-time, means during run-time the base type is considered. Example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; class Crop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; public virtual void CropName&lt;span style="color:#f92672"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Console.WriteLine&lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;Hey, My type is Crop&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; class Wheat : Crop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; public override void CropName&lt;span style="color:#f92672"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Console.WriteLine&lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;Hey, My type is Wheat&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; /* An example of overloading &lt;span style="color:#f92672"&gt;(&lt;/span&gt;Method with same name but different parameter type&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; * */
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; class CropWatering
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; public void WaterSupply&lt;span style="color:#f92672"&gt;(&lt;/span&gt;Crop crop&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Console.WriteLine&lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;I am working on type Crop&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; public void WaterSupply&lt;span style="color:#f92672"&gt;(&lt;/span&gt;Wheat wheat&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Console.WriteLine&lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;I am working on type Wheat&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In main, If I create an object of type Crop and Wheat, an expected result will appear in console.&lt;/p&gt;</description></item><item><title>Book Summary: Don’t make me think - Steve Krug</title><link>https://inderpalaulakh.com/posts/my-book-donotmakemethink-post/</link><pubDate>Mon, 14 Dec 2020 12:14:41 -0800</pubDate><guid>https://inderpalaulakh.com/posts/my-book-donotmakemethink-post/</guid><description>&lt;p&gt;The book “Don’t make me think” is written by Steve Krug. This is the first book that I read about UX(User Experience Design) design. This book is concise and has four sections.&lt;/p&gt;
+&lt;p&gt;The “guiding principles” talks about not puzzling the user to find required content. These principles guide to omit needless content, using conventions, images and explains the web page scanning habit of user (not reading complete content).&lt;/p&gt;
+&lt;p&gt;The section “Things you need to get right” has content to design navigation that helps user to find their way. The big bang theory of web design is about designing home page, using tag lines (nothing beats a good tagline), welcome blurb and testing home page usability.&lt;/p&gt;
+&lt;p&gt;The section “Making sure you got them right” is all about usability testing. Resolving conflicting thoughts between developers, designers, marketing and project managers, this section also talks about usability testing on 10 cents a day. Focusing on early usability tests, do it yourself usability testing and how often, this section importantly explains feedback loop. Finally, this section has guidance about “deciding what to fix” from feedback.&lt;/p&gt;</description></item><item><title>About Me</title><link>https://inderpalaulakh.com/about/</link><pubDate>Sun, 13 Dec 2020 19:15:32 +0800</pubDate><guid>https://inderpalaulakh.com/about/</guid><description>&lt;p&gt;I am a Software Engineer focused on building reliable products and writing about practical software engineering.&lt;/p&gt;
+&lt;p&gt;This blog is where I publish notes from real projects, architecture decisions, and lessons learned while shipping software.&lt;/p&gt;
+&lt;h2 id="what-i-write-about"&gt;What I Write About&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Software design patterns and clean architecture&lt;/li&gt;
+&lt;li&gt;Backend and cloud engineering (including Azure)&lt;/li&gt;
+&lt;li&gt;Engineering practices such as code review and maintainability&lt;/li&gt;
+&lt;li&gt;Personal learning notes from books, experiments, and side projects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-this-site-exists"&gt;Why This Site Exists&lt;/h2&gt;
+&lt;p&gt;I write to turn experience into reusable knowledge.
+If a post helps you avoid a bug, design a cleaner system, or move faster with confidence, it has done its job.&lt;/p&gt;
+&lt;h2 id="work-with-me"&gt;Work With Me&lt;/h2&gt;
+&lt;p&gt;I am always open to thoughtful technical discussions, collaboration opportunities, and feedback on posts.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Email: &lt;a href="mailto:aulakh.inderpal@gmail.com"&gt;aulakh.inderpal@gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="quick-navigation"&gt;Quick Navigation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Start here: &lt;a href="https://inderpalaulakh.com/posts/"&gt;/posts/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Browse by timeline: &lt;a href="https://inderpalaulakh.com/archives/"&gt;/archives/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

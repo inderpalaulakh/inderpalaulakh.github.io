@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cloud on Inderpal Aulakh</title><link>https://inderpalaulakh.com/tags/cloud/</link><description>Recent content in Cloud on Inderpal Aulakh</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 15 Feb 2022 17:33:17 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/cloud/index.xml" rel="self" type="application/rss+xml"/><item><title>NwHack 2022</title><link>https://inderpalaulakh.com/posts/nwhack2022/</link><pubDate>Tue, 15 Feb 2022 17:33:17 -0800</pubDate><guid>https://inderpalaulakh.com/posts/nwhack2022/</guid><description>Azure Communication Services (ACS) sponsored nwHack 2022 at The University of British Columbia. It was great to see the engagement from students to leverage open source API&amp;rsquo;s to solve daily problems. &amp;hellip;</description></item><item><title>Android Sample Chat Application using Azure Communication Services and ChatKit</title><link>https://inderpalaulakh.com/posts/azurechat/</link><pubDate>Sun, 08 Aug 2021 15:12:01 -0700</pubDate><guid>https://inderpalaulakh.com/posts/azurechat/</guid><description>This post demonstrates the Android chat application leveraging Azure Communication Services and ChatKit.</description></item><item><title>Distributed caching - Redis</title><link>https://inderpalaulakh.com/posts/redis/</link><pubDate>Thu, 25 Mar 2021 18:26:03 -0800</pubDate><guid>https://inderpalaulakh.com/posts/redis/</guid><description>&lt;p&gt;&lt;a href="https://redis.io/"&gt;Redis&lt;/a&gt; is in-memory data structure store. Redis has a really good documentation to learn and implement framework capabilities. &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;My mentor at Job guided me to learn Redis. My primary focus is to understand how Redis helps for &lt;code&gt;Distributed Caching&lt;/code&gt;.&lt;br/&gt;&lt;/p&gt;
+&lt;h2 id="distributed-caching"&gt;Distributed Caching&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Distributed_cache"&gt;Distributed Caching&lt;/a&gt; is cache shared by multiple servers. The miclsroservices or services can keep it&amp;rsquo;s own cache for data but distributed cache has many advantages as we can scale and manage cache at one place.&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;The caches are used to save time to reduce cost to read database from database. The in memory(RAM cache) data is much more efficient to perform read operations as compared to SQL databases. &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;Redis supports distributed caching by clusters. Twitter has redis instance for every user across data centers. When a tweet comes, the tweet is inserted into redis cache instance of every user who follows the tweet owner &lt;a href="https://www.infoq.com/presentations/Real-Time-Delivery-Twitter/"&gt;Real Time Delivery Twitter&lt;/a&gt;. Distributing caching helps twitter to deliver 300k tweets/sec.&lt;br/&gt;&lt;/p&gt;</description></item><item><title>Android Application implementing Azure Active Directory Authentication to call protected Azure Function</title><link>https://inderpalaulakh.com/posts/azureaad/</link><pubDate>Sat, 23 Jan 2021 13:36:35 -0800</pubDate><guid>https://inderpalaulakh.com/posts/azureaad/</guid><description>&lt;p&gt;In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.&lt;/p&gt;
+&lt;h2 id="create-an-android-application"&gt;Create an Android Application&lt;/h2&gt;
+&lt;p&gt;Open Android Studio and create new Project with Empty Activity.&lt;/p&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/androidappcreation.png"&gt;&lt;/p&gt;
+&lt;p&gt;Configure project with below settings&lt;/p&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/configuringproject.png"&gt;&lt;/p&gt;
+&lt;h2 id="get-sha1--package-name"&gt;Get SHA1 &amp;amp; package name&lt;/h2&gt;
+&lt;p&gt;Open powershell and cd to C:\Users&amp;lt;username&amp;gt;.android
+Execute below command, if prompted for password enter &lt;code&gt;android&lt;/code&gt; or leave blank&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img loading="lazy" src="../images/gettingSHA.PNG"&gt;&lt;/p&gt;
+&lt;p&gt;Copy SHA1 -&amp;gt; Navigate to &lt;a href="https://base64.guru/converter/encode/hex"&gt;https://base64.guru/converter/encode/hex&lt;/a&gt; and convert SHA1 to Base64&lt;/p&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/sha.PNG"&gt;&lt;/p&gt;
+&lt;p&gt;Copy package name from &lt;code&gt;AndroidManifest.xml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now you have packagename &amp;amp; Base64 SHA1 hash&lt;/p&gt;
+&lt;h2 id="setup-azure-active-directory"&gt;Setup Azure Active Directory&lt;/h2&gt;
+&lt;p&gt;I followed steps from &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-android"&gt;Register your app under Azure Active Directory (using Android platform settings)&lt;/a&gt; to setup AAD.&lt;/p&gt;
+&lt;p&gt;Login to Azure&lt;br&gt;
+Open &lt;code&gt;AAD&lt;/code&gt;&lt;br&gt;
+Click &lt;code&gt;App Registration&lt;/code&gt; -&amp;gt; &lt;code&gt;New Registration&lt;/code&gt;&lt;br&gt;
+&lt;img loading="lazy" src="../images/newreg.PNG"&gt;&lt;br&gt;
+Select &lt;code&gt;Authentication&lt;/code&gt;&lt;br&gt;
+Select &lt;code&gt;Add a platform&lt;/code&gt;&lt;br&gt;
+&lt;img loading="lazy" src="../images/authsetup.PNG"&gt;&lt;br&gt;
+Enter &lt;code&gt;SHA1 Hash&lt;/code&gt; &amp;amp; &lt;code&gt;package name&lt;/code&gt;&lt;br&gt;
+&lt;img loading="lazy" src="../images/configure.PNG"&gt;&lt;br/&gt;
+Copy &lt;code&gt;Android Configuration&lt;/code&gt;&lt;br/&gt;
+&lt;img loading="lazy" src="../images/copyconfig.PNG"&gt;&lt;br&gt;&lt;/p&gt;</description></item><item><title>Accessing Azure Pipeline variables in Webpack Node.js</title><link>https://inderpalaulakh.com/posts/pipelinevar/</link><pubDate>Wed, 30 Dec 2020 21:22:38 -0800</pubDate><guid>https://inderpalaulakh.com/posts/pipelinevar/</guid><description>&lt;p&gt;Recently, I struggled a bit to figure out a way to access Azure-Pipeline Variables in Node.js JavaScript/TypeScript project. However, it is easy.&lt;/p&gt;
+&lt;h2 id="yml-pipeline-code"&gt;.yml Pipeline code&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;- task: Npm@1
+displayName: &amp;#34;Run project&amp;#34;
+env:
+MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital letters
+inputs:
+commands: &amp;#39;custom&amp;#39;
+CustomCommand: &amp;#39;run test&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="npm-package"&gt;npm Package&lt;/h2&gt;
+&lt;p&gt;install package &lt;a href="https://www.npmjs.com/package/string-replace-loader"&gt;string-replace-loader&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="typescriptjavascript-file"&gt;TypeScript/JavaScript File&lt;/h2&gt;
+&lt;p&gt;Create a file with any name &amp;ldquo;test.ts&amp;rdquo;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;test.ts
+const test = () =&amp;gt; {
+const myVariable = &amp;#34;My-Variable&amp;#34;;
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="setup-webpackconfigjs"&gt;Setup webpack.config.js&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; module: {
+rules: [
+{
+test: /test\.ts$/,
+loader: &amp;#39;string-replace-loader&amp;#39;,
+options: {
+search: &amp;#39;My-Variable&amp;#39;,
+replace: process.env[&amp;#39;MyVariableName&amp;#39;] // from .yml env
+}
+}
+]
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="finally"&gt;Finally&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;
+&amp;#34;scripts&amp;#34; :{
+&amp;#34;test&amp;#34;: &amp;#34;webpack --config webpack.config.js&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

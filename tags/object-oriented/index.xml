@@ -1,70 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Object-Oriented on Learner</title>
-    <link>https://inderpalaulakh.com/tags/object-oriented/</link>
-    <description>Recent content in Object-Oriented on Learner</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sat, 13 Feb 2021 17:11:06 -0800</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/object-oriented/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Adapter Design Pattern</title>
-      <link>https://inderpalaulakh.com/posts/adapterdesignpattern/</link>
-      <pubDate>Sat, 13 Feb 2021 17:11:06 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/adapterdesignpattern/</guid>
-      <description>This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.
-Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
-class WriteLogsToLocalFile{public void Log(string fileName, string message){//write logs to file }}class WriteLogsToServer{public void Log(string urL, string message, string token){//call rest API with oAuth // Note: here token is used for oAuth}}static void Main(string[] args){WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile();fileLogs.Log(&amp;quot;hello.xml&amp;quot;, &amp;quot;login success&amp;quot;);WriteLogsToServer serverLogs = new WriteLogsToServer();serverLogs.Log(&amp;quot;https://server.logs/upload&amp;quot;, &amp;quot;login success&amp;quot;, &amp;quot;oAuthToken&amp;quot;);} Here user is manually creating objects to write logs separately to local file and server.</description>
-    </item>
-    
-    <item>
-      <title>Composite Design Pattern</title>
-      <link>https://inderpalaulakh.com/posts/compositedesignpattern/</link>
-      <pubDate>Sun, 24 Jan 2021 15:33:39 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/compositedesignpattern/</guid>
-      <description>The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.
-Component This is a class that contain all the members that needs to be implemented by all the objects.
-Composite This class is used to add, remove and traverse components.
-Leaf The leaf object in tree structure is defined as leaf element.
-Code Sample I want to print salaries of all employees in my organization with names and designation. The root of organization tree is CEO. The CEO has directors as child composite.</description>
-    </item>
-    
-    <item>
-      <title>DoubleDispatch</title>
-      <link>https://inderpalaulakh.com/posts/doubledispatch/</link>
-      <pubDate>Mon, 28 Dec 2020 00:22:53 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/doubledispatch/</guid>
-      <description>To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp;amp; Overriding.
-One level of virtual dispatching derived types override a base types: as shown below
- class Farms{public virtual void Irrigation(){Console.WriteLine(&amp;quot;Farm Type&amp;quot;);}}class WheatFarm : Farms{public override void Irrigation(){Console.WriteLine(&amp;quot;WheatFarm&amp;quot;);}}class RicaFarm : WheatFarm{public override void Irrigation(){Console.WriteLine(&amp;quot;RicaFarm&amp;quot;);}}static void Main(string[] args){var a = new Farms();var b = new WheatFarm();var c = new RicaFarm();a.Irrigation();b.Irrigation();c.Irrigation();}//outputFarm TypeWheatFarmRicaFarm Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.</description>
-    </item>
-    
-    <item>
-      <title>Overloading &amp; Overriding</title>
-      <link>https://inderpalaulakh.com/archives/dispatch/</link>
-      <pubDate>Tue, 15 Dec 2020 20:57:27 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/archives/dispatch/</guid>
-      <description>To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
-Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
-As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop{public virtual void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;);}}class Wheat : Crop{public override void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;);}}/* An example of overloading (Method with same name but different parameter type)* */class CropWatering{public void WaterSupply(Crop crop){Console.</description>
-    </item>
-    
-    <item>
-      <title>Overloading &amp; Overriding</title>
-      <link>https://inderpalaulakh.com/posts/dispatch/</link>
-      <pubDate>Tue, 15 Dec 2020 20:57:27 -0800</pubDate>
-      
-      <guid>https://inderpalaulakh.com/posts/dispatch/</guid>
-      <description>To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.
-Overloading Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.
-As Overloading is compile-time, means during run-time the base type is considered. Example:
-class Crop{public virtual void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Crop&amp;quot;);}}class Wheat : Crop{public override void CropName(){Console.WriteLine(&amp;quot;Hey, My type is Wheat&amp;quot;);}}/* An example of overloading (Method with same name but different parameter type)* */class CropWatering{public void WaterSupply(Crop crop){Console.</description>
-    </item>
-    
-  </channel>
-</rss>

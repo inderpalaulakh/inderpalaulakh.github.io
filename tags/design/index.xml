@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Design on Inderpal Aulakh</title><link>https://inderpalaulakh.com/tags/design/</link><description>Recent content in Design on Inderpal Aulakh</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 23 Oct 2021 18:08:19 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/design/index.xml" rel="self" type="application/rss+xml"/><item><title>Software System Design</title><link>https://inderpalaulakh.com/posts/systemdesign1/</link><pubDate>Sat, 23 Oct 2021 18:08:19 -0700</pubDate><guid>https://inderpalaulakh.com/posts/systemdesign1/</guid><description>I do not know how the perfect software architectures are build. It is possible that perfect software designs are myth. &amp;hellip;</description></item><item><title>MVC &amp; MVVM Android Design Pattern (Android)</title><link>https://inderpalaulakh.com/posts/mvcmvvm/</link><pubDate>Wed, 24 Mar 2021 18:26:03 -0800</pubDate><guid>https://inderpalaulakh.com/posts/mvcmvvm/</guid><description>&lt;p&gt;Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.&lt;/p&gt;
+&lt;p&gt;In past, I was working on backend projects where tons of unit tests exists for API&amp;rsquo;s. I am new to application development and spent some time to learn about &lt;code&gt;MVC&lt;/code&gt; and &lt;code&gt;MVVM&lt;/code&gt; design patterns.&lt;/p&gt;
+&lt;p&gt;For next project, the preference is &lt;code&gt;MVVM&lt;/code&gt;. At end of this post I will share the reason to choose &lt;code&gt;MVVM&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The example code for this post is written for Android application.&lt;/p&gt;
+&lt;h2 id="mvc-model-view-controller"&gt;MVC (Model-View-Controller)&lt;/h2&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/mvc.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Model&lt;/strong&gt;: Model is data layer. Model call services or database to get data from external systems.&lt;br/&gt;
+&lt;strong&gt;View&lt;/strong&gt;: View is user interface layer.&lt;br/&gt;
+&lt;strong&gt;Controller&lt;/strong&gt;: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.&lt;br/&gt;&lt;/p&gt;</description></item><item><title>Adapter Design Pattern</title><link>https://inderpalaulakh.com/posts/adapterdesignpattern/</link><pubDate>Sat, 13 Feb 2021 17:11:06 -0800</pubDate><guid>https://inderpalaulakh.com/posts/adapterdesignpattern/</guid><description>&lt;p&gt;This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.&lt;/p&gt;
+&lt;p&gt;Assume, I have two logging classes named &lt;code&gt;WriteLogsToLocalFile&lt;/code&gt; and &lt;code&gt;WriteLogsToServer&lt;/code&gt;.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;class WriteLogsToLocalFile
+{
+public void Log(string fileName, string message)
+{
+//write logs to file
+}
+}
+class WriteLogsToServer
+{
+public void Log(string urL, string message, string token)
+{
+//call rest API with oAuth
+// Note: here token is used for oAuth
+}
+}
+static void Main(string[] args)
+{
+WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile();
+fileLogs.Log(&amp;#34;hello.xml&amp;#34;, &amp;#34;login success&amp;#34;);
+WriteLogsToServer serverLogs = new WriteLogsToServer();
+serverLogs.Log(&amp;#34;https://server.logs/upload&amp;#34;, &amp;#34;login success&amp;#34;, &amp;#34;oAuthToken&amp;#34;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Here user is manually creating objects to write logs separately to local file and server.My requirement is to create a common class for logging, so that client can call common class. The common class should blindly recurse through list of loggers to log message.&lt;/p&gt;
+&lt;p&gt;In below code, a new interface &lt;code&gt;ILog&lt;/code&gt; is not compatible with &lt;code&gt;WriteLogsToLocalFile&lt;/code&gt; and &lt;code&gt;WriteLogsToServer&lt;/code&gt;. We created &lt;code&gt;WriteLogsToServerAdapter&lt;/code&gt; and &lt;code&gt;WriteLogsToServerAdapter&lt;/code&gt;. &lt;code&gt;Logging&lt;/code&gt; is helper class.&lt;/p&gt;</description></item><item><title>Composite Design Pattern</title><link>https://inderpalaulakh.com/posts/compositedesignpattern/</link><pubDate>Sun, 24 Jan 2021 15:33:39 -0800</pubDate><guid>https://inderpalaulakh.com/posts/compositedesignpattern/</guid><description>&lt;p&gt;The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.&lt;/p&gt;
+&lt;h3 id="component"&gt;Component&lt;/h3&gt;
+&lt;p&gt;This is a class that contain all the members that needs to be implemented by all the objects.&lt;/p&gt;
+&lt;h3 id="composite"&gt;Composite&lt;/h3&gt;
+&lt;p&gt;This class is used to add, remove and traverse components.&lt;/p&gt;
+&lt;h3 id="leaf"&gt;Leaf&lt;/h3&gt;
+&lt;p&gt;The leaf object in tree structure is defined as leaf element.&lt;/p&gt;
+&lt;h2 id="code-sample"&gt;Code Sample&lt;/h2&gt;
+&lt;p&gt;I want to print salaries of all employees in my organization with names and designation. The root of organization tree is CEO. The CEO has directors as child composite. The director has managers as child composite. Finally, engineers at level 1 as leaf because no one is reporting them.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; // ignore this, just to print
+static int i = 0;
+interface IComponent
+{
+void print();
+}
+class Composite : IComponent
+{
+private string name;
+private string designation;
+private decimal salary;
+private List&amp;lt;IComponent&amp;gt; listComponent = new List&amp;lt;IComponent&amp;gt;();
+public Composite(String name, String designation, decimal salary)
+{
+this.name = name;
+this.designation = designation;
+this.salary = salary;
+}
+public void addComponent(IComponent component)
+{
+listComponent.Add(component);
+}
+public void printDesignation()
+{
+Console.Write(designation);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void printName()
+{
+Console.Write(name);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void printSalary()
+{
+Console.Write(salary);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void print()
+{
+printName();
+printDesignation();
+printSalary();
+Console.WriteLine(&amp;#34; &amp;#34;);
+i++;
+foreach (var component in listComponent)
+{
+for(int k =0;k &amp;lt;i; k++)
+{
+Console.Write(&amp;#34; - &amp;#34;);
+}
+component.print();
+}
+}
+}
+class Leaf : IComponent
+{
+private string name;
+private string designation;
+private decimal salary;
+public Leaf(String name, String designation, decimal salary)
+{
+this.name = name;
+this.designation = designation;
+this.salary = salary;
+}
+public void print()
+{
+printName();
+printDesignation();
+printSalary();
+Console.WriteLine(&amp;#34; &amp;#34;);
+}
+public void printDesignation()
+{
+Console.Write(designation);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void printName()
+{
+Console.Write(name);
+Console.Write(&amp;#34; &amp;#34;);
+}
+public void printSalary()
+{
+Console.Write(salary);
+Console.Write(&amp;#34; &amp;#34;);
+}
+}
+static void Main(string[] args)
+{
+Leaf ram = new Leaf(&amp;#34;Ram&amp;#34;, &amp;#34;SE1&amp;#34;, 1000000);
+Leaf sham = new Leaf(&amp;#34;Sham&amp;#34;, &amp;#34;SE1&amp;#34;, 1000000);
+Composite teamLead = new Composite(&amp;#34;Mohan&amp;#34;, &amp;#34;Team Lead&amp;#34;, 1000000);
+teamLead.addComponent(ram);
+teamLead.addComponent(sham);
+Composite manager = new Composite(&amp;#34;John&amp;#34;, &amp;#34;Manager&amp;#34;, 1000000);
+manager.addComponent(teamLead);
+Composite director = new Composite(&amp;#34;kuku&amp;#34;, &amp;#34;Director&amp;#34;, 1000000);
+director.addComponent(manager);
+//traverse through all
+director.print();
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Output:&lt;/p&gt;</description></item><item><title>DoubleDispatch</title><link>https://inderpalaulakh.com/posts/doubledispatch/</link><pubDate>Mon, 28 Dec 2020 00:22:53 -0800</pubDate><guid>https://inderpalaulakh.com/posts/doubledispatch/</guid><description>&lt;p&gt;To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post &lt;a href="https://inderpalaulakh.com/posts/dispatch/"&gt;Overloading &amp;amp; Overriding&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="one-level-of-virtual-dispatching"&gt;One level of virtual dispatching&lt;/h2&gt;
+&lt;p&gt;derived types override a base types: as shown below&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; class Farms
+{
+public virtual void Irrigation()
+{
+Console.WriteLine(&amp;#34;Farm Type&amp;#34;);
+}
+}
+class WheatFarm : Farms
+{
+public override void Irrigation()
+{
+Console.WriteLine(&amp;#34;WheatFarm&amp;#34;);
+}
+}
+class RicaFarm : WheatFarm
+{
+public override void Irrigation()
+{
+Console.WriteLine(&amp;#34;RicaFarm&amp;#34;);
+}
+}
+static void Main(string[] args)
+{
+var a = new Farms();
+var b = new WheatFarm();
+var c = new RicaFarm();
+a.Irrigation();
+b.Irrigation();
+c.Irrigation();
+}
+//output
+Farm Type
+WheatFarm
+RicaFarm
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="two-level-of-virtual-dispatching-double-dispatch"&gt;Two level of virtual dispatching (Double Dispatch)&lt;/h2&gt;
+&lt;p&gt;This concept is used in Visitor Design Pattern.&lt;/p&gt;
+&lt;p&gt;use polymorphic static binding technique to ensure that proper overload is called&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; class Crop
+{
+public virtual void CropName(CropWatering obj)
+{
+obj.WaterSupply(this);
+}
+}
+class Wheat : Crop
+{
+public override void CropName(CropWatering obj)
+{
+obj.WaterSupply(this);
+}
+}
+/* An example of overloading (Method with same name but different parameter type)
+* */
+class CropWatering
+{
+public virtual void WaterSupply(Crop crop)
+{
+Console.WriteLine(&amp;#34;CropWatering working on type Crop&amp;#34;);
+}
+public virtual void WaterSupply(Wheat wheat)
+{
+Console.WriteLine(&amp;#34;CropWatering working on type Wheat&amp;#34;);
+}
+}
+class CropWatringSpring : CropWatering
+{
+public override void WaterSupply(Crop crop)
+{
+Console.WriteLine(&amp;#34;CropWatringSpring working on type Crop&amp;#34;);
+}
+public override void WaterSupply(Wheat wheat)
+{
+Console.WriteLine(&amp;#34;CropWatringSpring working on type Wheat&amp;#34;);
+}
+}
+static void Main(string[] args)
+{
+Crop crop = new Crop();
+Wheat wheat = new Wheat();
+CropWatering cropWatering = new CropWatering();
+crop.CropName(cropWatering);
+wheat.CropName(cropWatering);
+CropWatringSpring cropWatringSpring = new CropWatringSpring();
+crop.CropName(cropWatringSpring);
+wheat.CropName(cropWatringSpring);
+}
+//output
+CropWatering working on type Crop
+CropWatering working on type Wheat
+CropWatringSpring working on type Crop
+CropWatringSpring working on type Wheat
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href="https://lostechies.com/derekgreer/2010/04/19/double-dispatch-is-a-code-smell/"&gt;Reference&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Overloading &amp; Overriding</title><link>https://inderpalaulakh.com/posts/dispatch/</link><pubDate>Tue, 15 Dec 2020 20:57:27 -0800</pubDate><guid>https://inderpalaulakh.com/posts/dispatch/</guid><description>&lt;p&gt;To learn about Single &amp;amp; Double Dispatch, many design patterns, we need to understand Overloading and Overriding.&lt;/p&gt;
+&lt;h2 id="overloading"&gt;Overloading&lt;/h2&gt;
+&lt;p&gt;Overloading is compile-time polymorphism. The methods/functions with same name but different number/type parameters are example of Overloading.&lt;/p&gt;
+&lt;p&gt;As Overloading is compile-time, means during run-time the base type is considered. Example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; class Crop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; public virtual void CropName&lt;span style="color:#f92672"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Console.WriteLine&lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;Hey, My type is Crop&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; class Wheat : Crop
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; public override void CropName&lt;span style="color:#f92672"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Console.WriteLine&lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;Hey, My type is Wheat&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; /* An example of overloading &lt;span style="color:#f92672"&gt;(&lt;/span&gt;Method with same name but different parameter type&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; * */
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; class CropWatering
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; public void WaterSupply&lt;span style="color:#f92672"&gt;(&lt;/span&gt;Crop crop&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Console.WriteLine&lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;I am working on type Crop&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; public void WaterSupply&lt;span style="color:#f92672"&gt;(&lt;/span&gt;Wheat wheat&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Console.WriteLine&lt;span style="color:#f92672"&gt;(&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;I am working on type Wheat&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In main, If I create an object of type Crop and Wheat, an expected result will appear in console.&lt;/p&gt;</description></item><item><title>Book Summary: Don’t make me think - Steve Krug</title><link>https://inderpalaulakh.com/posts/my-book-donotmakemethink-post/</link><pubDate>Mon, 14 Dec 2020 12:14:41 -0800</pubDate><guid>https://inderpalaulakh.com/posts/my-book-donotmakemethink-post/</guid><description>&lt;p&gt;The book “Don’t make me think” is written by Steve Krug. This is the first book that I read about UX(User Experience Design) design. This book is concise and has four sections.&lt;/p&gt;
+&lt;p&gt;The “guiding principles” talks about not puzzling the user to find required content. These principles guide to omit needless content, using conventions, images and explains the web page scanning habit of user (not reading complete content).&lt;/p&gt;
+&lt;p&gt;The section “Things you need to get right” has content to design navigation that helps user to find their way. The big bang theory of web design is about designing home page, using tag lines (nothing beats a good tagline), welcome blurb and testing home page usability.&lt;/p&gt;
+&lt;p&gt;The section “Making sure you got them right” is all about usability testing. Resolving conflicting thoughts between developers, designers, marketing and project managers, this section also talks about usability testing on 10 cents a day. Focusing on early usability tests, do it yourself usability testing and how often, this section importantly explains feedback loop. Finally, this section has guidance about “deciding what to fix” from feedback.&lt;/p&gt;</description></item></channel></rss>
