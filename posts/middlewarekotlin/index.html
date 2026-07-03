@@ -1,14 +1,23 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Kotlin map, foldRight & nested functions to implement redux middleware | Inderpal Aulakh</title><meta name=keywords content="Android,Engineering"><meta name=description content="Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map & fold right for execution.
-Before diving into higher order functions, let&rsquo;s go through map & fold right.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Kotlin map, foldRight &amp; nested functions to implement redux middleware | Inderpal Aulakh</title>
+<meta name="keywords" content="Android, Engineering">
+<meta name="description" content="Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map &amp; fold right for execution.
+Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.
 map is collective transform operation.
 var numbers = mutableListOf(1, 2, 3)
 numbers = numbers.map { it*2 }.toMutableList()
 // elements in numbers: 2,4,6
 foldRight accept initial state, apply initial state to all elements and return final state.
 var numbers = mutableListOf(1, 2, 3)
-var result = numbers.foldRight(100, {a,b -> test(a,b)})
+var result = numbers.foldRight(100, {a,b -&gt; test(a,b)})
 private fun test(a: Int, b: Any): Int {
-        return a + b as Int
+        return a &#43; b as Int
 }
 
 /*
@@ -27,136 +36,414 @@ b = 105
 
 final: result = 106
 */
-Let&rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next:  Type and return Type."><meta name=author content><link rel=canonical href=https://inderpalaulakh.com/posts/middlewarekotlin/><link crossorigin=anonymous href=/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as=style><link rel=icon href=https://inderpalaulakh.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://inderpalaulakh.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://inderpalaulakh.com/favicon-32x32.png><link rel=apple-touch-icon href=https://inderpalaulakh.com/apple-touch-icon.png><link rel=mask-icon href=https://inderpalaulakh.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://inderpalaulakh.com/posts/middlewarekotlin/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://inderpalaulakh.com/posts/middlewarekotlin/"><meta property="og:site_name" content="Inderpal Aulakh"><meta property="og:title" content="Kotlin map, foldRight & nested functions to implement redux middleware"><meta property="og:description" content="Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map & fold right for execution.
-Before diving into higher order functions, let’s go through map & fold right.
-map is collective transform operation.
-var numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6 foldRight accept initial state, apply initial state to all elements and return final state.
-var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -> test(a,b)}) private fun test(a: Int, b: Any): Int { return a + b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */ Let’s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-05-10T14:27:12-07:00"><meta property="article:modified_time" content="2021-05-10T14:27:12-07:00"><meta property="article:tag" content="Android"><meta property="article:tag" content="Engineering"><meta name=twitter:card content="summary"><meta name=twitter:title content="Kotlin map, foldRight & nested functions to implement redux middleware"><meta name=twitter:description content="Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map & fold right for execution.
-Before diving into higher order functions, let’s go through map & fold right.
-map is collective transform operation.
-var numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6 foldRight accept initial state, apply initial state to all elements and return final state.
-var numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -> test(a,b)}) private fun test(a: Int, b: Any): Int { return a + b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */ Let’s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://inderpalaulakh.com/posts/"},{"@type":"ListItem","position":2,"name":"Kotlin map, foldRight \u0026 nested functions to implement redux middleware","item":"https://inderpalaulakh.com/posts/middlewarekotlin/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Kotlin map, foldRight \u0026 nested functions to implement redux middleware","name":"Kotlin map, foldRight \u0026 nested functions to implement redux middleware","description":"Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map \u0026amp; fold right for execution.\nBefore diving into higher order functions, let\u0026rsquo;s go through map \u0026amp; fold right.\nmap is collective transform operation.\nvar numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6 foldRight accept initial state, apply initial state to all elements and return final state.\nvar numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -\u0026gt; test(a,b)}) private fun test(a: Int, b: Any): Int { return a + b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */ Let\u0026rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.\n","keywords":["Android","Engineering"],"articleBody":"Kotlin supports Higher order functions. In this blog, I will create a higher order function that will use map \u0026 fold right for execution.\nBefore diving into higher order functions, let’s go through map \u0026 fold right.\nmap is collective transform operation.\nvar numbers = mutableListOf(1, 2, 3) numbers = numbers.map { it*2 }.toMutableList() // elements in numbers: 2,4,6 foldRight accept initial state, apply initial state to all elements and return final state.\nvar numbers = mutableListOf(1, 2, 3) var result = numbers.foldRight(100, {a,b -\u003e test(a,b)}) private fun test(a: Int, b: Any): Int { return a + b as Int } /* First execution: initial 100 a = 3 b = 100 Second Execution a = 2 b = 103 Third Execution a = 1 b = 105 final: result = 106 */ Let’s create a higher order function Middleware that takes an instance StringApp, has inner function next: Type and return Type.\ntypealias Type = (value: String) -\u003e Unit typealias Middleware = (stringApp: StringApp) -\u003e (next: Type) -\u003e Type Now, create three classes that implements Middleware.\nclass MiddlewareA : Middleware { override fun invoke(stringApp: StringApp) = { next: Type -\u003e { value: String -\u003e next(\"$value MiddlewareA \") } } } class MiddlewareB : Middleware { override fun invoke(stringApp: StringApp) = { next: Type -\u003e { value: String -\u003e next(\"$value MiddlewareB \") } } } class MiddlewareC : Middleware { override fun invoke(stringApp: StringApp) = { next: Type -\u003e { value: String -\u003e next(\"$value MiddlewareC \") } } } StringApp class receives list of middlewares and call dispatch to execute higher order function.\nclass StringApp(private val middlewares: MutableList) { private fun reduce(value: String) { val result = value; // result = } fun dispatch(value: String) { var dispatch2 = middlewares[2](this)(::reduce) var dispatch1 = middlewares[1](this)(dispatch2) middlewares[0](this)(dispatch1)(value) } } The higher order function can be written as below:\nval app = StringApp(mutableListOf(MiddlewareA(), MiddlewareB(), MiddlewareC())) app.dispatch(\"init\") { middlewareC -\u003e set string value to \"init middleware A middleware B middleware C\" { middlewareB -\u003e set string value to \"init middleware A middleware B\" { middlewareA -\u003e set string value to \"init middleware A\" } } } Let’s use map \u0026 fold right to execute higher order function.\nclass StringApp(middlewares: MutableList) { // map inject store reference to all middleware functions private val middlewareMap: List\u003c(Type) -\u003e Type\u003e = middlewares.map { m -\u003e m.invoke(this) } /* // now below code execution required to achieve result var dispatch2 = middlewareMap[2](::reduce) var dispatch1 = middlewareMap[1](dispatch2) middlewareMap[0](dispatch1)(value) */ var middlewareDispatch = compose(middlewareMap)(::reduce) // traverse through middlewares // build middleware chain by injecting dispatch from previous middleware // inject ::reduce to last middleware private fun compose(functions: List\u003c(Type) -\u003e Type\u003e): (Type) -\u003e Type = { dispatch -\u003e functions.foldRight( dispatch, { nextDispatch, composed -\u003e nextDispatch(composed) }) } private fun reduce(value: String) { val result = value; } private fun dispatch(value: String) { middlewareDispatch(value) } } I learned map \u0026 fold while implementing redux middleware concepts from library kotlin-redux.\nUsing higher order functions for middleware helps to stop middleware chain execution. If a middleware subscribes to service, on async callback the middleware can finish the work without invoking next middleware.\n","wordCount":"517","inLanguage":"en","datePublished":"2021-05-10T14:27:12-07:00","dateModified":"2021-05-10T14:27:12-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://inderpalaulakh.com/posts/middlewarekotlin/"},"publisher":{"@type":"Organization","name":"Inderpal Aulakh","logo":{"@type":"ImageObject","url":"https://inderpalaulakh.com/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://inderpalaulakh.com/ accesskey=h title="Inderpal Aulakh (Alt + H)">Inderpal Aulakh</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://inderpalaulakh.com/posts/ title=Posts><span>Posts</span></a></li><li><a href=https://inderpalaulakh.com/archives/ title=Archives><span>Archives</span></a></li><li><a href=https://inderpalaulakh.com/about/ title=About><span>About</span></a></li><li><a href=https://inderpalaulakh.com/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
-<a href=/posts/>Posts</a>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">Kotlin map, foldRight & nested functions to implement redux middleware</h1><div class=post-meta><span title='2021-05-10 14:27:12 -0700 PDT'>May 10, 2021</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>517 words</span></div></header><div class="post-content md-content"><p>Kotlin supports <a href=https://en.wikipedia.org/wiki/Higher-order_function>Higher order functions</a>. In this blog, I will create a higher order function that will use map & fold right for execution.</p><p>Before diving into higher order functions, let&rsquo;s go through map & fold right.</p><p><code>map</code> is collective transform operation.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#66d9ef>var</span> numbers = mutableListOf(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>)
-</span></span><span style=display:flex><span>numbers = numbers.map { <span style=color:#66d9ef>it</span>*<span style=color:#ae81ff>2</span> }.toMutableList()
-</span></span><span style=display:flex><span><span style=color:#75715e>// elements in numbers: 2,4,6
-</span></span></span></code></pre></div><p><code>foldRight</code> accept initial state, apply initial state to all elements and return final state.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#66d9ef>var</span> numbers = mutableListOf(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> result = numbers.foldRight(<span style=color:#ae81ff>100</span>, {a,b <span style=color:#f92672>-&gt;</span> test(a,b)})
-</span></span><span style=display:flex><span><span style=color:#66d9ef>private</span> <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>test</span>(a: Int, b: Any): Int {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> a + b <span style=color:#66d9ef>as</span> Int
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>/*
-</span></span></span><span style=display:flex><span><span style=color:#75715e>First execution: 
-</span></span></span><span style=display:flex><span><span style=color:#75715e>initial 100
-</span></span></span><span style=display:flex><span><span style=color:#75715e>a = 3
-</span></span></span><span style=display:flex><span><span style=color:#75715e>b = 100
-</span></span></span><span style=display:flex><span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>Second Execution
-</span></span></span><span style=display:flex><span><span style=color:#75715e>a = 2
-</span></span></span><span style=display:flex><span><span style=color:#75715e>b = 103
-</span></span></span><span style=display:flex><span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>Third Execution
-</span></span></span><span style=display:flex><span><span style=color:#75715e>a = 1
-</span></span></span><span style=display:flex><span><span style=color:#75715e>b = 105
-</span></span></span><span style=display:flex><span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>final: result = 106
-</span></span></span><span style=display:flex><span><span style=color:#75715e>*/</span>
-</span></span></code></pre></div><p>Let&rsquo;s create a higher order function <code>Middleware</code> that takes an instance <code>StringApp</code>, has inner function <code>next: Type</code> and return <code>Type</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#66d9ef>typealias</span> Type = (<span style=color:#66d9ef>value</span>: String) <span style=color:#f92672>-&gt;</span> Unit
-</span></span><span style=display:flex><span><span style=color:#66d9ef>typealias</span> Middleware = (stringApp: StringApp) <span style=color:#f92672>-&gt;</span> (next: Type) <span style=color:#f92672>-&gt;</span> Type
-</span></span></code></pre></div><p>Now, create three classes that implements <code>Middleware</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MiddlewareA</span> : Middleware {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>invoke</span>(stringApp: StringApp) = { next: Type <span style=color:#f92672>-&gt;</span>
-</span></span><span style=display:flex><span>        { <span style=color:#66d9ef>value</span>: String <span style=color:#f92672>-&gt;</span>
-</span></span><span style=display:flex><span>            next(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>$value</span><span style=color:#e6db74> MiddlewareA &#34;</span>)
-</span></span><span style=display:flex><span>        }
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MiddlewareB</span> : Middleware {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>invoke</span>(stringApp: StringApp) = { next: Type <span style=color:#f92672>-&gt;</span>
-</span></span><span style=display:flex><span>        { <span style=color:#66d9ef>value</span>: String <span style=color:#f92672>-&gt;</span>
-</span></span><span style=display:flex><span>            next(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>$value</span><span style=color:#e6db74> MiddlewareB &#34;</span>)
-</span></span><span style=display:flex><span>        }
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MiddlewareC</span> : Middleware {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>invoke</span>(stringApp: StringApp) = { next: Type <span style=color:#f92672>-&gt;</span>
-</span></span><span style=display:flex><span>        { <span style=color:#66d9ef>value</span>: String <span style=color:#f92672>-&gt;</span>
-</span></span><span style=display:flex><span>            next(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>$value</span><span style=color:#e6db74> MiddlewareC &#34;</span>)
-</span></span><span style=display:flex><span>        }
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p><code>StringApp</code> class receives list of middlewares and call <code>dispatch</code> to execute higher order function.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StringApp</span>(<span style=color:#66d9ef>private</span> <span style=color:#66d9ef>val</span> middlewares: MutableList&lt;Middleware&gt;) {
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>reduce</span>(<span style=color:#66d9ef>value</span>: String) {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>val</span> result = <span style=color:#66d9ef>value</span>;
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// result = 
-</span></span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>dispatch</span>(<span style=color:#66d9ef>value</span>: String) {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>var</span> dispatch2 = middlewares[<span style=color:#ae81ff>2</span>](<span style=color:#66d9ef>this</span>)(<span style=color:#f92672>::</span>reduce)
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>var</span> dispatch1 = middlewares[<span style=color:#ae81ff>1</span>](<span style=color:#66d9ef>this</span>)(dispatch2)
-</span></span><span style=display:flex><span>        middlewares[<span style=color:#ae81ff>0</span>](<span style=color:#66d9ef>this</span>)(dispatch1)(<span style=color:#66d9ef>value</span>)
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>The higher order function can be written as below:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#66d9ef>val</span> app = StringApp(mutableListOf(MiddlewareA(), MiddlewareB(), MiddlewareC()))
-</span></span><span style=display:flex><span>app.dispatch(<span style=color:#e6db74>&#34;init&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    middlewareC <span style=color:#f92672>-&gt;</span> <span style=color:#66d9ef>set</span> string <span style=color:#66d9ef>value</span> to <span style=color:#e6db74>&#34;init middleware A middleware B middleware C&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    {
-</span></span><span style=display:flex><span>        middlewareB <span style=color:#f92672>-&gt;</span> <span style=color:#66d9ef>set</span> string <span style=color:#66d9ef>value</span> to <span style=color:#e6db74>&#34;init middleware A middleware B&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        {
-</span></span><span style=display:flex><span>            middlewareA <span style=color:#f92672>-&gt;</span> <span style=color:#66d9ef>set</span> string <span style=color:#66d9ef>value</span> to <span style=color:#e6db74>&#34;init middleware A&#34;</span>
-</span></span><span style=display:flex><span>        }
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Let&rsquo;s use map & fold right to execute higher order function.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StringApp</span>(middlewares: MutableList&lt;Middleware&gt;) {
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e>// map inject store reference to all middleware functions
-</span></span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>val</span> middlewareMap: List&lt;(Type) <span style=color:#f92672>-&gt;</span> Type&gt; = 
-</span></span><span style=display:flex><span>        middlewares.map { m <span style=color:#f92672>-&gt;</span> m.invoke(<span style=color:#66d9ef>this</span>) }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e>/*
-</span></span></span><span style=display:flex><span><span style=color:#75715e>        // now below code execution required to achieve result
-</span></span></span><span style=display:flex><span><span style=color:#75715e>        var dispatch2 = middlewareMap[2](::reduce)
-</span></span></span><span style=display:flex><span><span style=color:#75715e>        var dispatch1 = middlewareMap[1](dispatch2)
-</span></span></span><span style=display:flex><span><span style=color:#75715e>        middlewareMap[0](dispatch1)(value)
-</span></span></span><span style=display:flex><span><span style=color:#75715e>    */</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> middlewareDispatch = compose(middlewareMap)(<span style=color:#f92672>::</span>reduce)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e>// traverse through middlewares
-</span></span></span><span style=display:flex><span>    <span style=color:#75715e>// build middleware chain by injecting dispatch from previous middleware
-</span></span></span><span style=display:flex><span>    <span style=color:#75715e>// inject ::reduce to last middleware
-</span></span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>compose</span>(functions: List&lt;(Type) <span style=color:#f92672>-&gt;</span> Type&gt;): (Type) <span style=color:#f92672>-&gt;</span> Type =
-</span></span><span style=display:flex><span>        { dispatch <span style=color:#f92672>-&gt;</span>
-</span></span><span style=display:flex><span>            functions.foldRight(
-</span></span><span style=display:flex><span>                dispatch,
-</span></span><span style=display:flex><span>                { nextDispatch, composed <span style=color:#f92672>-&gt;</span> nextDispatch(composed) })
-</span></span><span style=display:flex><span>        }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>reduce</span>(<span style=color:#66d9ef>value</span>: String) {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>val</span> result = <span style=color:#66d9ef>value</span>;
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>dispatch</span>(<span style=color:#66d9ef>value</span>: String) {
-</span></span><span style=display:flex><span>        middlewareDispatch(<span style=color:#66d9ef>value</span>)
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>I learned map & fold while implementing redux middleware concepts from library <a href=https://github.com/reduxkotlin/redux-kotlin>kotlin-redux</a>.</p><p>Using higher order functions for middleware helps to stop middleware chain execution. If a middleware subscribes to service, on async callback the middleware can finish the work without invoking next middleware.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://inderpalaulakh.com/tags/android/>Android</a></li><li><a href=https://inderpalaulakh.com/tags/engineering/>Engineering</a></li></ul><nav class=paginav><a class=prev href=https://inderpalaulakh.com/posts/thepowerofless/><span class=title>« Prev</span>
-<span>Harnessing the Power of Less</span>
-</a><a class=next href=https://inderpalaulakh.com/posts/dicustom/><span class=title>Next »</span>
-<span>Dagger, Injecting custom objects (Interface implementation)</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://inderpalaulakh.com/>Inderpal Aulakh</a></span> ·
-<span>Powered by
-<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+Let&rsquo;s create a higher order function Middleware that takes an instance StringApp, has inner function next:  Type and return Type.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/middlewarekotlin/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/middlewarekotlin/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Inderpal Aulakh (Alt + H)">Inderpal Aulakh</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/posts/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      Kotlin map, foldRight &amp; nested functions to implement redux middleware
+    </h1>
+    <div class="post-meta">
+
+<span title='2021-05-10 14:27:12 -0700 PDT'>May 10, 2021</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>517 words</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><p>Kotlin supports <a href="https://en.wikipedia.org/wiki/Higher-order_function">Higher order functions</a>. In this blog, I will create a higher order function that will use map &amp; fold right for execution.</p>
+<p>Before diving into higher order functions, let&rsquo;s go through map &amp; fold right.</p>
+<p><code>map</code> is collective transform operation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> numbers = mutableListOf(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>numbers = numbers.map { <span style="color:#66d9ef">it</span>*<span style="color:#ae81ff">2</span> }.toMutableList()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// elements in numbers: 2,4,6
+</span></span></span></code></pre></div><p><code>foldRight</code> accept initial state, apply initial state to all elements and return final state.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> numbers = mutableListOf(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> result = numbers.foldRight(<span style="color:#ae81ff">100</span>, {a,b <span style="color:#f92672">-&gt;</span> test(a,b)})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">test</span>(a: Int, b: Any): Int {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a + b <span style="color:#66d9ef">as</span> Int
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">First execution: 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">initial 100
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">a = 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">b = 100
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Second Execution
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">a = 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">b = 103
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Third Execution
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">a = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">b = 105
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">final: result = 106
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span></code></pre></div><p>Let&rsquo;s create a higher order function <code>Middleware</code> that takes an instance <code>StringApp</code>, has inner function <code>next:  Type</code> and return <code>Type</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">typealias</span> Type = (<span style="color:#66d9ef">value</span>: String) <span style="color:#f92672">-&gt;</span> Unit
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typealias</span> Middleware = (stringApp: StringApp) <span style="color:#f92672">-&gt;</span> (next: Type) <span style="color:#f92672">-&gt;</span> Type
+</span></span></code></pre></div><p>Now, create three classes that implements <code>Middleware</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MiddlewareA</span> : Middleware {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">invoke</span>(stringApp: StringApp) = { next: Type <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>        { <span style="color:#66d9ef">value</span>: String <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>            next(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$value</span><span style="color:#e6db74"> MiddlewareA &#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MiddlewareB</span> : Middleware {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">invoke</span>(stringApp: StringApp) = { next: Type <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>        { <span style="color:#66d9ef">value</span>: String <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>            next(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$value</span><span style="color:#e6db74"> MiddlewareB &#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MiddlewareC</span> : Middleware {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">invoke</span>(stringApp: StringApp) = { next: Type <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>        { <span style="color:#66d9ef">value</span>: String <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>            next(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$value</span><span style="color:#e6db74"> MiddlewareC &#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>StringApp</code> class receives list of middlewares and call <code>dispatch</code> to execute higher order function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringApp</span>(<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> middlewares: MutableList&lt;Middleware&gt;) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">reduce</span>(<span style="color:#66d9ef">value</span>: String) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> result = <span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// result = 
+</span></span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">dispatch</span>(<span style="color:#66d9ef">value</span>: String) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> dispatch2 = middlewares[<span style="color:#ae81ff">2</span>](<span style="color:#66d9ef">this</span>)(<span style="color:#f92672">::</span>reduce)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> dispatch1 = middlewares[<span style="color:#ae81ff">1</span>](<span style="color:#66d9ef">this</span>)(dispatch2)
+</span></span><span style="display:flex;"><span>        middlewares[<span style="color:#ae81ff">0</span>](<span style="color:#66d9ef">this</span>)(dispatch1)(<span style="color:#66d9ef">value</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The higher order function can be written as below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> app = StringApp(mutableListOf(MiddlewareA(), MiddlewareB(), MiddlewareC()))
+</span></span><span style="display:flex;"><span>app.dispatch(<span style="color:#e6db74">&#34;init&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    middlewareC <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">set</span> string <span style="color:#66d9ef">value</span> to <span style="color:#e6db74">&#34;init middleware A middleware B middleware C&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        middlewareB <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">set</span> string <span style="color:#66d9ef">value</span> to <span style="color:#e6db74">&#34;init middleware A middleware B&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            middlewareA <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">set</span> string <span style="color:#66d9ef">value</span> to <span style="color:#e6db74">&#34;init middleware A&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Let&rsquo;s use map &amp; fold right to execute higher order function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringApp</span>(middlewares: MutableList&lt;Middleware&gt;) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// map inject store reference to all middleware functions
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> middlewareMap: List&lt;(Type) <span style="color:#f92672">-&gt;</span> Type&gt; = 
+</span></span><span style="display:flex;"><span>        middlewares.map { m <span style="color:#f92672">-&gt;</span> m.invoke(<span style="color:#66d9ef">this</span>) }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        // now below code execution required to achieve result
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        var dispatch2 = middlewareMap[2](::reduce)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        var dispatch1 = middlewareMap[1](dispatch2)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        middlewareMap[0](dispatch1)(value)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> middlewareDispatch = compose(middlewareMap)(<span style="color:#f92672">::</span>reduce)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// traverse through middlewares
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// build middleware chain by injecting dispatch from previous middleware
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inject ::reduce to last middleware
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">compose</span>(functions: List&lt;(Type) <span style="color:#f92672">-&gt;</span> Type&gt;): (Type) <span style="color:#f92672">-&gt;</span> Type =
+</span></span><span style="display:flex;"><span>        { dispatch <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>            functions.foldRight(
+</span></span><span style="display:flex;"><span>                dispatch,
+</span></span><span style="display:flex;"><span>                { nextDispatch, composed <span style="color:#f92672">-&gt;</span> nextDispatch(composed) })
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">reduce</span>(<span style="color:#66d9ef">value</span>: String) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> result = <span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">dispatch</span>(<span style="color:#66d9ef">value</span>: String) {
+</span></span><span style="display:flex;"><span>        middlewareDispatch(<span style="color:#66d9ef">value</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>I learned map &amp; fold while implementing redux middleware concepts from library <a href="https://github.com/reduxkotlin/redux-kotlin">kotlin-redux</a>.</p>
+<p>Using higher order functions for middleware helps to stop middleware chain execution. If a middleware subscribes to service, on async callback the middleware can finish the work without invoking next middleware.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/android/">Android</a></li>
+      <li><a href="http://localhost:1313/tags/engineering/">Engineering</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/thepowerofless/">
+    <span class="title">« Prev</span>
+    <span>Harnessing the Power of Less</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/dicustom/">
+    <span class="title">Next »</span>
+    <span>Dagger, Injecting custom objects (Interface implementation)</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Inderpal Aulakh</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
