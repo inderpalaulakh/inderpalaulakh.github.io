@@ -1,213 +1,71 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Android Application implementing Azure Active Directory Authentication to call protected Azure Function  | Inderpal Aulakh</title>
-<meta name="keywords" content="Android, Cloud">
-<meta name="description" content="In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Android Application implementing Azure Active Directory Authentication to call protected Azure Function | Inderpal Aulakh</title><meta name=keywords content="Android,Cloud"><meta name=description content="In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.
 Create an Android Application
 Open Android Studio and create new Project with Empty Activity.
 
 Configure project with below settings
 
-Get SHA1 &amp; package name
-Open powershell and cd to C:\Users&lt;username&gt;.android
+Get SHA1 & package name
+Open powershell and cd to C:\Users<username>.android
 Execute below command, if prompted for password enter android or leave blank
 keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android
 
-Copy SHA1 -&gt; Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
+Copy SHA1 -> Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
 
 Copy package name from AndroidManifest.xml
-Now you have packagename &amp; Base64 SHA1 hash
+Now you have packagename & Base64 SHA1 hash
 Setup Azure Active Directory
 I followed steps from Register your app under Azure Active Directory (using Android platform settings) to setup AAD.
 Login to Azure
 Open AAD
-Click App Registration -&gt; New Registration
+Click App Registration -> New Registration
 
 Select Authentication
 Select Add a platform
 
-Enter SHA1 Hash &amp; package name
+Enter SHA1 Hash & package name
 
 Copy Android Configuration
-">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/azureaad/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/azureaad/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Inderpal Aulakh (Alt + H)">Inderpal Aulakh</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-            <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
-                    <span>Posts</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="About">
-                    <span>About</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-            <a href="/posts/">Posts</a>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-        <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-</nav>
-    <h1 class="post-title entry-hint-parent">
-      Android Application implementing Azure Active Directory Authentication to call protected Azure Function 
-    </h1>
-    <div class="post-meta">
-
-<span title='2021-01-23 13:36:35 -0800 PST'>January 23, 2021</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1186 words</span>
-
-</div>
-  </header> 
-  <div class="post-content md-content"><p>In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.</p>
-<h2 id="create-an-android-application">Create an Android Application<a hidden class="anchor" aria-hidden="true" href="#create-an-android-application">#</a></h2>
-<p>Open Android Studio and create new Project with Empty Activity.</p>
-<p><img loading="lazy" src="../images/androidappcreation.png"></p>
-<p>Configure project with below settings</p>
-<p><img loading="lazy" src="../images/configuringproject.png"></p>
-<h2 id="get-sha1--package-name">Get SHA1 &amp; package name<a hidden class="anchor" aria-hidden="true" href="#get-sha1--package-name">#</a></h2>
-<p>Open powershell and cd to C:\Users&lt;username&gt;.android
-Execute below command, if prompted for password enter <code>android</code> or leave blank</p>
-<pre tabindex="0"><code>keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android
-</code></pre><p><img loading="lazy" src="../images/gettingSHA.PNG"></p>
-<p>Copy SHA1 -&gt; Navigate to <a href="https://base64.guru/converter/encode/hex">https://base64.guru/converter/encode/hex</a> and convert SHA1 to Base64</p>
-<p><img loading="lazy" src="../images/sha.PNG"></p>
-<p>Copy package name from <code>AndroidManifest.xml</code></p>
-<p>Now you have packagename &amp; Base64 SHA1 hash</p>
-<h2 id="setup-azure-active-directory">Setup Azure Active Directory<a hidden class="anchor" aria-hidden="true" href="#setup-azure-active-directory">#</a></h2>
-<p>I followed steps from <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-android">Register your app under Azure Active Directory (using Android platform settings)</a> to setup AAD.</p>
-<p>Login to Azure<br>
-Open <code>AAD</code><br>
-Click <code>App Registration</code> -&gt; <code>New Registration</code><br>
-<img loading="lazy" src="../images/newreg.PNG"><br>
-Select <code>Authentication</code><br>
-Select <code>Add a platform</code><br>
-<img loading="lazy" src="../images/authsetup.PNG"><br>
-Enter <code>SHA1 Hash</code> &amp; <code>package name</code><br>
-<img loading="lazy" src="../images/configure.PNG"><br/>
-Copy <code>Android Configuration</code><br/>
-<img loading="lazy" src="../images/copyconfig.PNG"><br></p>
-<h2 id="android-app-login--logout-implementation">Android App Login &amp; Logout implementation<a hidden class="anchor" aria-hidden="true" href="#android-app-login--logout-implementation">#</a></h2>
-<p>I followed steps from <a href="https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-aad">Configure your App Service or Azure Functions app to use Azure AD login</a></p>
-<p>Edit <code>build.gradle</code> and add</p>
-<pre tabindex="0"><code>implementation &#39;com.microsoft.identity.client:msal:1.4.+&#39;
+"><meta name=author content><link rel=canonical href=https://inderpalaulakh.com/posts/azureaad/><link crossorigin=anonymous href=/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as=style><link rel=icon href=https://inderpalaulakh.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://inderpalaulakh.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://inderpalaulakh.com/favicon-32x32.png><link rel=apple-touch-icon href=https://inderpalaulakh.com/apple-touch-icon.png><link rel=mask-icon href=https://inderpalaulakh.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://inderpalaulakh.com/posts/azureaad/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://inderpalaulakh.com/posts/azureaad/"><meta property="og:site_name" content="Inderpal Aulakh"><meta property="og:title" content="Android Application implementing Azure Active Directory Authentication to call protected Azure Function "><meta property="og:description" content="In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.
+Create an Android Application Open Android Studio and create new Project with Empty Activity.
+Configure project with below settings
+Get SHA1 & package name Open powershell and cd to C:\Users<username>.android Execute below command, if prompted for password enter android or leave blank
+keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android Copy SHA1 -> Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
+Copy package name from AndroidManifest.xml
+Now you have packagename & Base64 SHA1 hash
+Setup Azure Active Directory I followed steps from Register your app under Azure Active Directory (using Android platform settings) to setup AAD.
+Login to Azure
+Open AAD
+Click App Registration -> New Registration
+Select Authentication
+Select Add a platform
+Enter SHA1 Hash & package name
+Copy Android Configuration"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-01-23T13:36:35-08:00"><meta property="article:modified_time" content="2021-01-23T13:36:35-08:00"><meta property="article:tag" content="Android"><meta property="article:tag" content="Cloud"><meta name=twitter:card content="summary"><meta name=twitter:title content="Android Application implementing Azure Active Directory Authentication to call protected Azure Function "><meta name=twitter:description content="In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.
+Create an Android Application Open Android Studio and create new Project with Empty Activity.
+Configure project with below settings
+Get SHA1 & package name Open powershell and cd to C:\Users<username>.android Execute below command, if prompted for password enter android or leave blank
+keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android Copy SHA1 -> Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
+Copy package name from AndroidManifest.xml
+Now you have packagename & Base64 SHA1 hash
+Setup Azure Active Directory I followed steps from Register your app under Azure Active Directory (using Android platform settings) to setup AAD.
+Login to Azure
+Open AAD
+Click App Registration -> New Registration
+Select Authentication
+Select Add a platform
+Enter SHA1 Hash & package name
+Copy Android Configuration"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://inderpalaulakh.com/posts/"},{"@type":"ListItem","position":2,"name":"Android Application implementing Azure Active Directory Authentication to call protected Azure Function ","item":"https://inderpalaulakh.com/posts/azureaad/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Android Application implementing Azure Active Directory Authentication to call protected Azure Function ","name":"Android Application implementing Azure Active Directory Authentication to call protected Azure Function ","description":"In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.\nCreate an Android Application Open Android Studio and create new Project with Empty Activity.\nConfigure project with below settings\nGet SHA1 \u0026amp; package name Open powershell and cd to C:\\Users\u0026lt;username\u0026gt;.android Execute below command, if prompted for password enter android or leave blank\nkeytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android Copy SHA1 -\u0026gt; Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64\nCopy package name from AndroidManifest.xml\nNow you have packagename \u0026amp; Base64 SHA1 hash\nSetup Azure Active Directory I followed steps from Register your app under Azure Active Directory (using Android platform settings) to setup AAD.\nLogin to Azure\nOpen AAD\nClick App Registration -\u0026gt; New Registration\nSelect Authentication\nSelect Add a platform\nEnter SHA1 Hash \u0026amp; package name\nCopy Android Configuration ","keywords":["Android","Cloud"],"articleBody":"In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.\nCreate an Android Application Open Android Studio and create new Project with Empty Activity.\nConfigure project with below settings\nGet SHA1 \u0026 package name Open powershell and cd to C:\\Users.android Execute below command, if prompted for password enter android or leave blank\nkeytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android Copy SHA1 -\u003e Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64\nCopy package name from AndroidManifest.xml\nNow you have packagename \u0026 Base64 SHA1 hash\nSetup Azure Active Directory I followed steps from Register your app under Azure Active Directory (using Android platform settings) to setup AAD.\nLogin to Azure\nOpen AAD\nClick App Registration -\u003e New Registration\nSelect Authentication\nSelect Add a platform\nEnter SHA1 Hash \u0026 package name\nCopy Android Configuration Android App Login \u0026 Logout implementation I followed steps from Configure your App Service or Azure Functions app to use Azure AD login\nEdit build.gradle and add\nimplementation 'com.microsoft.identity.client:msal:1.4.+' packagingOptions{ exclude(\"META-INF/jersey-module-version\") } Edit build.gradle and add\nConfigure auth_config_single_account.json as below Edit activity_main.xml and add\n\u003c?xml version=\"1.0\" encoding=\"utf-8\"?\u003e Edit MainActivity.java and add\npackage com.example.logintestaad; import androidx.annotation.NonNull; import androidx.annotation.Nullable; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.view.View; import android.widget.Button; import com.microsoft.identity.client.AuthenticationCallback; import com.microsoft.identity.client.IAccount; import com.microsoft.identity.client.IAuthenticationResult; import com.microsoft.identity.client.IPublicClientApplication; import com.microsoft.identity.client.ISingleAccountPublicClientApplication; import com.microsoft.identity.client.PublicClientApplication; import com.microsoft.identity.client.exception.MsalException; public class MainActivity extends AppCompatActivity { Button signInButton; Button signOutButton; private final static String[] SCOPES = {\"Files.Read\"}; private ISingleAccountPublicClientApplication mSingleAccountApp; @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); signInButton = findViewById(R.id.loginButton); signOutButton = findViewById(R.id.signoutButton); signInButton.setVisibility(View.GONE); signOutButton.setVisibility(View.GONE); //Sign in user signInButton.setOnClickListener(new View.OnClickListener(){ public void onClick(View v) { if (mSingleAccountApp == null) { return; } mSingleAccountApp.signIn(MainActivity.this, null, SCOPES, getAuthInteractiveCallback()); } }); //Sign out user signOutButton.setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { if (mSingleAccountApp == null){ return; } mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() { @Override public void onSignOut() { signInButton.setVisibility(View.VISIBLE); signOutButton.setVisibility(View.GONE); } @Override public void onError(@NonNull MsalException exception){ } }); } }); PublicClientApplication.createSingleAccountPublicClientApplication(getApplicationContext(), R.raw.auth_config_single_account, new IPublicClientApplication.ISingleAccountApplicationCreatedListener() { @Override public void onCreated(ISingleAccountPublicClientApplication application) { mSingleAccountApp = application; loadAccount(); } @Override public void onError(MsalException exception) { // displayError(exception); } }); } private AuthenticationCallback getAuthInteractiveCallback() { return new AuthenticationCallback() { @Override public void onSuccess(IAuthenticationResult authenticationResult) { signInButton.setVisibility(View.GONE); signOutButton.setVisibility(View.VISIBLE); } @Override public void onError(MsalException exception) { /* Failed to acquireToken */ } @Override public void onCancel() { } }; } private void loadAccount() { if (mSingleAccountApp == null) { return; } mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback() { @Override public void onAccountLoaded(@Nullable IAccount activeAccount) { // You can use the account data to update your UI or your app database. if(activeAccount == null) { signInButton.setVisibility(View.VISIBLE); signOutButton.setVisibility(View.GONE); } else { signOutButton.setVisibility(View.GONE); signInButton.setVisibility(View.VISIBLE); } } @Override public void onAccountChanged(@Nullable IAccount priorAccount, @Nullable IAccount currentAccount) { if (currentAccount == null) { // Perform a cleanup task as the signed-in account changed. } } @Override public void onError(@NonNull MsalException exception) { } }); } } Run application, you should be able to login \u0026 Logout\nCreating \u0026 Publishing Azure Function Follow below documents to setup Azure Function using Visual Studio or Visual Studio Code.\nDevelop Azure Functions by using Visual Studio Code Develop Azure Functions by using Visual Studio Code\nOnce Azure function is hosted, verify the URL response in browser.\nhttps://.azurewebsites.net/api/\nProtect Azure Function with Azure Active Directory Authentication Follow document Configure your App Service or Azure Functions app to use Azure AD login\nOpen function in Azure and select Authentication\nEnable On\nSelect Log in with Azure Active Directory for Action to take when request is not authenticated\nClick Azure Active Directory as Authentication Provider\nClick Advanced\nEnter client id from andridLoginTest Azure Directory Application setup (Setup Azure Active Directory)\nEnter Issuer Url as https://sts.windows.net/\nClick Allowed Token Audience and add your function URL (do not add / or api/, just base URL)\nSetup Azure Active Directory (AAD) API Expose and Scopes Open Azure Active Directory\nSelect Branding and setup Home page URL to Azure Function\nClick Expose an API -\u003e Add a scope -\u003e set Application ID URI to Azure function URI(https://.azurewebsites.net) -\u003e Save and Continue\nIn next window Add a scope -\u003e set Scope name as apiaccess-\u003e select Admins and users -\u003e Enter anything in consent name and description\nClick API permissions -\u003e Add a Permission -\u003e My API's -\u003e select Name of API (scope name -\u003e apiaccess)-\u003e Add Permission -\u003e Grant admin consent for Default -\u003e yes-\u003esave-\u003egrant admin consent-\u003eyes\nAndroid App Calling function Edit build.gradle and add\nimplementation 'com.android.volley:volley:1.1.1' Edit AndroidManifest.xml and add\nReplace MainActivity.java\npackage com.example.logintestaad; import androidx.annotation.NonNull; import androidx.annotation.Nullable; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.view.View; import android.widget.Button; import com.android.volley.AuthFailureError; import com.android.volley.Request; import com.android.volley.Response; import com.android.volley.VolleyError; import com.android.volley.toolbox.StringRequest; import com.android.volley.toolbox.Volley; import com.microsoft.identity.client.AuthenticationCallback; import com.microsoft.identity.client.IAccount; import com.microsoft.identity.client.IAuthenticationResult; import com.microsoft.identity.client.IPublicClientApplication; import com.microsoft.identity.client.ISingleAccountPublicClientApplication; import com.microsoft.identity.client.PublicClientApplication; import com.microsoft.identity.client.exception.MsalException; import com.android.volley.RequestQueue; import java.util.HashMap; import java.util.Map; public class MainActivity extends AppCompatActivity { private final static String[] SCOPES = {\"https://androidaccessfunctiontest20210122095133.azurewebsites.net/apiaccess\"}; Button signInButton; Button signOutButton; private ISingleAccountPublicClientApplication mSingleAccountApp; private RequestQueue queue; @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); signInButton = findViewById(R.id.loginButton); signOutButton = findViewById(R.id.signoutButton); signInButton.setVisibility(View.GONE); signOutButton.setVisibility(View.GONE); //Sign in user signInButton.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { if (mSingleAccountApp == null) { return; } mSingleAccountApp.signIn(MainActivity.this, null, SCOPES, getAuthInteractiveCallback()); } }); //Sign out user signOutButton.setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { if (mSingleAccountApp == null) { return; } mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() { @Override public void onSignOut() { signInButton.setVisibility(View.VISIBLE); signOutButton.setVisibility(View.GONE); } @Override public void onError(@NonNull MsalException exception) { } }); } }); PublicClientApplication.createSingleAccountPublicClientApplication(getApplicationContext(), R.raw.auth_config_single_account, new IPublicClientApplication.ISingleAccountApplicationCreatedListener() { @Override public void onCreated(ISingleAccountPublicClientApplication application) { mSingleAccountApp = application; loadAccount(); } @Override public void onError(MsalException exception) { // displayError(exception); } }); } private AuthenticationCallback getAuthInteractiveCallback() { return new AuthenticationCallback() { @Override public void onSuccess(IAuthenticationResult authenticationResult) { signInButton.setVisibility(View.GONE); signOutButton.setVisibility(View.VISIBLE); String token = authenticationResult.getAccessToken(); String tokenGenerationAddress = \"https://androidaccessfunctiontest20210122095133.azurewebsites.net/api/callme\"; //cal azure function with access token queue = Volley.newRequestQueue(getApplicationContext()); StringRequest stringRequest = new StringRequest(Request.Method.GET, tokenGenerationAddress, new Response.Listener() { @Override public void onResponse(String response) { String text = response; } }, new Response.ErrorListener() { @Override public void onErrorResponse(VolleyError error) { //textView.setText(\"That didn't work!\"); } }) { @Override public Map getHeaders() throws AuthFailureError { HashMap headers = new HashMap(); headers.put(\"Authorization\", \"Bearer \" + token); return headers; } }; queue.add(stringRequest); } @Override public void onError(MsalException exception) { } @Override public void onCancel() { } }; } private void loadAccount() { if (mSingleAccountApp == null) { return; } mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback() { @Override public void onAccountLoaded(@Nullable IAccount activeAccount) { // You can use the account data to update your UI or your app database. if (activeAccount == null) { signInButton.setVisibility(View.VISIBLE); signOutButton.setVisibility(View.GONE); } else { signOutButton.setVisibility(View.VISIBLE); signInButton.setVisibility(View.GONE); } } @Override public void onAccountChanged(@Nullable IAccount priorAccount, @Nullable IAccount currentAccount) { if (currentAccount == null) { // Perform a cleanup task as the signed-in account changed. } } @Override public void onError(@NonNull MsalException exception) { } }); } } Finally, debug code, you should be able to see response from Azure function.\n","wordCount":"1186","inLanguage":"en","datePublished":"2021-01-23T13:36:35-08:00","dateModified":"2021-01-23T13:36:35-08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://inderpalaulakh.com/posts/azureaad/"},"publisher":{"@type":"Organization","name":"Inderpal Aulakh","logo":{"@type":"ImageObject","url":"https://inderpalaulakh.com/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://inderpalaulakh.com/ accesskey=h title="Inderpal Aulakh (Alt + H)">Inderpal Aulakh</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://inderpalaulakh.com/posts/ title=Posts><span>Posts</span></a></li><li><a href=https://inderpalaulakh.com/archives/ title=Archives><span>Archives</span></a></li><li><a href=https://inderpalaulakh.com/about/ title=About><span>About</span></a></li><li><a href=https://inderpalaulakh.com/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+<a href=/posts/>Posts</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">Android Application implementing Azure Active Directory Authentication to call protected Azure Function</h1><div class=post-meta><span title='2021-01-23 13:36:35 -0800 PST'>January 23, 2021</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1186 words</span></div></header><div class="post-content md-content"><p>In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.</p><h2 id=create-an-android-application>Create an Android Application<a hidden class=anchor aria-hidden=true href=#create-an-android-application>#</a></h2><p>Open Android Studio and create new Project with Empty Activity.</p><p><img loading=lazy src=../images/androidappcreation.png></p><p>Configure project with below settings</p><p><img loading=lazy src=../images/configuringproject.png></p><h2 id=get-sha1--package-name>Get SHA1 & package name<a hidden class=anchor aria-hidden=true href=#get-sha1--package-name>#</a></h2><p>Open powershell and cd to C:\Users&lt;username>.android
+Execute below command, if prompted for password enter <code>android</code> or leave blank</p><pre tabindex=0><code>keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android
+</code></pre><p><img loading=lazy src=../images/gettingSHA.PNG></p><p>Copy SHA1 -> Navigate to <a href=https://base64.guru/converter/encode/hex>https://base64.guru/converter/encode/hex</a> and convert SHA1 to Base64</p><p><img loading=lazy src=../images/sha.PNG></p><p>Copy package name from <code>AndroidManifest.xml</code></p><p>Now you have packagename & Base64 SHA1 hash</p><h2 id=setup-azure-active-directory>Setup Azure Active Directory<a hidden class=anchor aria-hidden=true href=#setup-azure-active-directory>#</a></h2><p>I followed steps from <a href=https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-android>Register your app under Azure Active Directory (using Android platform settings)</a> to setup AAD.</p><p>Login to Azure<br>Open <code>AAD</code><br>Click <code>App Registration</code> -> <code>New Registration</code><br><img loading=lazy src=../images/newreg.PNG><br>Select <code>Authentication</code><br>Select <code>Add a platform</code><br><img loading=lazy src=../images/authsetup.PNG><br>Enter <code>SHA1 Hash</code> & <code>package name</code><br><img loading=lazy src=../images/configure.PNG><br>Copy <code>Android Configuration</code><br><img loading=lazy src=../images/copyconfig.PNG><br></p><h2 id=android-app-login--logout-implementation>Android App Login & Logout implementation<a hidden class=anchor aria-hidden=true href=#android-app-login--logout-implementation>#</a></h2><p>I followed steps from <a href=https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-aad>Configure your App Service or Azure Functions app to use Azure AD login</a></p><p>Edit <code>build.gradle</code> and add</p><pre tabindex=0><code>implementation &#39;com.microsoft.identity.client:msal:1.4.+&#39;
 
 packagingOptions{
         exclude(&#34;META-INF/jersey-module-version&#34;)
 }
-</code></pre><p>Edit <code>build.gradle</code> and add</p>
-<pre tabindex="0"><code>&lt;activity
+</code></pre><p>Edit <code>build.gradle</code> and add</p><pre tabindex=0><code>&lt;activity
             android:name=&#34;com.microsoft.identity.client.BrowserTabActivity&#34;&gt;
             &lt;intent-filter&gt;
                 &lt;action android:name=&#34;android.intent.action.VIEW&#34; /&gt;
@@ -219,9 +77,7 @@ packagingOptions{
             &lt;/intent-filter&gt;
         &lt;/activity&gt;
 </code></pre><p>Configure <code>auth_config_single_account.json</code> as below
-<img loading="lazy" src="../images/configinapp.PNG"></p>
-<p>Edit <code>activity_main.xml</code> and add</p>
-<pre tabindex="0"><code>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+<img loading=lazy src=../images/configinapp.PNG></p><p>Edit <code>activity_main.xml</code> and add</p><pre tabindex=0><code>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
 &lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;
     xmlns:app=&#34;http://schemas.android.com/apk/res-auto&#34;
     xmlns:tools=&#34;http://schemas.android.com/tools&#34;
@@ -254,8 +110,7 @@ packagingOptions{
         app:layout_constraintTop_toBottomOf=&#34;@+id/loginButton&#34; /&gt;
 
 &lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
-</code></pre><p>Edit <code>MainActivity.java</code> and add</p>
-<pre tabindex="0"><code>package com.example.logintestaad;
+</code></pre><p>Edit <code>MainActivity.java</code> and add</p><pre tabindex=0><code>package com.example.logintestaad;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -391,37 +246,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-</code></pre><p>Run application, you should be able to <code>login</code> &amp; <code>Logout</code></p>
-<h2 id="creating--publishing-azure-function">Creating &amp; Publishing Azure Function<a hidden class="anchor" aria-hidden="true" href="#creating--publishing-azure-function">#</a></h2>
-<p>Follow below documents to setup Azure Function using Visual Studio or Visual Studio Code.</p>
-<p><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp">Develop Azure Functions by using Visual Studio Code</a>
-<a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp">Develop Azure Functions by using Visual Studio Code</a></p>
-<p>Once Azure function is hosted, verify the URL response in browser.</p>
-<p><code>https://&lt;yourfunctionanme&gt;.azurewebsites.net/api/&lt;functionparameter&gt;</code></p>
-<h2 id="protect-azure-function-with-azure-active-directory-authentication">Protect Azure Function with Azure Active Directory Authentication<a hidden class="anchor" aria-hidden="true" href="#protect-azure-function-with-azure-active-directory-authentication">#</a></h2>
-<p>Follow document <a href="https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-aad">Configure your App Service or Azure Functions app to use Azure AD login</a></p>
-<p>Open function in Azure and select <code>Authentication</code><br>
-Enable <code>On</code><br>
-Select <code>Log in with Azure Active Directory</code> for <code>Action to take when request is not authenticated</code><br>
-Click <code>Azure Active Directory</code> as Authentication Provider<br>
-Click <code>Advanced</code><br>
-Enter <code>client id</code> from <code>andridLoginTest</code> Azure Directory Application setup (Setup Azure Active Directory)<br>
-Enter <code>Issuer Url</code> as <code>https://sts.windows.net/&lt;tokenid&gt;</code><br>
-Click <code>Allowed Token Audience</code> and add your function URL (do not add / or api/, just base URL)<br>
-<img loading="lazy" src="../images/functionaad.PNG"><br></p>
-<h2 id="setup-azure-active-directory-aad-api-expose-and-scopes">Setup Azure Active Directory (AAD) API Expose and Scopes<a hidden class="anchor" aria-hidden="true" href="#setup-azure-active-directory-aad-api-expose-and-scopes">#</a></h2>
-<p>Open <code>Azure Active Directory</code><br>
-Select <code>Branding</code> and setup <code>Home page URL</code> to Azure Function<br>
-Click <code>Expose an API</code> -&gt; <code>Add a scope</code> -&gt; set <code>Application ID URI</code> to Azure function URI(https://<yourfunctionanme>.azurewebsites.net) -&gt; Save and Continue<br>
-In next window <code>Add a scope</code> -&gt; set <code>Scope name</code> as <code>apiaccess</code>-&gt; select <code>Admins and users</code> -&gt; Enter anything in consent name and description<br>
-Click <code>API permissions</code> -&gt; <code>Add a Permission</code> -&gt; <code>My API's</code> -&gt; select Name of API (<code>scope name</code> -&gt; <code>apiaccess</code>)-&gt; <code>Add Permission</code> -&gt; <code>Grant admin consent for Default</code> -&gt; yes-&gt;save-&gt;<code>grant admin consent</code>-&gt;yes<br></p>
-<h2 id="android-app-calling-function">Android App Calling function<a hidden class="anchor" aria-hidden="true" href="#android-app-calling-function">#</a></h2>
-<p>Edit <code>build.gradle</code> and add</p>
-<pre tabindex="0"><code>    implementation &#39;com.android.volley:volley:1.1.1&#39;
-</code></pre><p>Edit <code>AndroidManifest.xml</code> and add</p>
-<pre tabindex="0"><code>    &lt;uses-permission android:name=&#34;android.permission.INTERNET&#34; /&gt;
-</code></pre><p>Replace <code>MainActivity.java</code></p>
-<pre tabindex="0"><code>package com.example.logintestaad;
+</code></pre><p>Run application, you should be able to <code>login</code> & <code>Logout</code></p><h2 id=creating--publishing-azure-function>Creating & Publishing Azure Function<a hidden class=anchor aria-hidden=true href=#creating--publishing-azure-function>#</a></h2><p>Follow below documents to setup Azure Function using Visual Studio or Visual Studio Code.</p><p><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp">Develop Azure Functions by using Visual Studio Code</a>
+<a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp">Develop Azure Functions by using Visual Studio Code</a></p><p>Once Azure function is hosted, verify the URL response in browser.</p><p><code>https://&lt;yourfunctionanme>.azurewebsites.net/api/&lt;functionparameter></code></p><h2 id=protect-azure-function-with-azure-active-directory-authentication>Protect Azure Function with Azure Active Directory Authentication<a hidden class=anchor aria-hidden=true href=#protect-azure-function-with-azure-active-directory-authentication>#</a></h2><p>Follow document <a href=https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-aad>Configure your App Service or Azure Functions app to use Azure AD login</a></p><p>Open function in Azure and select <code>Authentication</code><br>Enable <code>On</code><br>Select <code>Log in with Azure Active Directory</code> for <code>Action to take when request is not authenticated</code><br>Click <code>Azure Active Directory</code> as Authentication Provider<br>Click <code>Advanced</code><br>Enter <code>client id</code> from <code>andridLoginTest</code> Azure Directory Application setup (Setup Azure Active Directory)<br>Enter <code>Issuer Url</code> as <code>https://sts.windows.net/&lt;tokenid></code><br>Click <code>Allowed Token Audience</code> and add your function URL (do not add / or api/, just base URL)<br><img loading=lazy src=../images/functionaad.PNG><br></p><h2 id=setup-azure-active-directory-aad-api-expose-and-scopes>Setup Azure Active Directory (AAD) API Expose and Scopes<a hidden class=anchor aria-hidden=true href=#setup-azure-active-directory-aad-api-expose-and-scopes>#</a></h2><p>Open <code>Azure Active Directory</code><br>Select <code>Branding</code> and setup <code>Home page URL</code> to Azure Function<br>Click <code>Expose an API</code> -> <code>Add a scope</code> -> set <code>Application ID URI</code> to Azure function URI(https://<yourfunctionanme>.azurewebsites.net) -> Save and Continue<br>In next window <code>Add a scope</code> -> set <code>Scope name</code> as <code>apiaccess</code>-> select <code>Admins and users</code> -> Enter anything in consent name and description<br>Click <code>API permissions</code> -> <code>Add a Permission</code> -> <code>My API's</code> -> select Name of API (<code>scope name</code> -> <code>apiaccess</code>)-> <code>Add Permission</code> -> <code>Grant admin consent for Default</code> -> yes->save-><code>grant admin consent</code>->yes<br></p><h2 id=android-app-calling-function>Android App Calling function<a hidden class=anchor aria-hidden=true href=#android-app-calling-function>#</a></h2><p>Edit <code>build.gradle</code> and add</p><pre tabindex=0><code>    implementation &#39;com.android.volley:volley:1.1.1&#39;
+</code></pre><p>Edit <code>AndroidManifest.xml</code> and add</p><pre tabindex=0><code>    &lt;uses-permission android:name=&#34;android.permission.INTERNET&#34; /&gt;
+</code></pre><p>Replace <code>MainActivity.java</code></p><pre tabindex=0><code>package com.example.logintestaad;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -591,156 +419,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-</code></pre><p>Finally, debug code, you should be able to see response from Azure function.</p>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/android/">Android</a></li>
-      <li><a href="http://localhost:1313/tags/cloud/">Cloud</a></li>
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/compositedesignpattern/">
-    <span class="title">« Prev</span>
-    <span>Composite Design Pattern</span>
-  </a>
-  <a class="next" href="http://localhost:1313/posts/android-checkstyle/">
-    <span class="title">Next »</span>
-    <span>Android Studio Enable Checkstyle (Gradle)</span>
-  </a>
-</nav>
-
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Inderpal Aulakh</a></span> · 
-
-    
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
-</body>
-
-</html>
+</code></pre><p>Finally, debug code, you should be able to see response from Azure function.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://inderpalaulakh.com/tags/android/>Android</a></li><li><a href=https://inderpalaulakh.com/tags/cloud/>Cloud</a></li></ul><nav class=paginav><a class=prev href=https://inderpalaulakh.com/posts/compositedesignpattern/><span class=title>« Prev</span>
+<span>Composite Design Pattern</span>
+</a><a class=next href=https://inderpalaulakh.com/posts/android-checkstyle/><span class=title>Next »</span>
+<span>Android Studio Enable Checkstyle (Gradle)</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://inderpalaulakh.com/>Inderpal Aulakh</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

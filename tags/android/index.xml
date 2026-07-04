@@ -1,349 +1,263 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Android on Inderpal Aulakh</title>
-    <link>http://localhost:1313/tags/android/</link>
-    <description>Recent content in Android on Inderpal Aulakh</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 08 Aug 2021 15:12:01 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Android Sample Chat Application using Azure Communication Services and ChatKit</title>
-      <link>http://localhost:1313/posts/azurechat/</link>
-      <pubDate>Sun, 08 Aug 2021 15:12:01 -0700</pubDate>
-      <guid>http://localhost:1313/posts/azurechat/</guid>
-      <description>This post demonstrates the Android chat application leveraging Azure Communication Services and ChatKit.</description>
-    </item>
-    <item>
-      <title>Kotlin map, foldRight &amp; nested functions to implement redux middleware</title>
-      <link>http://localhost:1313/posts/middlewarekotlin/</link>
-      <pubDate>Mon, 10 May 2021 14:27:12 -0700</pubDate>
-      <guid>http://localhost:1313/posts/middlewarekotlin/</guid>
-      <description>&lt;p&gt;Kotlin supports &lt;a href=&#34;https://en.wikipedia.org/wiki/Higher-order_function&#34;&gt;Higher order functions&lt;/a&gt;. In this blog, I will create a higher order function that will use map &amp;amp; fold right for execution.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Android on Inderpal Aulakh</title><link>https://inderpalaulakh.com/tags/android/</link><description>Recent content in Android on Inderpal Aulakh</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Aug 2021 15:12:01 -0700</lastBuildDate><atom:link href="https://inderpalaulakh.com/tags/android/index.xml" rel="self" type="application/rss+xml"/><item><title>Android Sample Chat Application using Azure Communication Services and ChatKit</title><link>https://inderpalaulakh.com/posts/azurechat/</link><pubDate>Sun, 08 Aug 2021 15:12:01 -0700</pubDate><guid>https://inderpalaulakh.com/posts/azurechat/</guid><description>This post demonstrates the Android chat application leveraging Azure Communication Services and ChatKit.</description></item><item><title>Kotlin map, foldRight &amp; nested functions to implement redux middleware</title><link>https://inderpalaulakh.com/posts/middlewarekotlin/</link><pubDate>Mon, 10 May 2021 14:27:12 -0700</pubDate><guid>https://inderpalaulakh.com/posts/middlewarekotlin/</guid><description>&lt;p&gt;Kotlin supports &lt;a href="https://en.wikipedia.org/wiki/Higher-order_function"&gt;Higher order functions&lt;/a&gt;. In this blog, I will create a higher order function that will use map &amp;amp; fold right for execution.&lt;/p&gt;
 &lt;p&gt;Before diving into higher order functions, let&amp;rsquo;s go through map &amp;amp; fold right.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;map&lt;/code&gt; is collective transform operation.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-kotlin&#34; data-lang=&#34;kotlin&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; numbers = mutableListOf(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;numbers = numbers.map { &lt;span style=&#34;color:#66d9ef&#34;&gt;it&lt;/span&gt;*&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; }.toMutableList()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// elements in numbers: 2,4,6
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; numbers = mutableListOf(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;numbers = numbers.map { &lt;span style="color:#66d9ef"&gt;it&lt;/span&gt;*&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; }.toMutableList()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// elements in numbers: 2,4,6
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;foldRight&lt;/code&gt; accept initial state, apply initial state to all elements and return final state.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-kotlin&#34; data-lang=&#34;kotlin&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; numbers = mutableListOf(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; result = numbers.foldRight(&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;, {a,b &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; test(a,b)})
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fun&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;(a: Int, b: Any): Int {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; a + b &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; Int
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/*
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;First execution: 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;initial 100
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;a = 3
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;b = 100
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;Second Execution
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;a = 2
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;b = 103
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;Third Execution
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;a = 1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;b = 105
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;final: result = 106
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s create a higher order function &lt;code&gt;Middleware&lt;/code&gt; that takes an instance &lt;code&gt;StringApp&lt;/code&gt;, has inner function &lt;code&gt;next:  Type&lt;/code&gt; and return &lt;code&gt;Type&lt;/code&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Dagger, Injecting custom objects (Interface implementation)</title>
-      <link>http://localhost:1313/posts/dicustom/</link>
-      <pubDate>Sun, 02 May 2021 00:00:29 -0700</pubDate>
-      <guid>http://localhost:1313/posts/dicustom/</guid>
-      <description>&lt;p&gt;It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes &lt;code&gt;Logger&lt;/code&gt;, &lt;code&gt;Service&lt;/code&gt; and class &lt;code&gt;Middleware&lt;/code&gt; is dependent on these classes.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-kotlin&#34; data-lang=&#34;kotlin&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Logger&lt;/span&gt;()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Service&lt;/span&gt;()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//this class requires Logger &amp;amp; Service object
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Middleware&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; logger:&lt;span style=&#34;color:#a6e22e&#34;&gt;Logger&lt;/span&gt;. &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; service:Service)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// middleware object
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; middleware = Middleware(Logger(),Service())
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; numbers = mutableListOf(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; result = numbers.foldRight(&lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;, {a,b &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; test(a,b)})
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;fun&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;test&lt;/span&gt;(a: Int, b: Any): Int {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; a + b &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; Int
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;First execution:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;initial 100
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;a = 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;b = 100
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;Second Execution
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;a = 2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;b = 103
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;Third Execution
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;a = 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;b = 105
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;final: result = 106
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s create a higher order function &lt;code&gt;Middleware&lt;/code&gt; that takes an instance &lt;code&gt;StringApp&lt;/code&gt;, has inner function &lt;code&gt;next: Type&lt;/code&gt; and return &lt;code&gt;Type&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Dagger, Injecting custom objects (Interface implementation)</title><link>https://inderpalaulakh.com/posts/dicustom/</link><pubDate>Sun, 02 May 2021 00:00:29 -0700</pubDate><guid>https://inderpalaulakh.com/posts/dicustom/</guid><description>&lt;p&gt;It is very connivent to use any DI framework when all the objects required are available in application. For example, I have two classes &lt;code&gt;Logger&lt;/code&gt;, &lt;code&gt;Service&lt;/code&gt; and class &lt;code&gt;Middleware&lt;/code&gt; is dependent on these classes.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Service&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//this class requires Logger &amp;amp; Service object
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Middleware&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; logger:&lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt;. &lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; service:Service)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// middleware object
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; middleware = Middleware(Logger(),Service())
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Dagger&lt;/code&gt; can build objects of &lt;code&gt;Logger&lt;/code&gt; and &lt;code&gt;Service&lt;/code&gt; classes by indicating &lt;code&gt;@Inject&lt;/code&gt; annotation to all three classes&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-kotlin&#34; data-lang=&#34;kotlin&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;internal&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Logger&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;@Inject&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;constructor&lt;/span&gt;()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;internal&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Service&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;@Inject&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;constructor&lt;/span&gt;()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//this class requires Logger &amp;amp; Service object
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;internal&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Middleware&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;@Inject&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; logger:&lt;span style=&#34;color:#a6e22e&#34;&gt;Logger&lt;/span&gt;. &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; service:Service)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Component&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;MiddlewareComponent&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;fun&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;buildComponent&lt;/span&gt;():Middleware
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// middleware object
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; middleware = &lt;span style=&#34;color:#a6e22e&#34;&gt;DaggerMiddlewareComponent&lt;/span&gt;.builder().build().buildComponent()
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;internal&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;internal&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Service&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//this class requires Logger &amp;amp; Service object
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;internal&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Middleware&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; logger:&lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt;. &lt;span style="color:#66d9ef"&gt;private&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; service:Service)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@Component&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;MiddlewareComponent&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;fun&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;buildComponent&lt;/span&gt;():Middleware
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// middleware object
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; middleware = &lt;span style="color:#a6e22e"&gt;DaggerMiddlewareComponent&lt;/span&gt;.builder().build().buildComponent()
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the project requirements are modified to get &lt;code&gt;Logger&lt;/code&gt; with custom implementation, we can write &lt;code&gt;@Module&lt;/code&gt; to support dependency injection.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-kotlin&#34; data-lang=&#34;kotlin&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// now, Logger is interface
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Logger&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Service&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;@Inject&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;constructor&lt;/span&gt;()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Middleware&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;@Inject&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; logger: Logger, &lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; service: Service)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Module&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;LoggerModule&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; logger: Logger) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Provides&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;fun&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;providesLogger&lt;/span&gt;(): Logger {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; logger
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Component&lt;/span&gt;(modules = [LoggerModule&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt;])
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;MiddlewareComponent&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;fun&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;buildComponent&lt;/span&gt;(): Middleware
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//custom implementation
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;NullLogger&lt;/span&gt; : Logger
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//injecting logger module with interface implementation
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;val&lt;/span&gt; middleware = &lt;span style=&#34;color:#a6e22e&#34;&gt;DaggerMiddlewareComponent&lt;/span&gt;.builder().loggerModule(LoggerModule(NullLogger())).build().buildComponent()
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</title>
-      <link>http://localhost:1313/posts/di/</link>
-      <pubDate>Mon, 12 Apr 2021 10:46:57 -0800</pubDate>
-      <guid>http://localhost:1313/posts/di/</guid>
-      <description>&lt;p&gt;Below are widely used Dependency Injection frameworks mostly by android &amp;amp; Java application projects.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-kotlin" data-lang="kotlin"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// now, Logger is interface
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Logger&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Service&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Middleware&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;@Inject&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; logger: Logger, &lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; service: Service)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@Module&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;LoggerModule&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constructor&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; logger: Logger) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;@Provides&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;fun&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;providesLogger&lt;/span&gt;(): Logger {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; logger
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@Component&lt;/span&gt;(modules = [LoggerModule&lt;span style="color:#f92672"&gt;::&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;MiddlewareComponent&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;fun&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;buildComponent&lt;/span&gt;(): Middleware
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//custom implementation
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;NullLogger&lt;/span&gt; : Logger
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;//injecting logger module with interface implementation
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;val&lt;/span&gt; middleware = &lt;span style="color:#a6e22e"&gt;DaggerMiddlewareComponent&lt;/span&gt;.builder().loggerModule(LoggerModule(NullLogger())).build().buildComponent()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Android/Java Dependency Injection Frameworks (Android Library &amp; App Development)</title><link>https://inderpalaulakh.com/posts/di/</link><pubDate>Mon, 12 Apr 2021 10:46:57 -0800</pubDate><guid>https://inderpalaulakh.com/posts/di/</guid><description>&lt;p&gt;Below are widely used Dependency Injection frameworks mostly by android &amp;amp; Java application projects.&lt;/p&gt;
 &lt;p&gt;For Android application development, the suggested Framework by Google are Dagger and Hilt. These frameworks help to avoid writing boilerplate code.&lt;/p&gt;
-&lt;h1 id=&#34;guice&#34;&gt;Guice&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/google/guice&#34;&gt;Guice (pronounced &amp;lsquo;juice&amp;rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="guice"&gt;Guice&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://github.com/google/guice"&gt;Guice (pronounced &amp;lsquo;juice&amp;rsquo;) is a lightweight dependency injection framework for Java 6 and above, brought to you by Google. (github.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;With 10K stars this framework is mostly used by Java developers where Java is used for backend &amp;amp; Application development.&lt;/p&gt;
 &lt;p&gt;For Android, this framework is not suggested as this framework use reflections to scan annotations from code. This requires significant CPU cycles and RAM thus slowdowns application launch.&lt;/p&gt;
 &lt;p&gt;Reflection on the desktop/server JVM is very efficient, and even very large Guice applications don&amp;rsquo;t have performance problems related to Guice.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://developer.android.com/topic/performance/memory#DependencyInjection&#34;&gt;Manage your app&amp;rsquo;s memory |  Android Developers&lt;/a&gt; : Other dependency injection frameworks that use reflection tend to initialize processes by scanning your code for annotations. This process can require significantly more CPU cycles and RAM and can cause a noticeable lag when the app launches.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>MVC &amp; MVVM Android Design Pattern (Android)</title>
-      <link>http://localhost:1313/posts/mvcmvvm/</link>
-      <pubDate>Wed, 24 Mar 2021 18:26:03 -0800</pubDate>
-      <guid>http://localhost:1313/posts/mvcmvvm/</guid>
-      <description>&lt;p&gt;Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://developer.android.com/topic/performance/memory#DependencyInjection"&gt;Manage your app&amp;rsquo;s memory | Android Developers&lt;/a&gt; : Other dependency injection frameworks that use reflection tend to initialize processes by scanning your code for annotations. This process can require significantly more CPU cycles and RAM and can cause a noticeable lag when the app launches.&lt;/p&gt;</description></item><item><title>MVC &amp; MVVM Android Design Pattern (Android)</title><link>https://inderpalaulakh.com/posts/mvcmvvm/</link><pubDate>Wed, 24 Mar 2021 18:26:03 -0800</pubDate><guid>https://inderpalaulakh.com/posts/mvcmvvm/</guid><description>&lt;p&gt;Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.&lt;/p&gt;
 &lt;p&gt;In past, I was working on backend projects where tons of unit tests exists for API&amp;rsquo;s. I am new to application development and spent some time to learn about &lt;code&gt;MVC&lt;/code&gt; and &lt;code&gt;MVVM&lt;/code&gt; design patterns.&lt;/p&gt;
 &lt;p&gt;For next project, the preference is &lt;code&gt;MVVM&lt;/code&gt;. At end of this post I will share the reason to choose &lt;code&gt;MVVM&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;The example code for this post is written for Android application.&lt;/p&gt;
-&lt;h2 id=&#34;mvc-model-view-controller&#34;&gt;MVC (Model-View-Controller)&lt;/h2&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;../images/mvc.jpg&#34;&gt;&lt;/p&gt;
+&lt;h2 id="mvc-model-view-controller"&gt;MVC (Model-View-Controller)&lt;/h2&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/mvc.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Model&lt;/strong&gt;: Model is data layer. Model call services or database to get data from external systems.&lt;br/&gt;
 &lt;strong&gt;View&lt;/strong&gt;: View is user interface layer.&lt;br/&gt;
-&lt;strong&gt;Controller&lt;/strong&gt;: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.&lt;br/&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Android Application implementing Azure Active Directory Authentication to call protected Azure Function </title>
-      <link>http://localhost:1313/posts/azureaad/</link>
-      <pubDate>Sat, 23 Jan 2021 13:36:35 -0800</pubDate>
-      <guid>http://localhost:1313/posts/azureaad/</guid>
-      <description>&lt;p&gt;In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.&lt;/p&gt;
-&lt;h2 id=&#34;create-an-android-application&#34;&gt;Create an Android Application&lt;/h2&gt;
+&lt;strong&gt;Controller&lt;/strong&gt;: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.&lt;br/&gt;&lt;/p&gt;</description></item><item><title>Android Application implementing Azure Active Directory Authentication to call protected Azure Function</title><link>https://inderpalaulakh.com/posts/azureaad/</link><pubDate>Sat, 23 Jan 2021 13:36:35 -0800</pubDate><guid>https://inderpalaulakh.com/posts/azureaad/</guid><description>&lt;p&gt;In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.&lt;/p&gt;
+&lt;h2 id="create-an-android-application"&gt;Create an Android Application&lt;/h2&gt;
 &lt;p&gt;Open Android Studio and create new Project with Empty Activity.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;../images/androidappcreation.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/androidappcreation.png"&gt;&lt;/p&gt;
 &lt;p&gt;Configure project with below settings&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;../images/configuringproject.png&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;get-sha1--package-name&#34;&gt;Get SHA1 &amp;amp; package name&lt;/h2&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/configuringproject.png"&gt;&lt;/p&gt;
+&lt;h2 id="get-sha1--package-name"&gt;Get SHA1 &amp;amp; package name&lt;/h2&gt;
 &lt;p&gt;Open powershell and cd to C:\Users&amp;lt;username&amp;gt;.android
 Execute below command, if prompted for password enter &lt;code&gt;android&lt;/code&gt; or leave blank&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;../images/gettingSHA.PNG&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Copy SHA1 -&amp;gt; Navigate to &lt;a href=&#34;https://base64.guru/converter/encode/hex&#34;&gt;https://base64.guru/converter/encode/hex&lt;/a&gt; and convert SHA1 to Base64&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;../images/sha.PNG&#34;&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img loading="lazy" src="../images/gettingSHA.PNG"&gt;&lt;/p&gt;
+&lt;p&gt;Copy SHA1 -&amp;gt; Navigate to &lt;a href="https://base64.guru/converter/encode/hex"&gt;https://base64.guru/converter/encode/hex&lt;/a&gt; and convert SHA1 to Base64&lt;/p&gt;
+&lt;p&gt;&lt;img loading="lazy" src="../images/sha.PNG"&gt;&lt;/p&gt;
 &lt;p&gt;Copy package name from &lt;code&gt;AndroidManifest.xml&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Now you have packagename &amp;amp; Base64 SHA1 hash&lt;/p&gt;
-&lt;h2 id=&#34;setup-azure-active-directory&#34;&gt;Setup Azure Active Directory&lt;/h2&gt;
-&lt;p&gt;I followed steps from &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-android&#34;&gt;Register your app under Azure Active Directory (using Android platform settings)&lt;/a&gt; to setup AAD.&lt;/p&gt;
+&lt;h2 id="setup-azure-active-directory"&gt;Setup Azure Active Directory&lt;/h2&gt;
+&lt;p&gt;I followed steps from &lt;a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-android"&gt;Register your app under Azure Active Directory (using Android platform settings)&lt;/a&gt; to setup AAD.&lt;/p&gt;
 &lt;p&gt;Login to Azure&lt;br&gt;
 Open &lt;code&gt;AAD&lt;/code&gt;&lt;br&gt;
 Click &lt;code&gt;App Registration&lt;/code&gt; -&amp;gt; &lt;code&gt;New Registration&lt;/code&gt;&lt;br&gt;
-&lt;img loading=&#34;lazy&#34; src=&#34;../images/newreg.PNG&#34;&gt;&lt;br&gt;
+&lt;img loading="lazy" src="../images/newreg.PNG"&gt;&lt;br&gt;
 Select &lt;code&gt;Authentication&lt;/code&gt;&lt;br&gt;
 Select &lt;code&gt;Add a platform&lt;/code&gt;&lt;br&gt;
-&lt;img loading=&#34;lazy&#34; src=&#34;../images/authsetup.PNG&#34;&gt;&lt;br&gt;
+&lt;img loading="lazy" src="../images/authsetup.PNG"&gt;&lt;br&gt;
 Enter &lt;code&gt;SHA1 Hash&lt;/code&gt; &amp;amp; &lt;code&gt;package name&lt;/code&gt;&lt;br&gt;
-&lt;img loading=&#34;lazy&#34; src=&#34;../images/configure.PNG&#34;&gt;&lt;br/&gt;
+&lt;img loading="lazy" src="../images/configure.PNG"&gt;&lt;br/&gt;
 Copy &lt;code&gt;Android Configuration&lt;/code&gt;&lt;br/&gt;
-&lt;img loading=&#34;lazy&#34; src=&#34;../images/copyconfig.PNG&#34;&gt;&lt;br&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Android Studio Enable Checkstyle (Gradle)</title>
-      <link>http://localhost:1313/posts/android-checkstyle/</link>
-      <pubDate>Sun, 17 Jan 2021 08:23:23 -0800</pubDate>
-      <guid>http://localhost:1313/posts/android-checkstyle/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/checkstyle/checkstyle&#34;&gt;Checkstyle&lt;/a&gt; is a development tool to help programmers write Java code that adheres to a coding standard.&lt;/p&gt;
-&lt;h1 id=&#34;steps-to-enable-checkstyle-for-android-project&#34;&gt;Steps to enable checkstyle for Android Project&lt;/h1&gt;
-&lt;h2 id=&#34;create-checkstylexml&#34;&gt;Create checkstyle.xml&lt;/h2&gt;
+&lt;img loading="lazy" src="../images/copyconfig.PNG"&gt;&lt;br&gt;&lt;/p&gt;</description></item><item><title>Android Studio Enable Checkstyle (Gradle)</title><link>https://inderpalaulakh.com/posts/android-checkstyle/</link><pubDate>Sun, 17 Jan 2021 08:23:23 -0800</pubDate><guid>https://inderpalaulakh.com/posts/android-checkstyle/</guid><description>&lt;p&gt;&lt;a href="https://github.com/checkstyle/checkstyle"&gt;Checkstyle&lt;/a&gt; is a development tool to help programmers write Java code that adheres to a coding standard.&lt;/p&gt;
+&lt;h1 id="steps-to-enable-checkstyle-for-android-project"&gt;Steps to enable checkstyle for Android Project&lt;/h1&gt;
+&lt;h2 id="create-checkstylexml"&gt;Create checkstyle.xml&lt;/h2&gt;
 &lt;p&gt;Create folder &lt;code&gt;checkstyle&lt;/code&gt; inside Android Project &lt;code&gt;app&lt;/code&gt; folder.
-Create file checkstyle.xml &lt;a href=&#34;https://github.com/skeeto/sample-java-project/blob/master/checkstyle.xml&#34;&gt;Reference&lt;/a&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34;?&amp;gt;
+Create file checkstyle.xml &lt;a href="https://github.com/skeeto/sample-java-project/blob/master/checkstyle.xml"&gt;Reference&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34;?&amp;gt;
 &amp;lt;!DOCTYPE module PUBLIC
-    &amp;#34;-//Puppy Crawl//DTD Check Configuration 1.2//EN&amp;#34;
-    &amp;#34;http://www.puppycrawl.com/dtds/configuration_1_2.dtd&amp;#34;&amp;gt;
-
+&amp;#34;-//Puppy Crawl//DTD Check Configuration 1.2//EN&amp;#34;
+&amp;#34;http://www.puppycrawl.com/dtds/configuration_1_2.dtd&amp;#34;&amp;gt;
 &amp;lt;!--
-  Checkstyle configuration that checks the sun coding conventions from:
-    - the Java Language Specification at
-      http://java.sun.com/docs/books/jls/second_edition/html/index.html
-    - the Sun Code Conventions at http://java.sun.com/docs/codeconv/
-    - the Javadoc guidelines at
-      http://java.sun.com/j2se/javadoc/writingdoccomments/index.html
-    - the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html
-    - some best practices
-  Checkstyle is very configurable. Be sure to read the documentation at
-  http://checkstyle.sf.net (or in your downloaded distribution).
-  Most Checks are configurable, be sure to consult the documentation.
-  To completely disable a check, just comment it out or delete it from the file.
-  Finally, it is worth reading the documentation.
+Checkstyle configuration that checks the sun coding conventions from:
+- the Java Language Specification at
+http://java.sun.com/docs/books/jls/second_edition/html/index.html
+- the Sun Code Conventions at http://java.sun.com/docs/codeconv/
+- the Javadoc guidelines at
+http://java.sun.com/j2se/javadoc/writingdoccomments/index.html
+- the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html
+- some best practices
+Checkstyle is very configurable. Be sure to read the documentation at
+http://checkstyle.sf.net (or in your downloaded distribution).
+Most Checks are configurable, be sure to consult the documentation.
+To completely disable a check, just comment it out or delete it from the file.
+Finally, it is worth reading the documentation.
 --&amp;gt;
-
 &amp;lt;module name=&amp;#34;Checker&amp;#34;&amp;gt;
-    &amp;lt;!--
-        If you set the basedir property below, then all reported file
-        names will be relative to the specified directory. See
-        http://checkstyle.sourceforge.net/5.x/config.html#Checker
-        &amp;lt;property name=&amp;#34;basedir&amp;#34; value=&amp;#34;${basedir}&amp;#34;/&amp;gt;
-    --&amp;gt;
-
-    &amp;lt;!-- Checks that a package-info.java file exists for each package.     --&amp;gt;
-    &amp;lt;!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage --&amp;gt;
-    &amp;lt;module name=&amp;#34;JavadocPackage&amp;#34;/&amp;gt;
-
-    &amp;lt;!-- Checks whether files end with a new line.                        --&amp;gt;
-    &amp;lt;!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile --&amp;gt;
-    &amp;lt;module name=&amp;#34;NewlineAtEndOfFile&amp;#34;/&amp;gt;
-
-    &amp;lt;!-- Checks that property files contain the same keys.         --&amp;gt;
-    &amp;lt;!-- See http://checkstyle.sf.net/config_misc.html#Translation --&amp;gt;
-    &amp;lt;module name=&amp;#34;Translation&amp;#34;/&amp;gt;
-
-    &amp;lt;!-- Checks for Size Violations.                    --&amp;gt;
-    &amp;lt;!-- See http://checkstyle.sf.net/config_sizes.html --&amp;gt;
-    &amp;lt;module name=&amp;#34;FileLength&amp;#34;/&amp;gt;
-
-    &amp;lt;!-- Checks for whitespace                               --&amp;gt;
-    &amp;lt;!-- See http://checkstyle.sf.net/config_whitespace.html --&amp;gt;
-    &amp;lt;module name=&amp;#34;FileTabCharacter&amp;#34;/&amp;gt;
-
-    &amp;lt;!-- Miscellaneous other checks.                   --&amp;gt;
-    &amp;lt;!-- See http://checkstyle.sf.net/config_misc.html --&amp;gt;
-    &amp;lt;module name=&amp;#34;RegexpSingleline&amp;#34;&amp;gt;
-       &amp;lt;property name=&amp;#34;format&amp;#34; value=&amp;#34;\s+$&amp;#34;/&amp;gt;
-       &amp;lt;property name=&amp;#34;minimum&amp;#34; value=&amp;#34;0&amp;#34;/&amp;gt;
-       &amp;lt;property name=&amp;#34;maximum&amp;#34; value=&amp;#34;0&amp;#34;/&amp;gt;
-       &amp;lt;property name=&amp;#34;message&amp;#34; value=&amp;#34;Line has trailing spaces.&amp;#34;/&amp;gt;
-    &amp;lt;/module&amp;gt;
-
-    &amp;lt;module name=&amp;#34;TreeWalker&amp;#34;&amp;gt;
-
-        &amp;lt;!-- Checks for Javadoc comments.                     --&amp;gt;
-        &amp;lt;!-- See http://checkstyle.sf.net/config_javadoc.html --&amp;gt;
-        &amp;lt;module name=&amp;#34;JavadocMethod&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;JavadocType&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;JavadocVariable&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;JavadocStyle&amp;#34;/&amp;gt;
-
-
-        &amp;lt;!-- Checks for Naming Conventions.                  --&amp;gt;
-        &amp;lt;!-- See http://checkstyle.sf.net/config_naming.html --&amp;gt;
-        &amp;lt;module name=&amp;#34;ConstantName&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;LocalFinalVariableName&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;LocalVariableName&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;MemberName&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;MethodName&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;PackageName&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;ParameterName&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;StaticVariableName&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;TypeName&amp;#34;/&amp;gt;
-
-
-        &amp;lt;!-- Checks for Headers                                --&amp;gt;
-        &amp;lt;!-- See http://checkstyle.sf.net/config_header.html   --&amp;gt;
-        &amp;lt;!-- &amp;lt;module name=&amp;#34;Header&amp;#34;&amp;gt;                            --&amp;gt;
-            &amp;lt;!-- The follow property value demonstrates the ability     --&amp;gt;
-            &amp;lt;!-- to have access to ANT properties. In this case it uses --&amp;gt;
-            &amp;lt;!-- the ${basedir} property to allow Checkstyle to be run  --&amp;gt;
-            &amp;lt;!-- from any directory within a project. See property      --&amp;gt;
-            &amp;lt;!-- expansion,                                             --&amp;gt;
-            &amp;lt;!-- http://checkstyle.sf.net/config.html#properties        --&amp;gt;
-            &amp;lt;!-- &amp;lt;property                                              --&amp;gt;
-            &amp;lt;!--     name=&amp;#34;headerFile&amp;#34;                                  --&amp;gt;
-            &amp;lt;!--     value=&amp;#34;${basedir}/java.header&amp;#34;/&amp;gt;                   --&amp;gt;
-        &amp;lt;!-- &amp;lt;/module&amp;gt; --&amp;gt;
-
-        &amp;lt;!-- Following interprets the header file as regular expressions. --&amp;gt;
-        &amp;lt;!-- &amp;lt;module name=&amp;#34;RegexpHeader&amp;#34;/&amp;gt;                                --&amp;gt;
-
-
-        &amp;lt;!-- Checks for imports                              --&amp;gt;
-        &amp;lt;!-- See http://checkstyle.sf.net/config_import.html --&amp;gt;
-        &amp;lt;module name=&amp;#34;AvoidStarImport&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;IllegalImport&amp;#34;/&amp;gt; &amp;lt;!-- defaults to sun.* packages --&amp;gt;
-        &amp;lt;module name=&amp;#34;RedundantImport&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;UnusedImports&amp;#34;/&amp;gt;
-
-
-        &amp;lt;!-- Checks for Size Violations.                    --&amp;gt;
-        &amp;lt;!-- See http://checkstyle.sf.net/config_sizes.html --&amp;gt;
-        &amp;lt;module name=&amp;#34;LineLength&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;MethodLength&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;ParameterNumber&amp;#34;/&amp;gt;
-
-
-        &amp;lt;!-- Checks for whitespace                               --&amp;gt;
-        &amp;lt;!-- See http://checkstyle.sf.net/config_whitespace.html --&amp;gt;
-        &amp;lt;module name=&amp;#34;EmptyForIteratorPad&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;GenericWhitespace&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;MethodParamPad&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;NoWhitespaceAfter&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;NoWhitespaceBefore&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;OperatorWrap&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;ParenPad&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;TypecastParenPad&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;WhitespaceAfter&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;WhitespaceAround&amp;#34;/&amp;gt;
-
-
-        &amp;lt;!-- Modifier Checks                                    --&amp;gt;
-        &amp;lt;!-- See http://checkstyle.sf.net/config_modifiers.html --&amp;gt;
-        &amp;lt;module name=&amp;#34;ModifierOrder&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;RedundantModifier&amp;#34;/&amp;gt;
-
-        &amp;lt;module name=&amp;#34;AvoidNestedBlocks&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;EmptyBlock&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;LeftCurly&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;NeedBraces&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;RightCurly&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;AvoidInlineConditionals&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;DoubleCheckedLocking&amp;#34;/&amp;gt;    &amp;lt;!-- MY FAVOURITE --&amp;gt;
-        &amp;lt;module name=&amp;#34;EmptyStatement&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;EqualsHashCode&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;HiddenField&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;IllegalInstantiation&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;InnerAssignment&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;MagicNumber&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;MissingSwitchDefault&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;RedundantThrows&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;SimplifyBooleanExpression&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;SimplifyBooleanReturn&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;DesignForExtension&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;FinalClass&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;HideUtilityClassConstructor&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;InterfaceIsType&amp;#34;/&amp;gt;
-        &amp;lt;module name=&amp;#34;VisibilityModifier&amp;#34;/&amp;gt;
-
-    &amp;lt;/module&amp;gt;
-
+&amp;lt;!--
+If you set the basedir property below, then all reported file
+names will be relative to the specified directory. See
+http://checkstyle.sourceforge.net/5.x/config.html#Checker
+&amp;lt;property name=&amp;#34;basedir&amp;#34; value=&amp;#34;${basedir}&amp;#34;/&amp;gt;
+--&amp;gt;
+&amp;lt;!-- Checks that a package-info.java file exists for each package. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage --&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocPackage&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks whether files end with a new line. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile --&amp;gt;
+&amp;lt;module name=&amp;#34;NewlineAtEndOfFile&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks that property files contain the same keys. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_misc.html#Translation --&amp;gt;
+&amp;lt;module name=&amp;#34;Translation&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for Size Violations. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_sizes.html --&amp;gt;
+&amp;lt;module name=&amp;#34;FileLength&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for whitespace --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_whitespace.html --&amp;gt;
+&amp;lt;module name=&amp;#34;FileTabCharacter&amp;#34;/&amp;gt;
+&amp;lt;!-- Miscellaneous other checks. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_misc.html --&amp;gt;
+&amp;lt;module name=&amp;#34;RegexpSingleline&amp;#34;&amp;gt;
+&amp;lt;property name=&amp;#34;format&amp;#34; value=&amp;#34;\s+$&amp;#34;/&amp;gt;
+&amp;lt;property name=&amp;#34;minimum&amp;#34; value=&amp;#34;0&amp;#34;/&amp;gt;
+&amp;lt;property name=&amp;#34;maximum&amp;#34; value=&amp;#34;0&amp;#34;/&amp;gt;
+&amp;lt;property name=&amp;#34;message&amp;#34; value=&amp;#34;Line has trailing spaces.&amp;#34;/&amp;gt;
 &amp;lt;/module&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;create-checkstylegradle&#34;&gt;Create checkstyle.gradle&lt;/h2&gt;
-&lt;p&gt;Create checkstyle.gradle inside app folder (at same level where build.gradle exists)&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&amp;lt;module name=&amp;#34;TreeWalker&amp;#34;&amp;gt;
+&amp;lt;!-- Checks for Javadoc comments. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_javadoc.html --&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocMethod&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocType&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocVariable&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;JavadocStyle&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for Naming Conventions. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_naming.html --&amp;gt;
+&amp;lt;module name=&amp;#34;ConstantName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;LocalFinalVariableName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;LocalVariableName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MemberName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MethodName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;PackageName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;ParameterName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;StaticVariableName&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;TypeName&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for Headers --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_header.html --&amp;gt;
+&amp;lt;!-- &amp;lt;module name=&amp;#34;Header&amp;#34;&amp;gt; --&amp;gt;
+&amp;lt;!-- The follow property value demonstrates the ability --&amp;gt;
+&amp;lt;!-- to have access to ANT properties. In this case it uses --&amp;gt;
+&amp;lt;!-- the ${basedir} property to allow Checkstyle to be run --&amp;gt;
+&amp;lt;!-- from any directory within a project. See property --&amp;gt;
+&amp;lt;!-- expansion, --&amp;gt;
+&amp;lt;!-- http://checkstyle.sf.net/config.html#properties --&amp;gt;
+&amp;lt;!-- &amp;lt;property --&amp;gt;
+&amp;lt;!-- name=&amp;#34;headerFile&amp;#34; --&amp;gt;
+&amp;lt;!-- value=&amp;#34;${basedir}/java.header&amp;#34;/&amp;gt; --&amp;gt;
+&amp;lt;!-- &amp;lt;/module&amp;gt; --&amp;gt;
+&amp;lt;!-- Following interprets the header file as regular expressions. --&amp;gt;
+&amp;lt;!-- &amp;lt;module name=&amp;#34;RegexpHeader&amp;#34;/&amp;gt; --&amp;gt;
+&amp;lt;!-- Checks for imports --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_import.html --&amp;gt;
+&amp;lt;module name=&amp;#34;AvoidStarImport&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;IllegalImport&amp;#34;/&amp;gt; &amp;lt;!-- defaults to sun.* packages --&amp;gt;
+&amp;lt;module name=&amp;#34;RedundantImport&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;UnusedImports&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for Size Violations. --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_sizes.html --&amp;gt;
+&amp;lt;module name=&amp;#34;LineLength&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MethodLength&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;ParameterNumber&amp;#34;/&amp;gt;
+&amp;lt;!-- Checks for whitespace --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_whitespace.html --&amp;gt;
+&amp;lt;module name=&amp;#34;EmptyForIteratorPad&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;GenericWhitespace&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MethodParamPad&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;NoWhitespaceAfter&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;NoWhitespaceBefore&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;OperatorWrap&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;ParenPad&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;TypecastParenPad&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;WhitespaceAfter&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;WhitespaceAround&amp;#34;/&amp;gt;
+&amp;lt;!-- Modifier Checks --&amp;gt;
+&amp;lt;!-- See http://checkstyle.sf.net/config_modifiers.html --&amp;gt;
+&amp;lt;module name=&amp;#34;ModifierOrder&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;RedundantModifier&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;AvoidNestedBlocks&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;EmptyBlock&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;LeftCurly&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;NeedBraces&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;RightCurly&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;AvoidInlineConditionals&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;DoubleCheckedLocking&amp;#34;/&amp;gt; &amp;lt;!-- MY FAVOURITE --&amp;gt;
+&amp;lt;module name=&amp;#34;EmptyStatement&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;EqualsHashCode&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;HiddenField&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;IllegalInstantiation&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;InnerAssignment&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MagicNumber&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;MissingSwitchDefault&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;RedundantThrows&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;SimplifyBooleanExpression&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;SimplifyBooleanReturn&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;DesignForExtension&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;FinalClass&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;HideUtilityClassConstructor&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;InterfaceIsType&amp;#34;/&amp;gt;
+&amp;lt;module name=&amp;#34;VisibilityModifier&amp;#34;/&amp;gt;
+&amp;lt;/module&amp;gt;
+&amp;lt;/module&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="create-checkstylegradle"&gt;Create checkstyle.gradle&lt;/h2&gt;
+&lt;p&gt;Create checkstyle.gradle inside app folder (at same level where build.gradle exists)&lt;/p&gt;</description></item></channel></rss>

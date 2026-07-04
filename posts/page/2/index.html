@@ -1,419 +1,63 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Posts | Inderpal Aulakh</title>
-<meta name="keywords" content="">
-<meta name="description" content="Posts - Inderpal Aulakh">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-</head>
-<body class="list" id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Inderpal Aulakh (Alt + H)">Inderpal Aulakh</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-            <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
-                    <span class="active">Posts</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="About">
-                    <span>About</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
-<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-        <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-</nav>
-  <h1>
-    Posts
-  </h1>
-</header>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Coding blog with colored code snippets(.md posts)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>We can make our code snippets more interesting and readable by sharing code with color formatting.
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Posts | Inderpal Aulakh</title><meta name=keywords content><meta name=description content="Posts - Inderpal Aulakh"><meta name=author content><link rel=canonical href=https://inderpalaulakh.com/posts/><link crossorigin=anonymous href=/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as=style><link rel=icon href=https://inderpalaulakh.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://inderpalaulakh.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://inderpalaulakh.com/favicon-32x32.png><link rel=apple-touch-icon href=https://inderpalaulakh.com/apple-touch-icon.png><link rel=mask-icon href=https://inderpalaulakh.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://inderpalaulakh.com/posts/index.xml title=rss><link rel=alternate hreflang=en href=https://inderpalaulakh.com/posts/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://inderpalaulakh.com/posts/"><meta property="og:site_name" content="Inderpal Aulakh"><meta property="og:title" content="Posts"><meta property="og:description" content="Software engineering notes on architecture, backend systems, cloud, and practical coding lessons."><meta property="og:locale" content="en"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content="Software engineering notes on architecture, backend systems, cloud, and practical coding lessons."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://inderpalaulakh.com/posts/"}]}</script></head><body class=list id=top><header class=header><nav class=header-nav><div class=logo><a href=https://inderpalaulakh.com/ accesskey=h title="Inderpal Aulakh (Alt + H)">Inderpal Aulakh</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://inderpalaulakh.com/posts/ title=Posts><span class=active>Posts</span></a></li><li><a href=https://inderpalaulakh.com/archives/ title=Archives><span>Archives</span></a></li><li><a href=https://inderpalaulakh.com/about/ title=About><span>About</span></a></li><li><a href=https://inderpalaulakh.com/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><header class=page-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1>Posts</h1></header><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>MVC & MVVM Android Design Pattern (Android)</h2></header><div class=entry-content><p>Recently, I developed an Android application. The application was developed focusing on simplicity. The application was small thus skipped writing unit tests. I know skipping the unit tests is not a good practice.
+In past, I was working on backend projects where tons of unit tests exists for API’s. I am new to application development and spent some time to learn about MVC and MVVM design patterns.
+For next project, the preference is MVVM. At end of this post I will share the reason to choose MVVM.
+The example code for this post is written for Android application.
+MVC (Model-View-Controller) Model: Model is data layer. Model call services or database to get data from external systems. View: View is user interface layer. Controller: Controller is triggered first. Controller has reference to Model as well as View. Controller get data from Model and send to View.
+...</p></div><footer class=entry-footer><span title='2021-03-24 18:26:03 -0800 -0800'>March 24, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>913 words</span></footer><a class=entry-link aria-label="post link to MVC & MVVM Android Design Pattern (Android)" href=https://inderpalaulakh.com/posts/mvcmvvm/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Coding blog with colored code snippets(.md posts)</h2></header><div class=entry-content><p>We can make our code snippets more interesting and readable by sharing code with color formatting.
 To turn on colors, just add language short name 😉
 For C# code, add cs after ```.
 ```cs
 write your code here
 ```
 Example:
-static void Main(string[] args) { Logging logger = new Logging(); logger.Log(&#34;login success&#34;); } </p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2021-02-25 19:38:55 -0800 PST'>February 25, 2021</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>53 words</span></footer>
-  <a class="entry-link" aria-label="post link to Coding blog with colored code snippets(.md posts)" href="http://localhost:1313/posts/colorcode/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Adapter Design Pattern
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.
+static void Main(string[] args) { Logging logger = new Logging(); logger.Log("login success"); }</p></div><footer class=entry-footer><span title='2021-02-25 19:38:55 -0800 PST'>February 25, 2021</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>53 words</span></footer><a class=entry-link aria-label="post link to Coding blog with colored code snippets(.md posts)" href=https://inderpalaulakh.com/posts/colorcode/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Adapter Design Pattern</h2></header><div class=entry-content><p>This design patterns guides to create a wrap around existing class to reuse existing class for a new requirement.
 Assume, I have two logging classes named WriteLogsToLocalFile and WriteLogsToServer.
-class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log(&#34;hello.xml&#34;, &#34;login success&#34;); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log(&#34;https://server.logs/upload&#34;, &#34;login success&#34;, &#34;oAuthToken&#34;); } Here user is manually creating objects to write logs separately to local file and server.My requirement is to create a common class for logging, so that client can call common class. The common class should blindly recurse through list of loggers to log message.
+class WriteLogsToLocalFile { public void Log(string fileName, string message) { //write logs to file } } class WriteLogsToServer { public void Log(string urL, string message, string token) { //call rest API with oAuth // Note: here token is used for oAuth } } static void Main(string[] args) { WriteLogsToLocalFile fileLogs = new WriteLogsToLocalFile(); fileLogs.Log("hello.xml", "login success"); WriteLogsToServer serverLogs = new WriteLogsToServer(); serverLogs.Log("https://server.logs/upload", "login success", "oAuthToken"); } Here user is manually creating objects to write logs separately to local file and server.My requirement is to create a common class for logging, so that client can call common class. The common class should blindly recurse through list of loggers to log message.
 In below code, a new interface ILog is not compatible with WriteLogsToLocalFile and WriteLogsToServer. We created WriteLogsToServerAdapter and WriteLogsToServerAdapter. Logging is helper class.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2021-02-13 17:11:06 -0800 PST'>February 13, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>333 words</span></footer>
-  <a class="entry-link" aria-label="post link to Adapter Design Pattern" href="http://localhost:1313/posts/adapterdesignpattern/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Code Review
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Code reviews plays an important role to keep code consistent and readable. Code reviews are conducted to maintain quality and simplicity. The bugs should be taken care by automated tests. Code reviews are the best way to learn coding skills from your team members.
+...</p></div><footer class=entry-footer><span title='2021-02-13 17:11:06 -0800 PST'>February 13, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>333 words</span></footer><a class=entry-link aria-label="post link to Adapter Design Pattern" href=https://inderpalaulakh.com/posts/adapterdesignpattern/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Code Review</h2></header><div class=entry-content><p>Code reviews plays an important role to keep code consistent and readable. Code reviews are conducted to maintain quality and simplicity. The bugs should be taken care by automated tests. Code reviews are the best way to learn coding skills from your team members.
 In this post, I want to share my opinion on how to write code reviews comments. I read a document Google code review. This document is really helpful to write code reviews comments and how to fix, reply on code review comments.
 The variable name, function name or class name style formatting This type of comments should be taken care by compile time code validation. For example, Android has checkstyle.
 Rename class or variable names When we are suggesting someone to rename something in our code, maybe we can express or thoughts by: why to change name? what are the suggested names?
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2021-02-09 07:50:50 -0800 PST'>February 9, 2021</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>182 words</span></footer>
-  <a class="entry-link" aria-label="post link to Code Review" href="http://localhost:1313/posts/codereview/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Composite Design Pattern
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.
+...</p></div><footer class=entry-footer><span title='2021-02-09 07:50:50 -0800 PST'>February 9, 2021</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>182 words</span></footer><a class=entry-link aria-label="post link to Code Review" href=https://inderpalaulakh.com/posts/codereview/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Composite Design Pattern</h2></header><div class=entry-content><p>The Composite Design pattern is structural design pattern. This design pattern is used when we want to treat a group of objects in same way. The composite design pattern has following elements.
 Component This is a class that contain all the members that needs to be implemented by all the objects.
 Composite This class is used to add, remove and traverse components.
 Leaf The leaf object in tree structure is defined as leaf element.
 Code Sample I want to print salaries of all employees in my organization with names and designation. The root of organization tree is CEO. The CEO has directors as child composite. The director has managers as child composite. Finally, engineers at level 1 as leaf because no one is reporting them.
-// ignore this, just to print static int i = 0; interface IComponent { void print(); } class Composite : IComponent { private string name; private string designation; private decimal salary; private List&lt;IComponent&gt; listComponent = new List&lt;IComponent&gt;(); public Composite(String name, String designation, decimal salary) { this.name = name; this.designation = designation; this.salary = salary; } public void addComponent(IComponent component) { listComponent.Add(component); } public void printDesignation() { Console.Write(designation); Console.Write(&#34; &#34;); } public void printName() { Console.Write(name); Console.Write(&#34; &#34;); } public void printSalary() { Console.Write(salary); Console.Write(&#34; &#34;); } public void print() { printName(); printDesignation(); printSalary(); Console.WriteLine(&#34; &#34;); i&#43;&#43;; foreach (var component in listComponent) { for(int k =0;k &lt;i; k&#43;&#43;) { Console.Write(&#34; - &#34;); } component.print(); } } } class Leaf : IComponent { private string name; private string designation; private decimal salary; public Leaf(String name, String designation, decimal salary) { this.name = name; this.designation = designation; this.salary = salary; } public void print() { printName(); printDesignation(); printSalary(); Console.WriteLine(&#34; &#34;); } public void printDesignation() { Console.Write(designation); Console.Write(&#34; &#34;); } public void printName() { Console.Write(name); Console.Write(&#34; &#34;); } public void printSalary() { Console.Write(salary); Console.Write(&#34; &#34;); } } static void Main(string[] args) { Leaf ram = new Leaf(&#34;Ram&#34;, &#34;SE1&#34;, 1000000); Leaf sham = new Leaf(&#34;Sham&#34;, &#34;SE1&#34;, 1000000); Composite teamLead = new Composite(&#34;Mohan&#34;, &#34;Team Lead&#34;, 1000000); teamLead.addComponent(ram); teamLead.addComponent(sham); Composite manager = new Composite(&#34;John&#34;, &#34;Manager&#34;, 1000000); manager.addComponent(teamLead); Composite director = new Composite(&#34;kuku&#34;, &#34;Director&#34;, 1000000); director.addComponent(manager); //traverse through all director.print(); } } Output:
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2021-01-24 15:33:39 -0800 PST'>January 24, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>385 words</span></footer>
-  <a class="entry-link" aria-label="post link to Composite Design Pattern" href="http://localhost:1313/posts/compositedesignpattern/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Android Application implementing Azure Active Directory Authentication to call protected Azure Function 
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.
+// ignore this, just to print static int i = 0; interface IComponent { void print(); } class Composite : IComponent { private string name; private string designation; private decimal salary; private List&lt;IComponent> listComponent = new List&lt;IComponent>(); public Composite(String name, String designation, decimal salary) { this.name = name; this.designation = designation; this.salary = salary; } public void addComponent(IComponent component) { listComponent.Add(component); } public void printDesignation() { Console.Write(designation); Console.Write(" "); } public void printName() { Console.Write(name); Console.Write(" "); } public void printSalary() { Console.Write(salary); Console.Write(" "); } public void print() { printName(); printDesignation(); printSalary(); Console.WriteLine(" "); i++; foreach (var component in listComponent) { for(int k =0;k &lt;i; k++) { Console.Write(" - "); } component.print(); } } } class Leaf : IComponent { private string name; private string designation; private decimal salary; public Leaf(String name, String designation, decimal salary) { this.name = name; this.designation = designation; this.salary = salary; } public void print() { printName(); printDesignation(); printSalary(); Console.WriteLine(" "); } public void printDesignation() { Console.Write(designation); Console.Write(" "); } public void printName() { Console.Write(name); Console.Write(" "); } public void printSalary() { Console.Write(salary); Console.Write(" "); } } static void Main(string[] args) { Leaf ram = new Leaf("Ram", "SE1", 1000000); Leaf sham = new Leaf("Sham", "SE1", 1000000); Composite teamLead = new Composite("Mohan", "Team Lead", 1000000); teamLead.addComponent(ram); teamLead.addComponent(sham); Composite manager = new Composite("John", "Manager", 1000000); manager.addComponent(teamLead); Composite director = new Composite("kuku", "Director", 1000000); director.addComponent(manager); //traverse through all director.print(); } } Output:
+...</p></div><footer class=entry-footer><span title='2021-01-24 15:33:39 -0800 PST'>January 24, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>385 words</span></footer><a class=entry-link aria-label="post link to Composite Design Pattern" href=https://inderpalaulakh.com/posts/compositedesignpattern/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Android Application implementing Azure Active Directory Authentication to call protected Azure Function</h2></header><div class=entry-content><p>In this post, I am writing about how to setup Azure Active Directory Android application login to access Azure functions protected with Azure Active Directory authentication.
 Create an Android Application Open Android Studio and create new Project with Empty Activity.
 Configure project with below settings
-Get SHA1 &amp; package name Open powershell and cd to C:\Users&lt;username&gt;.android Execute below command, if prompted for password enter android or leave blank
-keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android Copy SHA1 -&gt; Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
+Get SHA1 & package name Open powershell and cd to C:\Users&lt;username>.android Execute below command, if prompted for password enter android or leave blank
+keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android Copy SHA1 -> Navigate to https://base64.guru/converter/encode/hex and convert SHA1 to Base64
 Copy package name from AndroidManifest.xml
-Now you have packagename &amp; Base64 SHA1 hash
+Now you have packagename & Base64 SHA1 hash
 Setup Azure Active Directory I followed steps from Register your app under Azure Active Directory (using Android platform settings) to setup AAD.
 Login to Azure
 Open AAD
-Click App Registration -&gt; New Registration
+Click App Registration -> New Registration
 Select Authentication
 Select Add a platform
-Enter SHA1 Hash &amp; package name
-Copy Android Configuration ...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2021-01-23 13:36:35 -0800 PST'>January 23, 2021</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1186 words</span></footer>
-  <a class="entry-link" aria-label="post link to Android Application implementing Azure Active Directory Authentication to call protected Azure Function " href="http://localhost:1313/posts/azureaad/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Android Studio Enable Checkstyle (Gradle)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.
+Enter SHA1 Hash & package name
+Copy Android Configuration ...</p></div><footer class=entry-footer><span title='2021-01-23 13:36:35 -0800 PST'>January 23, 2021</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1186 words</span></footer><a class=entry-link aria-label="post link to Android Application implementing Azure Active Directory Authentication to call protected Azure Function " href=https://inderpalaulakh.com/posts/azureaad/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Android Studio Enable Checkstyle (Gradle)</h2></header><div class=entry-content><p>Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.
 Steps to enable checkstyle for Android Project Create checkstyle.xml Create folder checkstyle inside Android Project app folder. Create file checkstyle.xml Reference
-&lt;?xml version=&#34;1.0&#34;?&gt; &lt;!DOCTYPE module PUBLIC &#34;-//Puppy Crawl//DTD Check Configuration 1.2//EN&#34; &#34;http://www.puppycrawl.com/dtds/configuration_1_2.dtd&#34;&gt; &lt;!-- Checkstyle configuration that checks the sun coding conventions from: - the Java Language Specification at http://java.sun.com/docs/books/jls/second_edition/html/index.html - the Sun Code Conventions at http://java.sun.com/docs/codeconv/ - the Javadoc guidelines at http://java.sun.com/j2se/javadoc/writingdoccomments/index.html - the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html - some best practices Checkstyle is very configurable. Be sure to read the documentation at http://checkstyle.sf.net (or in your downloaded distribution). Most Checks are configurable, be sure to consult the documentation. To completely disable a check, just comment it out or delete it from the file. Finally, it is worth reading the documentation. --&gt; &lt;module name=&#34;Checker&#34;&gt; &lt;!-- If you set the basedir property below, then all reported file names will be relative to the specified directory. See http://checkstyle.sourceforge.net/5.x/config.html#Checker &lt;property name=&#34;basedir&#34; value=&#34;${basedir}&#34;/&gt; --&gt; &lt;!-- Checks that a package-info.java file exists for each package. --&gt; &lt;!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage --&gt; &lt;module name=&#34;JavadocPackage&#34;/&gt; &lt;!-- Checks whether files end with a new line. --&gt; &lt;!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile --&gt; &lt;module name=&#34;NewlineAtEndOfFile&#34;/&gt; &lt;!-- Checks that property files contain the same keys. --&gt; &lt;!-- See http://checkstyle.sf.net/config_misc.html#Translation --&gt; &lt;module name=&#34;Translation&#34;/&gt; &lt;!-- Checks for Size Violations. --&gt; &lt;!-- See http://checkstyle.sf.net/config_sizes.html --&gt; &lt;module name=&#34;FileLength&#34;/&gt; &lt;!-- Checks for whitespace --&gt; &lt;!-- See http://checkstyle.sf.net/config_whitespace.html --&gt; &lt;module name=&#34;FileTabCharacter&#34;/&gt; &lt;!-- Miscellaneous other checks. --&gt; &lt;!-- See http://checkstyle.sf.net/config_misc.html --&gt; &lt;module name=&#34;RegexpSingleline&#34;&gt; &lt;property name=&#34;format&#34; value=&#34;\s&#43;$&#34;/&gt; &lt;property name=&#34;minimum&#34; value=&#34;0&#34;/&gt; &lt;property name=&#34;maximum&#34; value=&#34;0&#34;/&gt; &lt;property name=&#34;message&#34; value=&#34;Line has trailing spaces.&#34;/&gt; &lt;/module&gt; &lt;module name=&#34;TreeWalker&#34;&gt; &lt;!-- Checks for Javadoc comments. --&gt; &lt;!-- See http://checkstyle.sf.net/config_javadoc.html --&gt; &lt;module name=&#34;JavadocMethod&#34;/&gt; &lt;module name=&#34;JavadocType&#34;/&gt; &lt;module name=&#34;JavadocVariable&#34;/&gt; &lt;module name=&#34;JavadocStyle&#34;/&gt; &lt;!-- Checks for Naming Conventions. --&gt; &lt;!-- See http://checkstyle.sf.net/config_naming.html --&gt; &lt;module name=&#34;ConstantName&#34;/&gt; &lt;module name=&#34;LocalFinalVariableName&#34;/&gt; &lt;module name=&#34;LocalVariableName&#34;/&gt; &lt;module name=&#34;MemberName&#34;/&gt; &lt;module name=&#34;MethodName&#34;/&gt; &lt;module name=&#34;PackageName&#34;/&gt; &lt;module name=&#34;ParameterName&#34;/&gt; &lt;module name=&#34;StaticVariableName&#34;/&gt; &lt;module name=&#34;TypeName&#34;/&gt; &lt;!-- Checks for Headers --&gt; &lt;!-- See http://checkstyle.sf.net/config_header.html --&gt; &lt;!-- &lt;module name=&#34;Header&#34;&gt; --&gt; &lt;!-- The follow property value demonstrates the ability --&gt; &lt;!-- to have access to ANT properties. In this case it uses --&gt; &lt;!-- the ${basedir} property to allow Checkstyle to be run --&gt; &lt;!-- from any directory within a project. See property --&gt; &lt;!-- expansion, --&gt; &lt;!-- http://checkstyle.sf.net/config.html#properties --&gt; &lt;!-- &lt;property --&gt; &lt;!-- name=&#34;headerFile&#34; --&gt; &lt;!-- value=&#34;${basedir}/java.header&#34;/&gt; --&gt; &lt;!-- &lt;/module&gt; --&gt; &lt;!-- Following interprets the header file as regular expressions. --&gt; &lt;!-- &lt;module name=&#34;RegexpHeader&#34;/&gt; --&gt; &lt;!-- Checks for imports --&gt; &lt;!-- See http://checkstyle.sf.net/config_import.html --&gt; &lt;module name=&#34;AvoidStarImport&#34;/&gt; &lt;module name=&#34;IllegalImport&#34;/&gt; &lt;!-- defaults to sun.* packages --&gt; &lt;module name=&#34;RedundantImport&#34;/&gt; &lt;module name=&#34;UnusedImports&#34;/&gt; &lt;!-- Checks for Size Violations. --&gt; &lt;!-- See http://checkstyle.sf.net/config_sizes.html --&gt; &lt;module name=&#34;LineLength&#34;/&gt; &lt;module name=&#34;MethodLength&#34;/&gt; &lt;module name=&#34;ParameterNumber&#34;/&gt; &lt;!-- Checks for whitespace --&gt; &lt;!-- See http://checkstyle.sf.net/config_whitespace.html --&gt; &lt;module name=&#34;EmptyForIteratorPad&#34;/&gt; &lt;module name=&#34;GenericWhitespace&#34;/&gt; &lt;module name=&#34;MethodParamPad&#34;/&gt; &lt;module name=&#34;NoWhitespaceAfter&#34;/&gt; &lt;module name=&#34;NoWhitespaceBefore&#34;/&gt; &lt;module name=&#34;OperatorWrap&#34;/&gt; &lt;module name=&#34;ParenPad&#34;/&gt; &lt;module name=&#34;TypecastParenPad&#34;/&gt; &lt;module name=&#34;WhitespaceAfter&#34;/&gt; &lt;module name=&#34;WhitespaceAround&#34;/&gt; &lt;!-- Modifier Checks --&gt; &lt;!-- See http://checkstyle.sf.net/config_modifiers.html --&gt; &lt;module name=&#34;ModifierOrder&#34;/&gt; &lt;module name=&#34;RedundantModifier&#34;/&gt; &lt;module name=&#34;AvoidNestedBlocks&#34;/&gt; &lt;module name=&#34;EmptyBlock&#34;/&gt; &lt;module name=&#34;LeftCurly&#34;/&gt; &lt;module name=&#34;NeedBraces&#34;/&gt; &lt;module name=&#34;RightCurly&#34;/&gt; &lt;module name=&#34;AvoidInlineConditionals&#34;/&gt; &lt;module name=&#34;DoubleCheckedLocking&#34;/&gt; &lt;!-- MY FAVOURITE --&gt; &lt;module name=&#34;EmptyStatement&#34;/&gt; &lt;module name=&#34;EqualsHashCode&#34;/&gt; &lt;module name=&#34;HiddenField&#34;/&gt; &lt;module name=&#34;IllegalInstantiation&#34;/&gt; &lt;module name=&#34;InnerAssignment&#34;/&gt; &lt;module name=&#34;MagicNumber&#34;/&gt; &lt;module name=&#34;MissingSwitchDefault&#34;/&gt; &lt;module name=&#34;RedundantThrows&#34;/&gt; &lt;module name=&#34;SimplifyBooleanExpression&#34;/&gt; &lt;module name=&#34;SimplifyBooleanReturn&#34;/&gt; &lt;module name=&#34;DesignForExtension&#34;/&gt; &lt;module name=&#34;FinalClass&#34;/&gt; &lt;module name=&#34;HideUtilityClassConstructor&#34;/&gt; &lt;module name=&#34;InterfaceIsType&#34;/&gt; &lt;module name=&#34;VisibilityModifier&#34;/&gt; &lt;/module&gt; &lt;/module&gt; Create checkstyle.gradle Create checkstyle.gradle inside app folder (at same level where build.gradle exists)
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2021-01-17 08:23:23 -0800 PST'>January 17, 2021</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>624 words</span></footer>
-  <a class="entry-link" aria-label="post link to Android Studio Enable Checkstyle (Gradle)" href="http://localhost:1313/posts/android-checkstyle/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Generation of Sequence Diagram using Mermaid
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I use online tools to generate sequence diagrams. Recently, my colleague at work guided me about Mermaid to generate sequence diagrams. This is an awesome tool.
+&lt;?xml version="1.0"?> &lt;!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd"> &lt;!-- Checkstyle configuration that checks the sun coding conventions from: - the Java Language Specification at http://java.sun.com/docs/books/jls/second_edition/html/index.html - the Sun Code Conventions at http://java.sun.com/docs/codeconv/ - the Javadoc guidelines at http://java.sun.com/j2se/javadoc/writingdoccomments/index.html - the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html - some best practices Checkstyle is very configurable. Be sure to read the documentation at http://checkstyle.sf.net (or in your downloaded distribution). Most Checks are configurable, be sure to consult the documentation. To completely disable a check, just comment it out or delete it from the file. Finally, it is worth reading the documentation. --> &lt;module name="Checker"> &lt;!-- If you set the basedir property below, then all reported file names will be relative to the specified directory. See http://checkstyle.sourceforge.net/5.x/config.html#Checker &lt;property name="basedir" value="${basedir}"/> --> &lt;!-- Checks that a package-info.java file exists for each package. --> &lt;!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage --> &lt;module name="JavadocPackage"/> &lt;!-- Checks whether files end with a new line. --> &lt;!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile --> &lt;module name="NewlineAtEndOfFile"/> &lt;!-- Checks that property files contain the same keys. --> &lt;!-- See http://checkstyle.sf.net/config_misc.html#Translation --> &lt;module name="Translation"/> &lt;!-- Checks for Size Violations. --> &lt;!-- See http://checkstyle.sf.net/config_sizes.html --> &lt;module name="FileLength"/> &lt;!-- Checks for whitespace --> &lt;!-- See http://checkstyle.sf.net/config_whitespace.html --> &lt;module name="FileTabCharacter"/> &lt;!-- Miscellaneous other checks. --> &lt;!-- See http://checkstyle.sf.net/config_misc.html --> &lt;module name="RegexpSingleline"> &lt;property name="format" value="\s+$"/> &lt;property name="minimum" value="0"/> &lt;property name="maximum" value="0"/> &lt;property name="message" value="Line has trailing spaces."/> &lt;/module> &lt;module name="TreeWalker"> &lt;!-- Checks for Javadoc comments. --> &lt;!-- See http://checkstyle.sf.net/config_javadoc.html --> &lt;module name="JavadocMethod"/> &lt;module name="JavadocType"/> &lt;module name="JavadocVariable"/> &lt;module name="JavadocStyle"/> &lt;!-- Checks for Naming Conventions. --> &lt;!-- See http://checkstyle.sf.net/config_naming.html --> &lt;module name="ConstantName"/> &lt;module name="LocalFinalVariableName"/> &lt;module name="LocalVariableName"/> &lt;module name="MemberName"/> &lt;module name="MethodName"/> &lt;module name="PackageName"/> &lt;module name="ParameterName"/> &lt;module name="StaticVariableName"/> &lt;module name="TypeName"/> &lt;!-- Checks for Headers --> &lt;!-- See http://checkstyle.sf.net/config_header.html --> &lt;!-- &lt;module name="Header"> --> &lt;!-- The follow property value demonstrates the ability --> &lt;!-- to have access to ANT properties. In this case it uses --> &lt;!-- the ${basedir} property to allow Checkstyle to be run --> &lt;!-- from any directory within a project. See property --> &lt;!-- expansion, --> &lt;!-- http://checkstyle.sf.net/config.html#properties --> &lt;!-- &lt;property --> &lt;!-- name="headerFile" --> &lt;!-- value="${basedir}/java.header"/> --> &lt;!-- &lt;/module> --> &lt;!-- Following interprets the header file as regular expressions. --> &lt;!-- &lt;module name="RegexpHeader"/> --> &lt;!-- Checks for imports --> &lt;!-- See http://checkstyle.sf.net/config_import.html --> &lt;module name="AvoidStarImport"/> &lt;module name="IllegalImport"/> &lt;!-- defaults to sun.* packages --> &lt;module name="RedundantImport"/> &lt;module name="UnusedImports"/> &lt;!-- Checks for Size Violations. --> &lt;!-- See http://checkstyle.sf.net/config_sizes.html --> &lt;module name="LineLength"/> &lt;module name="MethodLength"/> &lt;module name="ParameterNumber"/> &lt;!-- Checks for whitespace --> &lt;!-- See http://checkstyle.sf.net/config_whitespace.html --> &lt;module name="EmptyForIteratorPad"/> &lt;module name="GenericWhitespace"/> &lt;module name="MethodParamPad"/> &lt;module name="NoWhitespaceAfter"/> &lt;module name="NoWhitespaceBefore"/> &lt;module name="OperatorWrap"/> &lt;module name="ParenPad"/> &lt;module name="TypecastParenPad"/> &lt;module name="WhitespaceAfter"/> &lt;module name="WhitespaceAround"/> &lt;!-- Modifier Checks --> &lt;!-- See http://checkstyle.sf.net/config_modifiers.html --> &lt;module name="ModifierOrder"/> &lt;module name="RedundantModifier"/> &lt;module name="AvoidNestedBlocks"/> &lt;module name="EmptyBlock"/> &lt;module name="LeftCurly"/> &lt;module name="NeedBraces"/> &lt;module name="RightCurly"/> &lt;module name="AvoidInlineConditionals"/> &lt;module name="DoubleCheckedLocking"/> &lt;!-- MY FAVOURITE --> &lt;module name="EmptyStatement"/> &lt;module name="EqualsHashCode"/> &lt;module name="HiddenField"/> &lt;module name="IllegalInstantiation"/> &lt;module name="InnerAssignment"/> &lt;module name="MagicNumber"/> &lt;module name="MissingSwitchDefault"/> &lt;module name="RedundantThrows"/> &lt;module name="SimplifyBooleanExpression"/> &lt;module name="SimplifyBooleanReturn"/> &lt;module name="DesignForExtension"/> &lt;module name="FinalClass"/> &lt;module name="HideUtilityClassConstructor"/> &lt;module name="InterfaceIsType"/> &lt;module name="VisibilityModifier"/> &lt;/module> &lt;/module> Create checkstyle.gradle Create checkstyle.gradle inside app folder (at same level where build.gradle exists)
+...</p></div><footer class=entry-footer><span title='2021-01-17 08:23:23 -0800 PST'>January 17, 2021</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>624 words</span></footer><a class=entry-link aria-label="post link to Android Studio Enable Checkstyle (Gradle)" href=https://inderpalaulakh.com/posts/android-checkstyle/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Generation of Sequence Diagram using Mermaid</h2></header><div class=entry-content><p>I use online tools to generate sequence diagrams. Recently, my colleague at work guided me about Mermaid to generate sequence diagrams. This is an awesome tool.
 Mermaid
 Mermaid has online editor Editor. However, I did not use online editor for confidentiality reasons.
 I created index.html and opened in browser.
-&lt;html&gt; &lt;body&gt; &lt;script src=&#34;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&#34;&gt;&lt;/script&gt; &lt;script&gt; mermaid.initialize({ startOnLoad: true }); &lt;/script&gt; &lt;div class=&#34;mermaid&#34;&gt; sequenceDiagram participant A participant B A-&gt;&gt;B:How are you? B--&gt;&gt; A: I am good loop test loop A-&gt;&gt;B:How are you? B--&gt;&gt; A: I am good end &lt;/div&gt; &lt;/body&gt; &lt;/html&gt; </p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2021-01-06 10:46:57 -0800 PST'>January 6, 2021</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>89 words</span></footer>
-  <a class="entry-link" aria-label="post link to Generation of Sequence Diagram using Mermaid" href="http://localhost:1313/posts/mermaid/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2020 Review
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>The year 2020 was a year of unpredicted event Covid-19. In January, my wife travelled to Toronto for her co-op and I planned to spend my evenings studying algorithms and software engineering concepts alongside full time job.
+&lt;html> &lt;body> &lt;script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">&lt;/script> &lt;script> mermaid.initialize({ startOnLoad: true }); &lt;/script> &lt;div class="mermaid"> sequenceDiagram participant A participant B A->>B:How are you? B-->> A: I am good loop test loop A->>B:How are you? B-->> A: I am good end &lt;/div> &lt;/body> &lt;/html></p></div><footer class=entry-footer><span title='2021-01-06 10:46:57 -0800 PST'>January 6, 2021</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>89 words</span></footer><a class=entry-link aria-label="post link to Generation of Sequence Diagram using Mermaid" href=https://inderpalaulakh.com/posts/mermaid/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>2020 Review</h2></header><div class=entry-content><p>The year 2020 was a year of unpredicted event Covid-19. In January, my wife travelled to Toronto for her co-op and I planned to spend my evenings studying algorithms and software engineering concepts alongside full time job.
 I planned to complete most of the study-topics in March and completed as planned. In mid-March my office shared guidelines to work from home. My wife was also back from Toronto and started a co-op remotely.
 I saved two hours of commute time. My office had layoffs. Some of my teammates were laid off. It was a hard time to see teammates leaving, and I got worried about myself.
 I started to spend more time studying software engineering topics. Usually, I develop hobby projects using technologies I do not use as a part of my job. Because of Covid-19, I got much time to work on hobby projects to explore AWS and Azure infrastructures.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2020-12-31 13:26:03 -0800 PST'>December 31, 2020</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>347 words</span></footer>
-  <a class="entry-link" aria-label="post link to 2020 Review" href="http://localhost:1313/posts/2020review/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Accessing Azure Pipeline variables in Webpack Node.js
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Recently, I struggled a bit to figure out a way to access Azure-Pipeline Variables in Node.js JavaScript/TypeScript project. However, it is easy.
-.yml Pipeline code - task: Npm@1 displayName: &#34;Run project&#34; env: MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital letters inputs: commands: &#39;custom&#39; CustomCommand: &#39;run test&#39; npm Package install package string-replace-loader
+...</p></div><footer class=entry-footer><span title='2020-12-31 13:26:03 -0800 PST'>December 31, 2020</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>347 words</span></footer><a class=entry-link aria-label="post link to 2020 Review" href=https://inderpalaulakh.com/posts/2020review/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Accessing Azure Pipeline variables in Webpack Node.js</h2></header><div class=entry-content><p>Recently, I struggled a bit to figure out a way to access Azure-Pipeline Variables in Node.js JavaScript/TypeScript project. However, it is easy.
+.yml Pipeline code - task: Npm@1 displayName: "Run project" env: MyVariableName: $(MYVARIABLENAME) // this is pipeline variable name, in Capital letters inputs: commands: 'custom' CustomCommand: 'run test' npm Package install package string-replace-loader
 TypeScript/JavaScript File Create a file with any name “test.ts”
-test.ts const test = () =&gt; { const myVariable = &#34;My-Variable&#34;; }; Setup webpack.config.js module: { rules: [ { test: /test\.ts$/, loader: &#39;string-replace-loader&#39;, options: { search: &#39;My-Variable&#39;, replace: process.env[&#39;MyVariableName&#39;] // from .yml env } } ] } } Finally &#34;scripts&#34; :{ &#34;test&#34;: &#34;webpack --config webpack.config.js&#34; } </p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2020-12-30 21:22:38 -0800 PST'>December 30, 2020</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>109 words</span></footer>
-  <a class="entry-link" aria-label="post link to Accessing Azure Pipeline variables in Webpack Node.js" href="http://localhost:1313/posts/pipelinevar/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">DoubleDispatch
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>To understand Double Dispatch, understanding of Overloading and Overriding is must. I already talked about Overloading and Overriding in post Overloading &amp; Overriding.
-One level of virtual dispatching derived types override a base types: as shown below
-class Farms { public virtual void Irrigation() { Console.WriteLine(&#34;Farm Type&#34;); } } class WheatFarm : Farms { public override void Irrigation() { Console.WriteLine(&#34;WheatFarm&#34;); } } class RicaFarm : WheatFarm { public override void Irrigation() { Console.WriteLine(&#34;RicaFarm&#34;); } } static void Main(string[] args) { var a = new Farms(); var b = new WheatFarm(); var c = new RicaFarm(); a.Irrigation(); b.Irrigation(); c.Irrigation(); } //output Farm Type WheatFarm RicaFarm Two level of virtual dispatching (Double Dispatch) This concept is used in Visitor Design Pattern.
-use polymorphic static binding technique to ensure that proper overload is called
-class Crop { public virtual void CropName(CropWatering obj) { obj.WaterSupply(this); } } class Wheat : Crop { public override void CropName(CropWatering obj) { obj.WaterSupply(this); } } /* An example of overloading (Method with same name but different parameter type) * */ class CropWatering { public virtual void WaterSupply(Crop crop) { Console.WriteLine(&#34;CropWatering working on type Crop&#34;); } public virtual void WaterSupply(Wheat wheat) { Console.WriteLine(&#34;CropWatering working on type Wheat&#34;); } } class CropWatringSpring : CropWatering { public override void WaterSupply(Crop crop) { Console.WriteLine(&#34;CropWatringSpring working on type Crop&#34;); } public override void WaterSupply(Wheat wheat) { Console.WriteLine(&#34;CropWatringSpring working on type Wheat&#34;); } } static void Main(string[] args) { Crop crop = new Crop(); Wheat wheat = new Wheat(); CropWatering cropWatering = new CropWatering(); crop.CropName(cropWatering); wheat.CropName(cropWatering); CropWatringSpring cropWatringSpring = new CropWatringSpring(); crop.CropName(cropWatringSpring); wheat.CropName(cropWatringSpring); } //output CropWatering working on type Crop CropWatering working on type Wheat CropWatringSpring working on type Crop CropWatringSpring working on type Wheat Reference
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2020-12-28 00:22:53 -0800 PST'>December 28, 2020</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>282 words</span></footer>
-  <a class="entry-link" aria-label="post link to DoubleDispatch" href="http://localhost:1313/posts/doubledispatch/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="http://localhost:1313/posts/">
-      «&nbsp;Prev&nbsp;
-    </a>
-    <a class="next" href="http://localhost:1313/posts/page/3/">Next&nbsp;&nbsp;»
-    </a>
-  </nav>
-</footer>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Inderpal Aulakh</a></span> · 
-
-    
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+test.ts const test = () => { const myVariable = "My-Variable"; }; Setup webpack.config.js module: { rules: [ { test: /test\.ts$/, loader: 'string-replace-loader', options: { search: 'My-Variable', replace: process.env['MyVariableName'] // from .yml env } } ] } } Finally "scripts" :{ "test": "webpack --config webpack.config.js" }</p></div><footer class=entry-footer><span title='2020-12-30 21:22:38 -0800 PST'>December 30, 2020</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>109 words</span></footer><a class=entry-link aria-label="post link to Accessing Azure Pipeline variables in Webpack Node.js" href=https://inderpalaulakh.com/posts/pipelinevar/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://inderpalaulakh.com/posts/>«&nbsp;Prev&nbsp;
+</a><a class=next href=https://inderpalaulakh.com/posts/page/3/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://inderpalaulakh.com/>Inderpal Aulakh</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
